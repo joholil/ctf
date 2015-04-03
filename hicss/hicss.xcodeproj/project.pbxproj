@@ -14,6 +14,7 @@
 		31315F761ACE774400D1CA87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31315F751ACE774400D1CA87 /* Images.xcassets */; };
 		31315F791ACE774400D1CA87 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31315F771ACE774400D1CA87 /* LaunchScreen.xib */; };
 		31315F851ACE774400D1CA87 /* hicssTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31315F841ACE774400D1CA87 /* hicssTests.swift */; };
+		31315F8F1ACE7B2000D1CA87 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31315F8E1ACE7B2000D1CA87 /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		31315F7E1ACE774400D1CA87 /* hicssTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hicssTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31315F831ACE774400D1CA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31315F841ACE774400D1CA87 /* hicssTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hicssTests.swift; sourceTree = "<group>"; };
+		31315F8E1ACE7B2000D1CA87 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				31315F771ACE774400D1CA87 /* LaunchScreen.xib */,
 				31315F6D1ACE774400D1CA87 /* hicss.xcdatamodeld */,
 				31315F691ACE774300D1CA87 /* Supporting Files */,
+				31315F8E1ACE7B2000D1CA87 /* Assignment.swift */,
 			);
 			path = hicss;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31315F8F1ACE7B2000D1CA87 /* Assignment.swift in Sources */,
 				31315F711ACE774400D1CA87 /* ViewController.swift in Sources */,
 				31315F6F1ACE774400D1CA87 /* hicss.xcdatamodeld in Sources */,
 				31315F6C1ACE774300D1CA87 /* AppDelegate.swift in Sources */,
@@ -343,6 +347,7 @@
 				INFOPLIST_FILE = hicss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -353,6 +358,7 @@
 				INFOPLIST_FILE = hicss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -409,6 +415,7 @@
 				31315F8A1ACE774400D1CA87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31315F8B1ACE774400D1CA87 /* Build configuration list for PBXNativeTarget "hicssTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +424,7 @@
 				31315F8D1ACE774400D1CA87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

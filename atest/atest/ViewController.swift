@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  hicss
+//  atest
 //
 //  Created by johahogb on 03/04/15.
 //  Copyright (c) 2015 Service research center. All rights reserved.
@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "asdf", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
 
 }
 

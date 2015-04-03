@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  hicss
+//  testa
 //
 //  Created by johahogb on 03/04/15.
 //  Copyright (c) 2015 Service research center. All rights reserved.
@@ -20,12 +20,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func hej(){
-        let alertController = UIAlertController(title: "he", message: "asdf", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "asdf", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
 
 }
 
