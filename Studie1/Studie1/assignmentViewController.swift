@@ -7,21 +7,31 @@
 //
 
 import UIKit
+import CoreFoundation
 
 class assignmentViewController: UIViewController {
 
     @IBOutlet var headlineLabel:UILabel!
+    @IBOutlet var descriptionTestView:UITextView!
+    @IBOutlet var logoImageView:UIImageView!
+    
+    var currentAssignment:Int = 0
     
     
-    var assignment = Assignment(headline: "Uppgift 1", descriptionText: "Det här är beskrivningen", logo: "loggan", finishedText: "sluttexten", seconds: 0)
+    var assignments:[Assignment] = [Assignment(headline: "Uppgift 1", descriptionText: "Som din första uppgift ska du gå bort till brödavdelningen. Där ska du leta reda på en gul skyllt märkt med Karlstads Universitet. För din telefon i närheten av skylten tills du får ett meddelande om att du har klarat uppgiften. Märkningen ser ut så här..."), Assignment(headline: "Uppgift 2", descriptionText: "Som din andra uppgift ska du gå bort till mjölkavdelning. Där ska du leta reda på en gul skyllt märkt med Karlstads Universitet. För din telefon i närheten av skylten tills du får ett meddelande om att du har klarat uppgiften. Märkningen ser ut så här..."), Assignment(headline: "Uppgift 3", descriptionText: "Som din tredje uppgift ska du gå bort till mjölavdelning. Där ska du leta reda på en gul skyllt märkt med Karlstads Universitet. För din telefon i närheten av skylten tills du får ett meddelande om att du har klarat uppgiften. Märkningen ser ut så här..."), Assignment(headline: "Uppgift 4", descriptionText: "Som din fjärde uppgift ska du gå bort till klädavdelning. Där ska du leta reda på en gul skyllt märkt med Karlstads Universitet. För din telefon i närheten av skylten tills du får ett meddelande om att du har klarat uppgiften. Märkningen ser ut så här..."), Assignment(headline: "Uppgift 5", descriptionText: "Som din femte uppgift ska du gå bort till godisavdelningen. Där ska du leta reda på en gul skyllt märkt med Karlstads Universitet. För din telefon i närheten av skylten tills du får ett meddelande om att du har klarat uppgiften. Märkningen ser ut så här...")]
     
+    /*
+    var assignment = Assignment(headline: "Uppgift 1", descriptionText: "Som din första  så här:", logo: "loggan", finishedText: "sluttexten", seconds: 0)
+    */
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        initializeAssignment()
         
-        //self.headlineLabel.text = assignment.headline
-        self.headlineLabel.text = assignment.headline
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +39,26 @@ class assignmentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func initializeAssignment()
+    {
+        self.headlineLabel.text = assignments[currentAssignment].headline
+        self.descriptionTestView.text = assignments[currentAssignment].descriptionText
+        self.logoImageView.image = UIImage(named: "kauLogo")
+        assignments[currentAssignment].startTime = CFAbsoluteTimeGetCurrent()
+    }
     
+    @IBAction func finished()
+    {
+        if currentAssignment == 4
+        {
+        }
+        else
+        {
+            
+            currentAssignment = currentAssignment + 1;
+            initializeAssignment()
+        }
+    }
 
     /*
     // MARK: - Navigation

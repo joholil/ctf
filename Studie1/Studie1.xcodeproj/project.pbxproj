@@ -417,6 +417,7 @@
 				31650C3B1ACEA7E7001EEF48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31650C3C1ACEA7E7001EEF48 /* Build configuration list for PBXNativeTarget "Studie1Tests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +426,7 @@
 				31650C3E1ACEA7E7001EEF48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
