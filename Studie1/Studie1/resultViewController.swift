@@ -22,7 +22,6 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
         // Do any additional setup after loading the view.
         initializeForm()
         
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,10 +72,32 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
     @IBAction func deleteMeasurments(){
     
         let alertControler = UIAlertController(title: nil, message: "Vill du radera alla mätningar?", preferredStyle: UIAlertControllerStyle.Alert)
-        alertControler.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: nil))
+        alertControler.addAction(UIAlertAction(title: "Ja", style: UIAlertActionStyle.Default, handler: deleteMeasurments))
         alertControler.addAction(UIAlertAction(title: "Nej", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertControler, animated: true, completion: nil)
+    }
+    
+    func deleteMeasurments(alert: UIAlertAction!) {
         
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+            
+            for measurementToDelete in measurements{
+                managedObjectContext.deleteObject(measurementToDelete)
+            }
+            
+            var e: NSError?
+            if managedObjectContext.save(&e) != true {
+                println("delete error: \(e!.localizedDescription)")
+            }
+            if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
+            }
+            
+        }
+    }
+    
+    @IBAction func backToStart(){
+        if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
+        }
     }
 
     /*
