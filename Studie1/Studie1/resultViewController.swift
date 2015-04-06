@@ -89,6 +89,9 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
             if managedObjectContext.save(&e) != true {
                 println("delete error: \(e!.localizedDescription)")
             }
+            
+            globalCurrentAssignment = 0
+            
             if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
             }
             
