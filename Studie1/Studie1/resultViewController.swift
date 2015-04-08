@@ -102,6 +102,11 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
         if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
         }
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
 
     /*
     // MARK: - Navigation

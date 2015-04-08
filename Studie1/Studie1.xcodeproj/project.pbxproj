@@ -15,10 +15,12 @@
 		31650C361ACEA7E7001EEF48 /* Studie1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31650C351ACEA7E7001EEF48 /* Studie1Tests.swift */; };
 		31650C401ACEA874001EEF48 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31650C3F1ACEA874001EEF48 /* Assignment.swift */; };
 		31650C421ACEB779001EEF48 /* assignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31650C411ACEB779001EEF48 /* assignmentViewController.swift */; };
+		31897D511AD518CA005F9685 /* radarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31897D501AD518CA005F9685 /* radarViewController.swift */; };
 		319078891AD26E7600AEBF2C /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319078881AD26E7600AEBF2C /* GlobalVariables.swift */; };
 		3190788B1AD26FDC00AEBF2C /* progressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190788A1AD26FDC00AEBF2C /* progressTableViewCell.swift */; };
 		3190788D1AD2701000AEBF2C /* progressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190788C1AD2701000AEBF2C /* progressTableViewController.swift */; };
 		3190788F1AD27EDE00AEBF2C /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190788E1AD27EDE00AEBF2C /* startViewController.swift */; };
+		319078911AD4FFCB00AEBF2C /* finishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319078901AD4FFCB00AEBF2C /* finishedViewController.swift */; };
 		31BBE2101AD07E6E006AB5E1 /* Studie1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31BBE20E1AD07E6E006AB5E1 /* Studie1.xcdatamodeld */; };
 		31DB1C501AD129E80099E2CE /* Measurment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1C4F1AD129E80099E2CE /* Measurment.swift */; };
 		31DB1C541AD13C430099E2CE /* resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1C531AD13C430099E2CE /* resultViewController.swift */; };
@@ -48,10 +50,12 @@
 		31650C351ACEA7E7001EEF48 /* Studie1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studie1Tests.swift; sourceTree = "<group>"; };
 		31650C3F1ACEA874001EEF48 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assignment.swift; path = ../../../Assignment.swift; sourceTree = "<group>"; };
 		31650C411ACEB779001EEF48 /* assignmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = assignmentViewController.swift; sourceTree = "<group>"; };
+		31897D501AD518CA005F9685 /* radarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = radarViewController.swift; sourceTree = "<group>"; };
 		319078881AD26E7600AEBF2C /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		3190788A1AD26FDC00AEBF2C /* progressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = progressTableViewCell.swift; sourceTree = "<group>"; };
 		3190788C1AD2701000AEBF2C /* progressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = progressTableViewController.swift; sourceTree = "<group>"; };
 		3190788E1AD27EDE00AEBF2C /* startViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
+		319078901AD4FFCB00AEBF2C /* finishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = finishedViewController.swift; sourceTree = "<group>"; };
 		31BBE20F1AD07E6E006AB5E1 /* Studie1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Studie1.xcdatamodel; sourceTree = "<group>"; };
 		31DB1C4F1AD129E80099E2CE /* Measurment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurment.swift; sourceTree = "<group>"; };
 		31DB1C531AD13C430099E2CE /* resultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resultViewController.swift; sourceTree = "<group>"; };
@@ -101,9 +105,11 @@
 				31DB1C4F1AD129E80099E2CE /* Measurment.swift */,
 				31650C1C1ACEA7E6001EEF48 /* AppDelegate.swift */,
 				31650C211ACEA7E6001EEF48 /* ViewController.swift */,
+				31897D501AD518CA005F9685 /* radarViewController.swift */,
 				31650C411ACEB779001EEF48 /* assignmentViewController.swift */,
 				31DB1C531AD13C430099E2CE /* resultViewController.swift */,
 				3190788E1AD27EDE00AEBF2C /* startViewController.swift */,
+				319078901AD4FFCB00AEBF2C /* finishedViewController.swift */,
 				3190788C1AD2701000AEBF2C /* progressTableViewController.swift */,
 				31DB1C571AD14B870099E2CE /* resultTableViewCell.swift */,
 				3190788A1AD26FDC00AEBF2C /* progressTableViewCell.swift */,
@@ -244,10 +250,12 @@
 			files = (
 				31650C401ACEA874001EEF48 /* Assignment.swift in Sources */,
 				3190788F1AD27EDE00AEBF2C /* startViewController.swift in Sources */,
+				319078911AD4FFCB00AEBF2C /* finishedViewController.swift in Sources */,
 				31650C221ACEA7E6001EEF48 /* ViewController.swift in Sources */,
 				31650C1D1ACEA7E6001EEF48 /* AppDelegate.swift in Sources */,
 				319078891AD26E7600AEBF2C /* GlobalVariables.swift in Sources */,
 				31BBE2101AD07E6E006AB5E1 /* Studie1.xcdatamodeld in Sources */,
+				31897D511AD518CA005F9685 /* radarViewController.swift in Sources */,
 				31DB1C501AD129E80099E2CE /* Measurment.swift in Sources */,
 				3190788D1AD2701000AEBF2C /* progressTableViewController.swift in Sources */,
 				31DB1C581AD14B870099E2CE /* resultTableViewCell.swift in Sources */,

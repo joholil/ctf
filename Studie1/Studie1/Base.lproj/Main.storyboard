@@ -92,6 +92,9 @@
                                 <state key="normal" title="Undersökning 3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="4TG-U6-Jmz" kind="modal" id="WG7-ZE-Hfq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -192,6 +195,24 @@
             </objects>
             <point key="canvasLocation" x="20" y="954"/>
         </scene>
+        <!--Radar View Controller-->
+        <scene sceneID="L8R-r9-hjv">
+            <objects>
+                <viewController id="4TG-U6-Jmz" customClass="radarViewController" customModule="Studie1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BEK-pH-ngz"/>
+                        <viewControllerLayoutGuide type="bottom" id="aWr-j6-KdQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cXn-ig-M8h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQS-uF-qZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="920"/>
+        </scene>
         <!--Assignment View Controller-->
         <scene sceneID="rZb-je-0p4">
             <objects>
@@ -241,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="645" y="289"/>
         </scene>
-        <!--View Controller-->
+        <!--Finished View Controller-->
         <scene sceneID="J7g-xr-2gk">
             <objects>
-                <viewController restorationIdentifier="finnishedView" storyboardIdentifier="finnishedView" id="qQk-CV-a9f" sceneMemberID="viewController">
+                <viewController restorationIdentifier="finnishedView" storyboardIdentifier="finnishedView" id="qQk-CV-a9f" customClass="finishedViewController" customModule="Studie1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DhE-dj-nc4"/>
                         <viewControllerLayoutGuide type="bottom" id="853-yr-hhI"/>

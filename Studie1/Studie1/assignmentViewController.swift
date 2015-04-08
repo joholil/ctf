@@ -85,6 +85,10 @@ class assignmentViewController: UIViewController {
         }
 
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     /*
     // MARK: - Navigation

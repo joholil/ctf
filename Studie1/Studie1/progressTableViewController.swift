@@ -80,6 +80,10 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
     }
     
 
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

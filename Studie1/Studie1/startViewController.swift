@@ -47,7 +47,9 @@ class startViewController: UIViewController {
         if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("resultView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)}
     }
     
-        
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
         
     /*
     // MARK: - Navigation
