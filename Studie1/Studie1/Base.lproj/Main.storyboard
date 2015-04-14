@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="H8r-Cy-Fe2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -43,10 +43,14 @@
                             <outlet property="delegate" destination="5uQ-Mn-hTi" id="x8w-Tj-PBh"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="N9c-OC-Nwn"/>
+                    <connections>
+                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueProgressAssignment" id="feN-8h-r37"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRz-o1-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="-342"/>
+            <point key="canvasLocation" x="656" y="-342"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -92,17 +96,20 @@
                                 <state key="normal" title="Undersökning 3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="4TG-U6-Jmz" kind="modal" id="WG7-ZE-Hfq"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xVp-qa-TrR"/>
+                    <connections>
+                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueStartAssignment" id="vvF-GS-RkC"/>
+                        <segue destination="psT-hf-w52" kind="push" identifier="segueStartResult" id="s2A-Vs-5R3"/>
+                        <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueStartProgress" id="8AA-NH-EDx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.66666666666666" y="289.68000000000001"/>
+            <point key="canvasLocation" x="1314" y="344"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="3ZV-zd-Fhe">
@@ -177,23 +184,26 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6e-JJ-z85">
-                                <rect key="frame" x="134" y="471" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-57-FOj">
+                                <rect key="frame" x="137" y="481" width="53" height="30"/>
                                 <state key="normal" title="Tillbaka">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backToStart" destination="psT-hf-w52" eventType="touchUpInside" id="9Da-z7-wSQ"/>
+                                    <action selector="backToStart" destination="psT-hf-w52" eventType="touchUpInside" id="bc6-cP-Ukm"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BPy-3L-Zd4"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="segueResultStart" id="IN3-ou-iaL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZt-p6-grB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="954"/>
+            <point key="canvasLocation" x="1570" y="1277"/>
         </scene>
         <!--Radar View Controller-->
         <scene sceneID="L8R-r9-hjv">
@@ -206,12 +216,24 @@
                     <view key="view" contentMode="scaleToFill" id="cXn-ig-M8h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg__black_skattjakt.png" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-Ja-REz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kauLogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-VG-SXd">
+                                <rect key="frame" x="109" y="478" width="103" height="90"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="background" destination="ofG-Ja-REz" id="uDC-6l-m8e"/>
+                        <outlet property="kaulogo" destination="VzW-VG-SXd" id="l5s-An-zOi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQS-uF-qZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="920"/>
+            <point key="canvasLocation" x="1060" y="984"/>
         </scene>
         <!--Assignment View Controller-->
         <scene sceneID="rZb-je-0p4">
@@ -240,27 +262,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKT-Ab-ofF">
                                 <rect key="frame" x="60" y="203" width="200" height="200"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8so-3G-51q">
-                                <rect key="frame" x="145" y="446" width="30" height="30"/>
-                                <state key="normal" title="Klar">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="finished" destination="lIY-nY-cKW" eventType="touchUpInside" id="eaH-7m-hUQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wJ0-8X-es6"/>
                     <connections>
                         <outlet property="descriptionTestView" destination="0wX-8F-yxz" id="8pG-Ux-pwk"/>
                         <outlet property="headlineLabel" destination="e7M-z4-xrF" id="Pbj-Qf-ejV"/>
-                        <outlet property="logoImageView" destination="OKT-Ab-ofF" id="KQo-wB-IDa"/>
+                        <outlet property="logoImageView" destination="OKT-Ab-ofF" id="nrY-z2-jfx"/>
+                        <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueAssignmentProgress" id="alN-KT-EBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KG0-wi-0RG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="289"/>
+            <point key="canvasLocation" x="2241" y="289"/>
         </scene>
         <!--Finished View Controller-->
         <scene sceneID="J7g-xr-2gk">
@@ -275,7 +290,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl2-X5-0ja">
-                                <rect key="frame" x="31" y="190" width="259" height="183.5"/>
+                                <rect key="frame" x="31" y="190" width="259" height="184"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Tack för att du hjälper till med vår studie. Ditt deltagande är mycket viktigt för oss. Vi vill nu att du går tillbaka till oss för att svara på några frågor. Du kommer också få din rabattkunpong av oss.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -293,12 +308,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VF-g6-pxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="289"/>
+            <point key="canvasLocation" x="2664" y="289"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lSD-Z6-a9n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="H8r-Cy-Fe2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="exA-Us-i94">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="dll-AG-wWl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0pg-Wb-mvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="344"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="C83-0w-pte">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HtZ-gh-KTx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="pyI-hN-e13"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Y2-hT-gtC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5uQ-Mn-hTi" kind="relationship" relationship="rootViewController" id="Avu-9n-fPg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mrZ-Kc-0b0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124" y="-342"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg__black_skattjakt.png" width="1080" height="1920"/>
+        <image name="kauLogo.jpg" width="1181" height="1181"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="feN-8h-r37"/>
+        <segue reference="8AA-NH-EDx"/>
+        <segue reference="dll-AG-wWl"/>
+    </inferredMetricsTieBreakers>
 </document>

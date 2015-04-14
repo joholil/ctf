@@ -40,6 +40,8 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         //return 3
     }
     
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "Cell"
@@ -66,12 +68,20 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         return cell
     }
     
+
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.row == globalCurrentAssignment{
-            globalCurrentAssignment = indexPath.row
-                if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
-            }
+                /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {
+                    presentViewController(finishedController, animated: true, completion: {})
+                    //showViewController(finishedController, sender: finishedController)
+                    
+
+            }*/
+            performSegueWithIdentifier("segueProgressAssignment", sender: nil)
+
+            
         }
         else{
         
@@ -84,6 +94,9 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         return true
     }
     
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

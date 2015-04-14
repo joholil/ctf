@@ -50,9 +50,8 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
                 println(e?.localizedDescription)
             }
         }
+        
     }
-    
-
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,21 +91,26 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
             
             globalCurrentAssignment = 0
             
+            performSegueWithIdentifier("segueResultStart", sender: nil)
+            /*
             if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
-            }
+            }*/
             
         }
     }
     
     @IBAction func backToStart(){
-        if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
-        }
+        /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("startView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)
+        }*/
+        performSegueWithIdentifier("segueResultStart", sender: nil)
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
 
     /*
     // MARK: - Navigation

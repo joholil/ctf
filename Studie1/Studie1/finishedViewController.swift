@@ -24,7 +24,9 @@ class finishedViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
     
     /*
     // MARK: - Navigation

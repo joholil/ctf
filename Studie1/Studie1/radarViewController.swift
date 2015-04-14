@@ -12,204 +12,201 @@ import CoreBluetooth
 
 class radarViewController: UIViewController, CLLocationManagerDelegate {
 
+    @IBOutlet weak var background: UIImageView!
+    
+    //Här har jag inte använt funktion för Images. Jag har använt bilden direkt. Annars funkade det inte att göra förändringar av placering av bilden.
+    @IBOutlet weak var kaulogo: UIImageView!
+    
+    
     var locationManager: CLLocationManager!
-    let uuid = NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
-    let identifier = "Estimote B9407F30"
-    let beaconMajorValue:CLBeaconMajorValue = 65188
-    let beaconMinorValue:CLBeaconMinorValue = 1
-    
-    /*
-    var beacons:[CLBeacon]?
-    var knownBeacons = []
-    var accurazyZone:Double = 0.5
-    
-    
-    var targetBeacon:Int = 1 //att göra
-    */
+    let uuid = NSUUID(UUIDString: globaluuid)
+    let identifier = globalidentifier
+    var accurazyZone: Double = globalaccurazyZone
+    var maxDist: Int = globalmaxDist
 
     
+    //var startTime = NSTimeInterval()
+    
+    //let beaconMajorValue:CLBeaconMajorValue = 65188
+    //let beaconMinorValue:CLBeaconMinorValue = 1
+    
+    
+    var allBeacons: [CLBeacon]?
+    var knownBeacons = []
     
     
     required init(coder aDecoder: NSCoder) {
-        locationManager = CLLocationManager()
         super.init(coder: aDecoder)
+        locationManager = CLLocationManager()
         locationManager.delegate = self
-         print("init")
-        
-        
-
     }
-
+    
+    
     override func viewDidAppear(animated: Bool) {
+        
         super.viewDidAppear(animated)
-        let region = CLBeaconRegion(proximityUUID: uuid, major: beaconMajorValue, minor: beaconMinorValue, identifier: identifier)
-        locationManager.startRangingBeaconsInRegion(region)
+
         
-        if(!CLLocationManager.locationServicesEnabled())
-        {
-            let alertControler = UIAlertController(title: nil, message: "locationServicesEnabled var false", preferredStyle: UIAlertControllerStyle.Alert)
-            alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertControler, animated: true, completion: nil)
-            //You need to enable Location Services
+        if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
+            locationManager!.requestWhenInUseAuthorization()
         }
-        if(!CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion))
-        {
-            let alertControler = UIAlertController(title: nil, message: "isMonitoringAvailableForClass var false", preferredStyle: UIAlertControllerStyle.Alert)
-            alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertControler, animated: true, completion: nil)
-            
-        //Region monitoring is not available for this Class;
-        }
+
+/*
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, major: beaconMajorValue, minor: beaconMinorValue, identifier: identifier)
+  
+*/
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        
+        // för att spara batteri verkar det som att man först ska köra locationManager!.startMonitoringForRegion(beaconRegion) för att sedan när man hittat en iBeacon använda locationManager.startRangingBeaconsInRegion(beaconRegion)
+        locationManager.startRangingBeaconsInRegion(beaconRegion)
         
         
-        /*if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted  )
-        {
-        //You need to authorize Location Services for the APP
-        }
+        
+/* kommer från eriks kod
+        locationManager!.delegate = self
+        locationManager!.pausesLocationUpdatesAutomatically = false
+        
+        locationManager!.startMonitoringForRegion(beaconRegion)
+        locationManager!.startRangingBeaconsInRegion(beaconRegion)
+        locationManager!.startUpdatingLocation()
         */
         
-         print("view did appear")
+        //self.background.image = UIImage(named: "bg__black_skattjakt")
+        //self.kaulogo.image = UIImage(named: "kauLogo")
+        self.kaulogo.hidden = false
+        placeDot()
+
     }
     
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        let alertControler = UIAlertController(title: nil, message: "Hittade en beacon didRangeBeacons", preferredStyle: UIAlertControllerStyle.Alert)
-        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertControler, animated: true, completion: nil)
+        
+        knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown } as NSArray
+        
+        beaconsInRange(globalAssignments[globalCurrentAssignment].targetBeacon, accuracyZone: accurazyZone, beacons: beacons)
+        //print("iBeacon found")
+        
+    }
+    
+    func placeDot(){
+        //self.kaulogo.frame.size.height = self.background.frame.width/5
+        //self.kaulogo.frame.size.width = self.background.frame.height
+        self.kaulogo.center.x = (self.background.frame.width/2)
+        self.kaulogo.center.y = self.background.frame.height - self.background.frame.height/10
+        //self.kaulogo.hidden = false
+    }
+    
+    /*
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        println("hej")
+        // Do any additional setup after loading the view.
+        //measurmentStartTime = CFAbsoluteTimeGetCurrent()
+        //initializeAssignment()
+        
+    }
+    */
+    
+
+    
+
+    
+    func moveDot(targeaccuracy:Double, maxDist: Int){
+        // var maxDist: CGFloat = 20
+        var maxDistAsFloat = CGFloat(maxDist)
+        var beaconspos: CGFloat = 0
+        var accuracyAsFloat = CGFloat(targeaccuracy)
+        var dotPosTop:CGFloat = self.background.frame.height
+        var dotPosBottom: CGFloat = self.kaulogo.frame.height*2
+        var dotPosDis:CGFloat = dotPosTop - dotPosBottom
+        beaconspos = ((maxDistAsFloat-accuracyAsFloat)/maxDistAsFloat) * dotPosDis
+        
+        if (accuracyAsFloat < maxDistAsFloat){
+            self.kaulogo.center.y =  self.background.frame.height + (self.kaulogo.frame.height/2)  - dotPosBottom - beaconspos
+        } else {
+            self.kaulogo.center.y =  self.background.frame.height + (self.kaulogo.frame.height/2)  - dotPosBottom
+        }
+        //println("maxdistasfloat" + maxDistAsFloat.description)
+    }
+    
+   
+    func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! ){
+        var inRange: Bool = false
+        if (knownBeacons.count>0)
+        {
+            var i: Int = 0
+ 
+            for elemenet in knownBeacons
+            {
+                if (knownBeacons[i].minor==target){
+                    inRange = true
+                    let temp: Double = round(knownBeacons[i].accuracy * 10)
+                    let temp2: Double = temp/10
+                    
+                    println("Target (" + target.description + ") Accuracy: " + temp2.description)
+                        
+                    moveDot(knownBeacons[i].accuracy, maxDist: maxDist)
+                        
+                    println("accuracyzone" + accurazyZone.description)
+                        
+                    if (knownBeacons[i].accuracy < accurazyZone){
+                        hittad()
+                    }
+                }
+                i = i + 1
+            }
+        }
+
+        if (inRange) {
+            self.kaulogo.hidden=false
+
+        } else {
+            placeDot()
+            if self.kaulogo.hidden == false{
+                self.kaulogo.hidden = true
+            }
+            else{
+                self.kaulogo.hidden = false
+            }
+        }
+        
         
     }
     
     
-    func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
-        let alertControler = UIAlertController(title: nil, message: "Hittade en beacon didEnterRegion", preferredStyle: UIAlertControllerStyle.Alert)
-        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertControler, animated: true, completion: nil)
+    func hittad() {
+        //var userDefaults = NSUserDefaults.standardUserDefaults()
+        //userDefaults.setInteger(1, forKey: "klarat1")
+            
+        //dot.image = dot.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        //dot.tintColor = UIColor.greenColor()
+        locationManager.stopUpdatingLocation()
+        hittadAlert()
+        
     }
-    
-    
-    func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
-        let alertControler = UIAlertController(title: nil, message: "Hittade en beacon didExitRegion", preferredStyle: UIAlertControllerStyle.Alert)
-        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertControler, animated: true, completion: nil)
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //startTimer()
+    func hittadAlert(){
+        let alertController = UIAlertController(title: "Hittad :-)", message:
+            "Bra jobbat", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Fortsätt", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  /*
-    func startTimer() {
-        let aSelector : Selector = "updateTime"
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        
-        
-        //startTime = NSDate.timeIntervalSinceReferenceDate()
-    }
-
-*/
-   /*
-    func updateTime() {
-        
-        /*
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var elapsedTime = currentTime - startTime
-        
-        let testtime  = round(elapsedTime*10)
-        if (testtime % 2 == 0) {
-            even = 1
-        }else{
-            even = 0
-        }
-        if (elapsedTime >= 3) & (visaHittad == 0){
-            visaHittad = 1
-        }
-        
-        */
-        
-
-        
-        //beaconsInRange(targetBeacon, odd: even, accuracyZone: accurazyZone)
-       // beaconsInRange(targetBeacon, accuracyZone: accurazyZone)
-        
-        /* if (knownBeacons.count > 0) {
-        //nearestBeaconProximityLables()
-        // beaconInfo(0)
-        //myDist()
-        }*/  // För debug och test
-        
-    }*/
-/*
-    func beaconsInRange(target: Int, accuracyZone: Double){
-        if (beacons?.count > 0 ){
-            //  println("_______________________________Finns")
-            if (knownBeacons.count>0){
-                var i: Int = 0
-                var inRange: Int = 0
-                for elemenet in knownBeacons {
-                    
-                    if (knownBeacons[i].minor==target){
-                        inRange = 1
-                        let temp: Double = round(knownBeacons[i].accuracy * 10)
-                        let temp2: Double = temp/10
-                        
-                        // joho println("Target (" + target.description + ") Accuracy: " + temp2.description)
-                        
-                        // joho moveDot(knownBeacons[i].accuracy, maxDist: maxDist)
-                        
-                        //joho println("accuracyzone" + accurazyZone.description)
-                        
-                        // joho if (knownBeacons[i].accuracy < accurazyZone){
-                            
-                            // johohittad(uppdrag, Klarat1: klarat1, Klarat2: klarat2, Klarat3: klarat3)
-                        //joho }
-                    }
-                    i = i + 1
-                }
-                if (inRange == 1) {
-                    //joho self.dot.hidden=false
-                    println("_______________________________Target in range")
-                } else {
-                    println("_______________________________Target NOT in range")
-                    // joho placeDot()
-                    /* JOHO
-                    if (odd==0 && target > 0) {
-                        self.dot.hidden = false
-                    }else{
-                        self.dot.hidden=true
-                    }
-                    */
-                
-                }
-            }
-        } else {
-            println("_______________________________ No beacons in range")
-            /* joho
-            placeDot()
-            if (odd==0 && target > 0) {
-                self.dot.hidden = false
-            }else{
-                self.dot.hidden=true
-            }
-            */
-        }
-    }
     
-    */
-    /*
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
-    */
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+
     /*
     // MARK: - Navigation
 
