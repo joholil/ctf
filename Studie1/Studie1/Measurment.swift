@@ -14,11 +14,10 @@ class Measurement:NSManagedObject {
     @NSManaged var headline:String
     @NSManaged var startTime:CFAbsoluteTime
     @NSManaged var endTime:CFAbsoluteTime
+    @NSManaged var participantNumber:String
     
     func duration() -> String{
-        
         return String(format:"%f", endTime - startTime)
-        
     }
     
 }

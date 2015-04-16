@@ -45,12 +45,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="N9c-OC-Nwn"/>
                     <connections>
-                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueProgressAssignment" id="feN-8h-r37"/>
+                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueProgressAssignment" id="KxA-Th-rq6"/>
+                        <segue destination="4TG-U6-Jmz" kind="push" identifier="segueProgressRadar" id="ECl-Df-3n8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRz-o1-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656" y="-342"/>
+            <point key="canvasLocation" x="516" y="-734"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -64,22 +65,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt2-D5-BeL">
-                                <rect key="frame" x="106" y="73" width="109" height="30"/>
-                                <state key="normal" title="Undersökning 1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="condition1Chosen" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TOf-ue-toD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJO-99-eVh">
-                                <rect key="frame" x="132" y="382" width="57" height="30"/>
+                                <rect key="frame" x="132" y="484" width="57" height="30"/>
                                 <state key="normal" title="Resultat">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="resultChosen" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Xm-Ip-oFq"/>
+                                    <action selector="resultChosen" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Wfl-eN-pWW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-p8-RdP">
@@ -92,24 +84,82 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9C-de-Gag">
-                                <rect key="frame" x="106" y="291" width="109" height="30"/>
+                                <rect key="frame" x="106" y="275" width="109" height="30"/>
                                 <state key="normal" title="Undersökning 3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="condition3Chosen" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xEh-EB-EKO"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deltagarnummer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deV-E0-Ouz">
+                                <rect key="frame" x="96" y="370" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt2-D5-BeL">
+                                <rect key="frame" x="106" y="93" width="109" height="30"/>
+                                <state key="normal" title="Undersökning 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="condition1Chosen" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TOf-ue-toD"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LSH-OT-bpr">
+                                <rect key="frame" x="94" y="398" width="133" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xVp-qa-TrR"/>
                     <connections>
-                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueStartAssignment" id="vvF-GS-RkC"/>
+                        <outlet property="participantNumber" destination="LSH-OT-bpr" id="dB3-JQ-3Y3"/>
                         <segue destination="psT-hf-w52" kind="push" identifier="segueStartResult" id="s2A-Vs-5R3"/>
-                        <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueStartProgress" id="8AA-NH-EDx"/>
+                        <segue destination="4jz-3j-sNM" kind="push" identifier="segueStartStartmeasure" id="5e1-DI-qOf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="344"/>
+            <point key="canvasLocation" x="1239" y="199"/>
+        </scene>
+        <!--Start Measure View Controller-->
+        <scene sceneID="5zs-q2-nUh">
+            <objects>
+                <viewController id="4jz-3j-sNM" customClass="startMeasureViewController" customModule="Studie1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NfK-0D-uy7"/>
+                        <viewControllerLayoutGuide type="bottom" id="xtL-cR-Qp9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cp3-QK-ure">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8S-b0-fzB">
+                                <rect key="frame" x="106" y="217" width="108" height="69"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Starta">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartMeasuring" destination="4jz-3j-sNM" eventType="touchUpInside" id="6Hb-Kb-PmE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yVD-2n-DEH"/>
+                    <connections>
+                        <segue destination="lIY-nY-cKW" kind="push" identifier="segueStartmeasureAssignment" id="Yyz-RE-U4O"/>
+                        <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueStartmeasureProgress" id="Jvs-LN-ekz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wbq-J9-tbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="199"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="3ZV-zd-Fhe">
@@ -156,11 +206,24 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deltagare:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH9-rh-K9O">
+                                                    <rect key="frame" x="164" y="28" width="63" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Participant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abw-Tr-N2l">
+                                                    <rect key="frame" x="235" y="29" width="65" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="headlineLabel" destination="J5J-Sa-KNS" id="QUU-3w-xN8"/>
                                             <outlet property="tidLabel" destination="1M6-Ui-4Xd" id="Tur-so-ogW"/>
+                                            <outlet property="tidParticipantNumber" destination="Abw-Tr-N2l" id="gNj-8W-NWa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -203,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZt-p6-grB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="1277"/>
+            <point key="canvasLocation" x="1774" y="1037"/>
         </scene>
         <!--Radar View Controller-->
         <scene sceneID="L8R-r9-hjv">
@@ -218,22 +281,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg__black_skattjakt.png" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-Ja-REz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="-3" y="0.0" width="328" height="470"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kauLogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-VG-SXd">
-                                <rect key="frame" x="109" y="478" width="103" height="90"/>
+                                <rect key="frame" x="116" y="383" width="90" height="90"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="ShortDescription" translatesAutoresizingMaskIntoConstraints="NO" id="5FP-6V-ltW">
+                                <rect key="frame" x="29" y="474" width="264" height="81"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1Ct-Ve-jvE"/>
                     <connections>
                         <outlet property="background" destination="ofG-Ja-REz" id="uDC-6l-m8e"/>
+                        <outlet property="descriptionTextShort" destination="5FP-6V-ltW" id="gn6-SC-RWg"/>
                         <outlet property="kaulogo" destination="VzW-VG-SXd" id="l5s-An-zOi"/>
+                        <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueRadarProgress" id="8B3-Db-odE"/>
+                        <segue destination="qQk-CV-a9f" kind="push" identifier="segueRadarFinnished" id="OEd-iu-JBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQS-uF-qZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="984"/>
+            <point key="canvasLocation" x="-196" y="968"/>
         </scene>
         <!--Assignment View Controller-->
         <scene sceneID="rZb-je-0p4">
@@ -248,19 +321,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7M-z4-xrF">
-                                <rect key="frame" x="25" y="49" width="179" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="25" y="49" width="240" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wX-8F-yxz">
-                                <rect key="frame" x="25" y="86" width="240" height="109"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="0wX-8F-yxz">
+                                <rect key="frame" x="25" y="86" width="240" height="214"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKT-Ab-ofF">
-                                <rect key="frame" x="60" y="203" width="200" height="200"/>
+                                <rect key="frame" x="60" y="304" width="200" height="200"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,11 +344,12 @@
                         <outlet property="headlineLabel" destination="e7M-z4-xrF" id="Pbj-Qf-ejV"/>
                         <outlet property="logoImageView" destination="OKT-Ab-ofF" id="nrY-z2-jfx"/>
                         <segue destination="5uQ-Mn-hTi" kind="push" identifier="segueAssignmentProgress" id="alN-KT-EBT"/>
+                        <segue destination="qQk-CV-a9f" kind="push" identifier="segueAssignmentFinnish" id="JQu-bQ-qXl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KG0-wi-0RG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="289"/>
+            <point key="canvasLocation" x="2605" y="-641"/>
         </scene>
         <!--Finished View Controller-->
         <scene sceneID="J7g-xr-2gk">
@@ -290,25 +364,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl2-X5-0ja">
-                                <rect key="frame" x="31" y="190" width="259" height="184"/>
+                                <rect key="frame" x="31" y="190" width="233" height="184"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Tack för att du hjälper till med vår studie. Ditt deltagande är mycket viktigt för oss. Vi vill nu att du går tillbaka till oss för att svara på några frågor. Du kommer också få din rabattkunpong av oss.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <string key="text">Tack för att du hjälper till med vår studie. Ditt deltagande är mycket viktigt för oss. Vi vill nu att du går tillbaka till oss för att svara på några frågor. Du kommer också få din rabattkunpong.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du har nu gjort alla uppgifter!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCq-ze-UBL">
-                                <rect key="frame" x="48" y="151" width="224" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="31" y="156" width="273" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="snt-5R-Vdd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VF-g6-pxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2664" y="289"/>
+            <point key="canvasLocation" x="2614" y="1775"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lSD-Z6-a9n">
@@ -326,7 +401,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pg-Wb-mvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="344"/>
+            <point key="canvasLocation" x="698" y="212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C83-0w-pte">
@@ -345,7 +420,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrZ-Kc-0b0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="-342"/>
+            <point key="canvasLocation" x="-266" y="-350"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YVh-vC-dCT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cu4-Gu-uL5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bDB-W9-w7k"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IGX-ii-0er">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lIY-nY-cKW" kind="relationship" relationship="rootViewController" id="GlK-Fq-bA0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LWj-HN-i7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2241" y="289"/>
         </scene>
     </scenes>
     <resources>
@@ -358,8 +452,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="feN-8h-r37"/>
-        <segue reference="8AA-NH-EDx"/>
-        <segue reference="dll-AG-wWl"/>
+        <segue reference="IN3-ou-iaL"/>
+        <segue reference="Yyz-RE-U4O"/>
+        <segue reference="alN-KT-EBT"/>
+        <segue reference="JQu-bQ-qXl"/>
     </inferredMetricsTieBreakers>
 </document>

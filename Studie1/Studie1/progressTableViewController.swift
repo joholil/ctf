@@ -49,18 +49,37 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         
         cell.headlineLabel.text = globalAssignments[indexPath.row].headline
         
+        
+        
+        
         if indexPath.row < globalCurrentAssignment{
-            cell.statusLabel.text = "Klar!"
+            if indexPath.row == 0{
+                cell.statusLabel.text = "20% klart!"
+            }
+            else if indexPath.row == 1{
+                cell.statusLabel.text = "40% klart!"
+            }
+            else if indexPath.row == 2{
+                cell.statusLabel.text = "60% klart!"
+            }
+            else if indexPath.row == 3{
+                cell.statusLabel.text = "80% klart!"
+            }
+            cell.backgroundColor = UIColor.greenColor()
+            
         }
         else if indexPath.row > globalCurrentAssignment{
             cell.statusLabel.text = ""
+            cell.backgroundColor = UIColor.lightGrayColor()
         }
         else{
             if globalCurrentAssignment == 0 {
                 cell.statusLabel.text = "Tryck här för att börja..."
+                
             }
             else{
-                cell.statusLabel.text = "Gör nästa uppgift..."
+                cell.statusLabel.text = "Tryck här..."
+                
             }
             
         }
@@ -73,15 +92,12 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.row == globalCurrentAssignment{
-                /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {
-                    presentViewController(finishedController, animated: true, completion: {})
-                    //showViewController(finishedController, sender: finishedController)
-                    
-
-            }*/
-            performSegueWithIdentifier("segueProgressAssignment", sender: nil)
-
-            
+            if globalCondition == 2{ // Use progressbar
+                performSegueWithIdentifier("segueProgressAssignment", sender: nil)
+            }
+            else if globalCondition == 3{ // Use radar
+                performSegueWithIdentifier("segueProgressRadar", sender: nil)
+            }
         }
         else{
         
@@ -94,9 +110,7 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         return true
     }
     
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

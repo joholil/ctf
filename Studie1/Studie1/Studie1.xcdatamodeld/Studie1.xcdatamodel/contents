@@ -3,9 +3,10 @@
     <entity name="Measurement" representedClassName="Studie1.Measurement" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="headline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="participantNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

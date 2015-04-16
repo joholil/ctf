@@ -17,26 +17,17 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var descriptionTestView:UITextView!
     @IBOutlet var logoImageView:UIImageView!
     
- 
 
     var measurmentStartTime:CFAbsoluteTime = 0
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    //radarfunktioner
     
     
     var allBeacons: [CLBeacon]?
     var knownBeacons = []
-    
-    
     var locationManager: CLLocationManager!
     let uuid = NSUUID(UUIDString: globaluuid)
     let identifier = globalidentifier
     var accurazyZone: Double = globalaccurazyZone
     var maxDist: Int = globalmaxDist
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
     override func viewDidLoad() {
@@ -52,8 +43,6 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     
     required init(coder aDecoder: NSCoder) {
@@ -66,7 +55,6 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        //initializeAssignment()
         
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
@@ -79,20 +67,18 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    //radarfunktioner
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        
-        locationManager.stopUpdatingLocation()
         
         knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown } as NSArray
         
         beaconsInRange(globalAssignments[globalCurrentAssignment].targetBeacon, accuracyZone: accurazyZone, beacons: beacons)
-        //print("iBeacon found")
         
     }
     
-    func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> bool{
+    func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
         var inRange: Bool = false
+        
+       
         
         if (knownBeacons.count>0)
         {
@@ -101,16 +87,11 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
             for elemenet in knownBeacons
             {
                 
-                //println(knownBeacons[i].minor)
-                
                 if (knownBeacons[i].minor==target){
                     inRange = true
                     let temp: Double = round(knownBeacons[i].accuracy * 10)
                     let temp2: Double = temp/10
-                    
-                    //println("Target (" + target.description + ") Accuracy: " + temp2.description)
-                    
-                    //println("accuracyzone" + accurazyZone.description)
+   
                     
                     if (knownBeacons[i].accuracy < accurazyZone){
                         finished()
@@ -128,16 +109,16 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     func saveMeasurement(){
         
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+            
             var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as Measurement
             
             measurement.headline = globalAssignments[globalCurrentAssignment].headline
             measurement.endTime = CFAbsoluteTimeGetCurrent()
             measurement.startTime = measurmentStartTime
+            measurement.participantNumber = globalParticipantNumber
             
             var e: NSError?
             if managedObjectContext.save(&e) != true {
@@ -153,83 +134,52 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
         
-        println(globalCurrentAssignment)
-        
-        println(globalAssignments[globalCurrentAssignment].headline)
-        
         self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionText
         self.logoImageView.image = UIImage(named: "kauLogo")
-        println(self.descriptionTestView.text)
-        println(self.headlineLabel.text)
     }
 
-    
     
     func finished()
     {
-       
         
-        saveMeasurement()
-
-        if globalCurrentAssignment == globalAssignments.count - 1
-        {
-            if let newViewControler = storyboard?.instantiateViewControllerWithIdentifier("finnishedView") as?UIViewController {
-                presentViewController(newViewControler, animated: true, completion: nil)
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        
+        locationManager.stopRangingBeaconsInRegion(beaconRegion)
+        
+        if globalCurrentAssignment > globalAssignments.count - 1 {
+            println("Varning: För många försök att spara har gjorts" )
+        }
+        else{
+            
+            saveMeasurement()
+            if globalCurrentAssignment == globalAssignments.count - 1
+            {
+                globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
+                performSegueWithIdentifier("segueAssignmentFinnish", sender: nil)
+            }
+            else if globalCondition == 1{ // Stay on this page
+                
+                globalCurrentAssignment = globalCurrentAssignment + 1
+                
+                let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+                locationManager.startRangingBeaconsInRegion(beaconRegion)
+                
+                initializeAssignment()
+                
+            }
+            else if globalCondition == 2{ // Use progress bar
+                globalCurrentAssignment = globalCurrentAssignment + 1;
+                
+                performSegueWithIdentifier("segueAssignmentProgress", sender: nil)
             }
         }
-        else if globalCondition == 1{ // Stay on this page
-
-            globalCurrentAssignment = globalCurrentAssignment + 1
-
-            initializeAssignment()
-            //initializeAssignment()
-  
-    /*
-            var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle:UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: testar))
-            self.presentViewController(alert, animated: true, completion: nil)
-*/
-            //println("asfd")
-            /*
-            if var newViewControler = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {
-                presentViewController(newViewControler, animated: true, completion: nil)
-                //showViewController(newViewControler, sender: newViewControler)
-
-            }*/
-        }
-        else if globalCondition == 2{ // Use progress bar
-            globalCurrentAssignment = globalCurrentAssignment + 1;
-            //dismissViewControllerAnimated(true, completion:nil)
-            /*
-            if let newViewControler = storyboard?.instantiateViewControllerWithIdentifier("progressTableView") as?UIViewController {
-                
-                presentViewController(newViewControler, animated: true, completion: nil)
-                //showViewController(newViewControler, sender: newViewControler)
-
-            
-            }*/
-
-            
-            performSegueWithIdentifier("segueAssignmentProgress", sender: nil)
-
-        }
     }
-    /*
-    func testar(alert:UIAlertAction!){
-        if var newViewControler = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {
-            presentViewController(newViewControler, animated: true, completion: nil)
-            
-        }
-    }
-    */
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+
 
 
     /*

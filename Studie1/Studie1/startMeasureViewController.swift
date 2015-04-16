@@ -1,77 +1,48 @@
 //
-//  startViewController.swift
+//  startMeasureViewController.swift
 //  Studie1
 //
-//  Created by johahogb on 06/04/15.
+//  Created by johahogb on 15/04/15.
 //  Copyright (c) 2015 Service research center. All rights reserved.
 //
 
 import UIKit
 
-class startViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet var participantNumber: UITextField!
-    
-    
+class startMeasureViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.participantNumber.delegate = self;
-      
     }
-  
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
-        globalParticipantNumber = textField.text
-        
-        self.view.endEditing(true);
-        return false;
-    }
     
-    @IBAction func condition1Chosen()
+    @IBAction func StartMeasuring()
     {
-        globalCondition = 1
+ 
+ 
+    if globalCondition == 1{
         /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("assignmentView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)}*/
-        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        performSegueWithIdentifier("segueStartmeasureAssignment", sender: nil)
     }
-
-    @IBAction func condition2Chosen()
-    {
-        globalCondition = 2
+    else if globalCondition == 2{
         /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("progressTableView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)}
         */
-        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        performSegueWithIdentifier("segueStartmeasureProgress", sender: nil)
     }
-    
-    @IBAction func condition3Chosen()
-    {
-        globalCondition = 3
+    else if globalCondition == 3{
         /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("resultView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)}*/
-        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        performSegueWithIdentifier("segueStartmeasureProgress", sender: nil)
     }
-    
-    @IBAction func resultChosen()
-    {
-        /*if let finishedController = storyboard?.instantiateViewControllerWithIdentifier("resultView") as?UIViewController {presentViewController(finishedController, animated: true, completion: nil)}*/
-        performSegueWithIdentifier("segueStartResult", sender: nil)
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-/*
-    @IBAction func insertParticipantNumber(sender: AnyObject) {
-        var numone = 1
-    
 
     }
-    */
+
+
     /*
     // MARK: - Navigation
 

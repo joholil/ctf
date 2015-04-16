@@ -64,6 +64,7 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
                 
                 cell.tidLabel.text = measurements[indexPath.row].duration()
                 cell.headlineLabel.text = measurements[indexPath.row].headline
+                cell.tidParticipantNumber.text = measurements[indexPath.row].participantNumber
                 return cell
                 
     }
@@ -108,9 +109,7 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
+
 
     /*
     // MARK: - Navigation

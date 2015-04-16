@@ -12,6 +12,7 @@ class resultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var headlineLabel:UILabel!
     @IBOutlet weak var tidLabel:UILabel!
+    @IBOutlet weak var tidParticipantNumber:UILabel!
     
 
     override func awakeFromNib() {
