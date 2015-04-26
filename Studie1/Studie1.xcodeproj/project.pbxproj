@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3140A3181AED1F7500011C94 /* vitradar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3140A3171AED1F7500011C94 /* vitradar.png */; };
 		31447CFC1AD7BD860074AF26 /* kauLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31447CFB1AD7BD860074AF26 /* kauLogo.jpg */; };
-		31447CFE1AD7CBD70074AF26 /* bg__black_skattjakt.png in Resources */ = {isa = PBXBuildFile; fileRef = 31447CFD1AD7CBD70074AF26 /* bg__black_skattjakt.png */; };
 		31650C1D1ACEA7E6001EEF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31650C1C1ACEA7E6001EEF48 /* AppDelegate.swift */; };
 		31650C221ACEA7E6001EEF48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31650C211ACEA7E6001EEF48 /* ViewController.swift */; };
 		31650C251ACEA7E6001EEF48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31650C231ACEA7E6001EEF48 /* Main.storyboard */; };
@@ -25,6 +25,8 @@
 		3190788F1AD27EDE00AEBF2C /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3190788E1AD27EDE00AEBF2C /* startViewController.swift */; };
 		319078911AD4FFCB00AEBF2C /* finishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319078901AD4FFCB00AEBF2C /* finishedViewController.swift */; };
 		31BBE2101AD07E6E006AB5E1 /* Studie1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31BBE20E1AD07E6E006AB5E1 /* Studie1.xcdatamodeld */; };
+		31CFC8BF1AECD14D00975D3F /* kauloggatrasnparentkantsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CFC8BE1AECD14D00975D3F /* kauloggatrasnparentkantsmall.png */; };
+		31CFC8C11AECD19400975D3F /* kauloggatrasnparentkant.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CFC8C01AECD19400975D3F /* kauloggatrasnparentkant.png */; };
 		31DB1C501AD129E80099E2CE /* Measurment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1C4F1AD129E80099E2CE /* Measurment.swift */; };
 		31DB1C541AD13C430099E2CE /* resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1C531AD13C430099E2CE /* resultViewController.swift */; };
 		31DB1C581AD14B870099E2CE /* resultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DB1C571AD14B870099E2CE /* resultTableViewCell.swift */; };
@@ -41,8 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3140A3171AED1F7500011C94 /* vitradar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vitradar.png; path = ../../../../OneDrive/temp/vitradar.png; sourceTree = "<group>"; };
 		31447CFB1AD7BD860074AF26 /* kauLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = kauLogo.jpg; path = ../../../../Desktop/kauLogo.jpg; sourceTree = "<group>"; };
-		31447CFD1AD7CBD70074AF26 /* bg__black_skattjakt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg__black_skattjakt.png; path = ../../../../Desktop/bg__black_skattjakt.png; sourceTree = "<group>"; };
 		31650C171ACEA7E6001EEF48 /* Studie1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studie1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31650C1B1ACEA7E6001EEF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31650C1C1ACEA7E6001EEF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,8 @@
 		3190788E1AD27EDE00AEBF2C /* startViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		319078901AD4FFCB00AEBF2C /* finishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = finishedViewController.swift; sourceTree = "<group>"; };
 		31BBE20F1AD07E6E006AB5E1 /* Studie1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Studie1.xcdatamodel; sourceTree = "<group>"; };
+		31CFC8BE1AECD14D00975D3F /* kauloggatrasnparentkantsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kauloggatrasnparentkantsmall.png; path = "../../../../OneDrive/temp/bilder 2/kauloggatrasnparentkantsmall.png"; sourceTree = "<group>"; };
+		31CFC8C01AECD19400975D3F /* kauloggatrasnparentkant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kauloggatrasnparentkant.png; path = "../../../../OneDrive/temp/bilder 2/kauloggatrasnparentkant.png"; sourceTree = "<group>"; };
 		31DB1C4F1AD129E80099E2CE /* Measurment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurment.swift; sourceTree = "<group>"; };
 		31DB1C531AD13C430099E2CE /* resultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resultViewController.swift; sourceTree = "<group>"; };
 		31DB1C571AD14B870099E2CE /* resultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resultTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,7 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				31447CFB1AD7BD860074AF26 /* kauLogo.jpg */,
-				31447CFD1AD7CBD70074AF26 /* bg__black_skattjakt.png */,
+				3140A3171AED1F7500011C94 /* vitradar.png */,
+				31CFC8BE1AECD14D00975D3F /* kauloggatrasnparentkantsmall.png */,
+				31CFC8C01AECD19400975D3F /* kauloggatrasnparentkant.png */,
 				31650C1B1ACEA7E6001EEF48 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -238,10 +244,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CFC8BF1AECD14D00975D3F /* kauloggatrasnparentkantsmall.png in Resources */,
+				31CFC8C11AECD19400975D3F /* kauloggatrasnparentkant.png in Resources */,
 				31447CFC1AD7BD860074AF26 /* kauLogo.jpg in Resources */,
 				31650C251ACEA7E6001EEF48 /* Main.storyboard in Resources */,
+				3140A3181AED1F7500011C94 /* vitradar.png in Resources */,
 				31650C2A1ACEA7E6001EEF48 /* LaunchScreen.xib in Resources */,
-				31447CFE1AD7CBD70074AF26 /* bg__black_skattjakt.png in Resources */,
 				31650C271ACEA7E6001EEF48 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

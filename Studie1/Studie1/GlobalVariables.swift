@@ -16,6 +16,6 @@ var globalCurrentAssignment:Int = 0
 
 var globaluuid:String = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
 var globalidentifier:String = "Estimotes"
-var globalaccurazyZone: Double = 0.5
+var globalaccurazyZone: Double = 0.2
 var globalmaxDist: Int = 20
 var globalParticipantNumber: String = ""

@@ -14,6 +14,7 @@ import CoreBluetooth
 class radarViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet var headlineLabel:UILabel!
     
     @IBOutlet var descriptionTextShort:UITextView!
     //Här har jag inte använt funktion för Images. Jag har använt bilden direkt. Annars funkade det inte att göra förändringar av placering av bilden.
@@ -27,12 +28,6 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     let identifier = globalidentifier
     var accurazyZone: Double = globalaccurazyZone
     var maxDist: Int = globalmaxDist
-
-    
-    //var startTime = NSTimeInterval()
-    
-    //let beaconMajorValue:CLBeaconMajorValue = 65188
-    //let beaconMinorValue:CLBeaconMinorValue = 1
     
     
     var allBeacons: [CLBeacon]?
@@ -57,34 +52,15 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
         
         super.viewDidAppear(animated)
 
-        
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
         }
-
-/*
-        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, major: beaconMajorValue, minor: beaconMinorValue, identifier: identifier)
-  
-*/
         
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
         
         // för att spara batteri verkar det som att man först ska köra locationManager!.startMonitoringForRegion(beaconRegion) för att sedan när man hittat en iBeacon använda locationManager.startRangingBeaconsInRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         
-        
-        
-/* kommer från eriks kod
-        locationManager!.delegate = self
-        locationManager!.pausesLocationUpdatesAutomatically = false
-        
-        locationManager!.startMonitoringForRegion(beaconRegion)
-        locationManager!.startRangingBeaconsInRegion(beaconRegion)
-        locationManager!.startUpdatingLocation()
-        */
-        
-        //self.background.image = UIImage(named: "bg__black_skattjakt")
-        //self.kaulogo.image = UIImage(named: "kauLogo")
         self.kaulogo.hidden = false
         placeDot()
 
@@ -101,32 +77,13 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func placeDot(){
-        //self.kaulogo.frame.size.height = self.background.frame.width/5
-        //self.kaulogo.frame.size.width = self.background.frame.height
+
         self.kaulogo.center.x = (self.background.frame.width/2)
         self.kaulogo.center.y = self.background.frame.height - self.background.frame.height/10
-        //self.kaulogo.hidden = false
     }
     
-    /*
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        println("hej")
-        // Do any additional setup after loading the view.
-        //measurmentStartTime = CFAbsoluteTimeGetCurrent()
-        //initializeAssignment()
-        
-    }
-    */
-    
 
-    
-
-    
     func moveDot(targeaccuracy:Double, maxDist: Int){
-        // var maxDist: CGFloat = 20
         var maxDistAsFloat = CGFloat(maxDist)
         var beaconspos: CGFloat = 0
         var accuracyAsFloat = CGFloat(targeaccuracy)
@@ -140,14 +97,15 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             self.kaulogo.center.y =  self.background.frame.height + (self.kaulogo.frame.height/2)  - dotPosBottom
         }
+        //self.kaulogo.center.x = (self.background.frame.width/2)
         //println("maxdistasfloat" + maxDistAsFloat.description)
     }
     
     func initializeAssignment()
     {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
-        //self.descriptionTextShort.font = UIFont(name: "Helvetica", size: 50)
         self.descriptionTextShort.text = globalAssignments[globalCurrentAssignment].descriptionTextShort
+        self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         
     }
     
@@ -162,37 +120,32 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
             {
                 if (knownBeacons[i].minor==target){
                     inRange = true
-                    let temp: Double = round(knownBeacons[i].accuracy * 10)
-                    let temp2: Double = temp/10
-                    
-                    //println("Target (" + target.description + ") Accuracy: " + temp2.description)
-                        
+                    //let temp: Double = round(knownBeacons[i].accuracy * 10)
+                    //let temp2: Double = temp/10
+
                     moveDot(knownBeacons[i].accuracy, maxDist: maxDist)
-                        
-                    //println("accuracyzone" + accurazyZone.description)
+                
                         
                     if (knownBeacons[i].accuracy < accurazyZone){
                         finished()
                         return true
                     }
+
                 }
+
                 i = i + 1
             }
         }
-
+        else{
+            placeDot()
+        }
+/*
         if (inRange) {
-            //self.kaulogo.hidden=false
 
         } else {
             placeDot()
-            /*if self.kaulogo.hidden == false{
-                self.kaulogo.hidden = true
-            }
-            else{
-                self.kaulogo.hidden = false
-            }
-*/
         }
+*/
         return false
         
     }
@@ -229,9 +182,9 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     
     func saveMeasurement(){
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
             
-            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as Measurement
+            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
             
             measurement.headline = globalAssignments[globalCurrentAssignment].headline
             measurement.endTime = CFAbsoluteTimeGetCurrent()
@@ -244,35 +197,7 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
         }
-        
     }
-    
-    /*
-    func hittad() {
-        //var userDefaults = NSUserDefaults.standardUserDefaults()
-        //userDefaults.setInteger(1, forKey: "klarat1")
-            
-        //dot.image = dot.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        //dot.tintColor = UIColor.greenColor()
-        //locationManager.stopUpdatingLocation()
-        //hittadAlert()
-        performSegueWithIdentifier("segueRadarProgress", sender: nil)
-    }
-   */
-    /*
-    func hittadAlert(){
-        /*
-        let alertController = UIAlertController(title: "Hittad :-)", message:
-            "Bra jobbat", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Fortsätt", style: UIAlertActionStyle.Default,handler: nil))
-        */
-        //self.presentViewController(alertController, animated: true, completion: nil)
-        
-        
-        
-        
-    }
-*/
     
     
     override func didReceiveMemoryWarning() {

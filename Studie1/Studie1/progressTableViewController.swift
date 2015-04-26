@@ -45,7 +45,7 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as progressTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! progressTableViewCell
         
         cell.headlineLabel.text = globalAssignments[indexPath.row].headline
         

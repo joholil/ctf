@@ -111,9 +111,9 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     
     func saveMeasurement(){
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
             
-            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as Measurement
+            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
             
             measurement.headline = globalAssignments[globalCurrentAssignment].headline
             measurement.endTime = CFAbsoluteTimeGetCurrent()
@@ -135,8 +135,8 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
         
         self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
-        self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionText
-        self.logoImageView.image = UIImage(named: "kauLogo")
+        self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionTextShort
+        self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
     }
 
     

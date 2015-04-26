@@ -38,13 +38,13 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
             var e: NSError?
             var result = fetchResultController.performFetch(&e)
-            measurements = fetchResultController.fetchedObjects as [Measurement]
+            measurements = fetchResultController.fetchedObjects as! [Measurement]
             
             if result != true {
                 println(e?.localizedDescription)
@@ -60,7 +60,7 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as resultTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! resultTableViewCell
                 
                 cell.tidLabel.text = measurements[indexPath.row].duration()
                 cell.headlineLabel.text = measurements[indexPath.row].headline
@@ -79,7 +79,7 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func deleteMeasurments(alert: UIAlertAction!) {
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext {
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
             
             for measurementToDelete in measurements{
                 managedObjectContext.deleteObject(measurementToDelete)
