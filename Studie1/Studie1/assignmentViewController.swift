@@ -56,14 +56,15 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         
         super.viewDidAppear(animated)
         
-        if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
+        if(locationManager!.respondsToSelector("rß®equestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
         }
         
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
-        
+        descriptionTestView.selectable = false
+        descriptionTestView.editable = false
     }
     
     

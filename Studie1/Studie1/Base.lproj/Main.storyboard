@@ -281,10 +281,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vitradar.png" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-Ja-REz">
-                                <rect key="frame" x="-1" y="0.0" width="328" height="470"/>
+                                <rect key="frame" x="-1" y="0.0" width="328" height="461"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="ShortDescription" translatesAutoresizingMaskIntoConstraints="NO" id="5FP-6V-ltW">
-                                <rect key="frame" x="29" y="474" width="264" height="81"/>
+                                <rect key="frame" x="29" y="459" width="264" height="109"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -373,7 +373,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl2-X5-0ja">
                                 <rect key="frame" x="31" y="190" width="233" height="184"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Tack för att du hjälper till med vår studie. Ditt deltagande är mycket viktigt för oss. Vi vill nu att du går tillbaka till oss för att svara på några frågor. Du kommer också få din rabattkunpong.</string>
+                                <string key="text">Tack för att du hjälper till med vår studie. Ditt deltagande är mycket viktigt för oss. Vi vill nu att du går tillbaka till oss för att svara på några frågor. Du kommer då också få din trisslott.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -459,9 +459,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="OEd-iu-JBB"/>
+        <segue reference="8B3-Db-odE"/>
         <segue reference="IN3-ou-iaL"/>
         <segue reference="Yyz-RE-U4O"/>
-        <segue reference="alN-KT-EBT"/>
-        <segue reference="JQu-bQ-qXl"/>
     </inferredMetricsTieBreakers>
 </document>

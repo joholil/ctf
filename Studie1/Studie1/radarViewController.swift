@@ -64,6 +64,8 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
         self.kaulogo.hidden = false
         placeDot()
 
+        descriptionTextShort.selectable = false
+        descriptionTextShort.editable = false
     }
     
     
