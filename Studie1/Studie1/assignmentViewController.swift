@@ -45,7 +45,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -60,7 +60,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
             locationManager!.requestWhenInUseAuthorization()
         }
         
-        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         descriptionTestView.selectable = false
@@ -68,7 +68,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         
         knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown } as NSArray
         
@@ -78,7 +78,6 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     
     func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
         var inRange: Bool = false
-        
        
         
         if (knownBeacons.count>0)
@@ -121,11 +120,13 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
             measurement.startTime = measurmentStartTime
             measurement.participantNumber = globalParticipantNumber
             
+            /*
             var e: NSError?
-            if managedObjectContext.save(&e) != true {
-                println("insert error: \(e!.localizedDescription)" )
+            if managedObjectContext.save() != true {
+                print("insert error: \(e!.localizedDescription)" )
                 return
             }
+*/
         }
 
     }
@@ -144,12 +145,12 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     func finished()
     {
         
-        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
         
         if globalCurrentAssignment > globalAssignments.count - 1 {
-            println("Varning: För många försök att spara har gjorts" )
+            print("Varning: För många försök att spara har gjorts" )
         }
         else{
             
@@ -163,7 +164,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
                 
                 globalCurrentAssignment = globalCurrentAssignment + 1
                 
-                let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+                let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
                 locationManager.startRangingBeaconsInRegion(beaconRegion)
                 
                 initializeAssignment()

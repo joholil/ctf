@@ -33,7 +33,7 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
     func initializeForm(){
         
         var fetchResultController:NSFetchedResultsController!
-        var fetchRequest = NSFetchRequest(entityName: "Measurement")
+        let fetchRequest = NSFetchRequest(entityName: "Measurement")
         let sortDescriptor = NSSortDescriptor(key: "headline", ascending: true)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -43,11 +43,18 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
             fetchResultController.delegate = self
             
             var e: NSError?
-            var result = fetchResultController.performFetch(&e)
+            var result: Bool
+            do {
+                try fetchResultController.performFetch()
+                result = true
+            } catch let error as NSError {
+                e = error
+                result = false
+            }
             measurements = fetchResultController.fetchedObjects as! [Measurement]
             
             if result != true {
-                println(e?.localizedDescription)
+                print(e?.localizedDescription)
             }
         }
         
@@ -86,10 +93,10 @@ class resultViewController: UIViewController, NSFetchedResultsControllerDelegate
             }
             
             var e: NSError?
-            if managedObjectContext.save(&e) != true {
-                println("delete error: \(e!.localizedDescription)")
+            /*if managedObjectContext.save() != true {
+                print("delete error: \(e!.localizedDescription)")
             }
-            
+            */
             globalCurrentAssignment = 0
             
             performSegueWithIdentifier("segueResultStart", sender: nil)

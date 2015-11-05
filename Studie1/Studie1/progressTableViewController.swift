@@ -8,7 +8,7 @@
 
 import UIKit
 
-class progressTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class progressTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +50,38 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
         cell.headlineLabel.text = globalAssignments[indexPath.row].headline
         
         
-        
-        
+        if indexPath.row < globalCurrentAssignment{
+            if indexPath.row == 0{
+                cell.statusLabel.text = "20% finished!"
+            }
+            else if indexPath.row == 1{
+                cell.statusLabel.text = "40% finished!"
+            }
+            else if indexPath.row == 2{
+                cell.statusLabel.text = "60% finished!"
+            }
+            else if indexPath.row == 3{
+                cell.statusLabel.text = "80% finished!"
+            }
+            cell.backgroundColor = UIColor.greenColor()
+            
+        }
+        else if indexPath.row > globalCurrentAssignment{
+            cell.statusLabel.text = ""
+            cell.backgroundColor = UIColor.lightGrayColor()
+        }
+        else{
+            if globalCurrentAssignment == 0 {
+                cell.statusLabel.text = "Press here to begin..."
+                
+            }
+            else{
+                cell.statusLabel.text = "Press here..."
+                
+            }
+            
+        }
+        /*
         if indexPath.row < globalCurrentAssignment{
             if indexPath.row == 0{
                 cell.statusLabel.text = "20% klart!"
@@ -83,9 +113,10 @@ class progressTableViewController: UITableViewController, UITableViewDataSource,
             }
             
         }
-        
+        */
         return cell
     }
+    
     
 
     

@@ -34,7 +34,7 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     var knownBeacons = []
     
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -56,7 +56,7 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
             locationManager!.requestWhenInUseAuthorization()
         }
         
-        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         // för att spara batteri verkar det som att man först ska köra locationManager!.startMonitoringForRegion(beaconRegion) för att sedan när man hittat en iBeacon använda locationManager.startRangingBeaconsInRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
@@ -69,7 +69,7 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         
         knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown } as NSArray
         
@@ -86,12 +86,12 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     
 
     func moveDot(targeaccuracy:Double, maxDist: Int){
-        var maxDistAsFloat = CGFloat(maxDist)
+        let maxDistAsFloat = CGFloat(maxDist)
         var beaconspos: CGFloat = 0
-        var accuracyAsFloat = CGFloat(targeaccuracy)
-        var dotPosTop:CGFloat = self.background.frame.height
-        var dotPosBottom: CGFloat = self.kaulogo.frame.height*2
-        var dotPosDis:CGFloat = dotPosTop - dotPosBottom
+        let accuracyAsFloat = CGFloat(targeaccuracy)
+        let dotPosTop:CGFloat = self.background.frame.height
+        let dotPosBottom: CGFloat = self.kaulogo.frame.height*2
+        let dotPosDis:CGFloat = dotPosTop - dotPosBottom
         beaconspos = ((maxDistAsFloat-accuracyAsFloat)/maxDistAsFloat) * dotPosDis
         
         if (accuracyAsFloat < maxDistAsFloat){
@@ -157,12 +157,12 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
     func finished()
     {
         
-        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: identifier)
+        let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
         
         if globalCurrentAssignment > globalAssignments.count - 1 {
-            println("Varning: För många försök att spara har gjorts" )
+            print("Varning: För många försök att spara har gjorts" )
         }
         else{
             
@@ -194,10 +194,11 @@ class radarViewController: UIViewController, CLLocationManagerDelegate {
             measurement.participantNumber = globalParticipantNumber
             
             var e: NSError?
-            if managedObjectContext.save(&e) != true {
-                println("insert error: \(e!.localizedDescription)" )
+            /*if managedObjectContext.save() != true {
+                print("insert error: \(e!.localizedDescription)" )
                 return
             }
+*/
         }
     }
     

@@ -27,7 +27,7 @@ class startViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
-        globalParticipantNumber = textField.text
+        globalParticipantNumber = textField.text!
         
         self.view.endEditing(true);
         return false;
