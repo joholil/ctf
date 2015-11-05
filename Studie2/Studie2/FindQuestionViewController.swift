@@ -12,12 +12,12 @@ import CoreData
 import CoreLocation
 import CoreBluetooth
 
-class assignmentViewController: UIViewController, CLLocationManagerDelegate {
+class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var headlineLabel:UILabel!
     @IBOutlet var descriptionTestView:UITextView!
     @IBOutlet var logoImageView:UIImageView!
     
-
+    
     var measurmentStartTime:CFAbsoluteTime = 0
     
     
@@ -32,18 +32,18 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         initializeAssignment()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,13 +58,14 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
+            //locationManager.requestWhenInUseAuthorization()
         }
         
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
-        descriptionTestView.selectable = false
-        descriptionTestView.editable = false
+        //descriptionTestView.selectable = false
+        //descriptionTestView.editable = false
     }
     
     
@@ -78,7 +79,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     
     func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
         var inRange: Bool = false
-       
+        
         
         if (knownBeacons.count>0)
         {
@@ -91,7 +92,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
                     inRange = true
                     let temp: Double = round(knownBeacons[i].accuracy * 10)
                     let temp2: Double = temp/10
-   
+                    
                     
                     if (knownBeacons[i].accuracy < accurazyZone){
                         finished()
@@ -107,11 +108,11 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         return false
         
     }
-
     
+   
     func saveMeasurement(){
-        
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
+   /*
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate) managedObjectContext {
             
             var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
             
@@ -123,24 +124,24 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
             /*
             var e: NSError?
             if managedObjectContext.save() != true {
-                print("insert error: \(e!.localizedDescription)" )
-                return
+            print("insert error: \(e!.localizedDescription)" )
+            return
             }
-*/
+            */
         }
-
+        */
     }
-    
+
     
     func initializeAssignment()
     {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
         
-        self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
-        self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionTextShort
-        self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
+        //self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
+        //self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionTextShort
+        //self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
     }
-
+    
     
     func finished()
     {
@@ -181,17 +182,17 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
-
-
+    
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
