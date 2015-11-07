@@ -13,16 +13,12 @@ class VerificationViewController: UIViewController {
     @IBOutlet var headlineLabel:UILabel!
     @IBOutlet var userAnswerTextview:UILabel!
     
-    //    @IBOutlet var logoImageView:UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         
         self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         self.userAnswerTextview.text = globalAssignments[globalCurrentAssignment].userAnswerText
-        //self.questionTextview.text = globalAssignments[globalCurrentAssignment].question
         
         
     }
