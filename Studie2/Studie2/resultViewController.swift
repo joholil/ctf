@@ -1,14 +1,14 @@
 //
-//  StartMeasureViewController.swift
+//  resultViewController.swift
 //  Studie2
 //
-//  Created by johahogb on 05/11/15.
+//  Created by johahogb on 07/11/15.
 //  Copyright © 2015 Service research center. All rights reserved.
 //
 
 import UIKit
 
-class StartMeasureViewController: UIViewController {
+class resultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,21 +20,9 @@ class StartMeasureViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    @IBAction func StartMeasuring()
-    {
-        
-        if globalCondition == 1{
-            performSegueWithIdentifier("segueStartmeasureExperiment", sender: nil)
-        }
-        else if globalCondition == 2{
-            performSegueWithIdentifier("segueStartmeasureControl", sender: nil)
-        }
-        
     }
 
     /*

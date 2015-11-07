@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deltagarnummer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-Uz-kIs">
-                                <rect key="frame" x="93" y="300" width="134" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lz-DV-JiH">
                                 <rect key="frame" x="36" y="329" width="249" height="30"/>
                                 <animations/>
@@ -34,20 +27,47 @@
                                 <rect key="frame" x="41" y="133" width="239" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Undersökning 1"/>
+                                <state key="normal" title="Undersökning 1">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="condition1Chosen" destination="BYZ-38-t0r" eventType="touchUpInside" id="yhx-Xh-aWw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13R-1a-wzC">
-                                <rect key="frame" x="63" y="212" width="194" height="36"/>
+                                <rect key="frame" x="63" y="211" width="194" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Undersökning 2"/>
+                                <state key="normal" title="Undersökning 2">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="condition2Chosen" destination="BYZ-38-t0r" eventType="touchUpInside" id="oBL-6H-HND"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahn-dK-9DZ">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initiera undersökning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxA-m1-RUk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deltagarnummer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-Uz-kIs">
+                                <rect key="frame" x="93" y="300" width="134" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -59,7 +79,290 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="289"/>
+            <point key="canvasLocation" x="872" y="-260"/>
+        </scene>
+        <!--Verification View Controller-->
+        <scene sceneID="Pou-f0-nMm">
+            <objects>
+                <viewController id="ENR-qu-DeK" customClass="VerificationViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nuR-GB-sqV"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ys-HY-Gdu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ceS-sv-EQU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sf-nn-sqb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svf-ZG-tXO">
+                                <rect key="frame" x="160" y="507" width="160" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Nej">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="noChosen" destination="ENR-qu-DeK" eventType="touchUpInside" id="j48-Qn-cu3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-XL-53X">
+                                <rect key="frame" x="0.0" y="507" width="160" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" title="Ja">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="yesChosen" destination="ENR-qu-DeK" eventType="touchUpInside" id="Py1-y5-yhv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du har svarat..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjw-ih-wEc">
+                                <rect key="frame" x="36" y="102" width="204" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Är det ditt slutgiltiga svar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-dC-MS2">
+                                <rect key="frame" x="36" y="201" width="204" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userAnswer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBC-4m-vxb">
+                                <rect key="frame" x="36" y="155" width="204" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LEM-fw-ucl"/>
+                    <connections>
+                        <outlet property="headlineLabel" destination="0Sf-nn-sqb" id="aRC-lI-fJJ"/>
+                        <outlet property="userAnswerTextview" destination="dBC-4m-vxb" id="j27-ZM-2gh"/>
+                        <segue destination="Bsr-I8-tJc" kind="push" identifier="segueAssignmentBack" id="cGV-Ey-pOV"/>
+                        <segue destination="ee7-zM-UVY" kind="push" identifier="segueResult" id="Abu-jV-mz1"/>
+                        <segue destination="OEk-LO-G9A" kind="push" identifier="segueFinish" id="MVU-Y3-p1r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PnF-2w-hmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2837" y="-209"/>
+        </scene>
+        <!--Finish View Controller-->
+        <scene sceneID="K0u-4U-wXS">
+            <objects>
+                <viewController id="OEk-LO-G9A" customClass="finishViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s1a-BY-QhF"/>
+                        <viewControllerLayoutGuide type="bottom" id="xMb-E1-xuX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4u5-9o-cFd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I4-LP-1vB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icw-dP-TvN">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cmD-Zb-zY1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5H-DR-QnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3272" y="139"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="zwf-gy-IkS">
+            <objects>
+                <viewController id="ee7-zM-UVY" customClass="resultViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ryD-Tq-Rae"/>
+                        <viewControllerLayoutGuide type="bottom" id="KZ3-Xv-1wu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="thl-Fb-qQe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdW-Vt-S7d">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWY-hh-5CF">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oCb-3F-kmI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ytM-Fv-uXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3272" y="-524"/>
+        </scene>
+        <!--Assignment View Controller-->
+        <scene sceneID="DGj-GL-NXW">
+            <objects>
+                <viewController id="Bsr-I8-tJc" customClass="AssignmentViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1oE-4s-FrD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yry-Jw-DQH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="keo-wf-ZAy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRQ-za-8Y5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-V1-L79">
+                                <rect key="frame" x="29" y="69" width="271" height="132"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Question Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6JT-zi-U5B">
+                                <rect key="frame" x="29" y="201" width="271" height="99"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUb-XG-UlV">
+                                <rect key="frame" x="30" y="299" width="239" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Alternativ 1">
+                                    <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alternative1Chosen" destination="Bsr-I8-tJc" eventType="touchUpInside" id="UwV-oT-PCh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-pm-rCw">
+                                <rect key="frame" x="30" y="342" width="239" height="32"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Alternativ 2">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alternative2Chosen" destination="Bsr-I8-tJc" eventType="touchUpInside" id="Mc3-Ni-xpQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3p9-GP-A9s">
+                                <rect key="frame" x="30" y="387" width="239" height="32"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Alternativ 3">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alternative3Chosen" destination="Bsr-I8-tJc" eventType="touchUpInside" id="eFU-ZV-jWP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-8y-Qqj">
+                                <rect key="frame" x="30" y="432" width="239" height="32"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Alternativ 4">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="alternative4Chosen" destination="Bsr-I8-tJc" eventType="touchUpInside" id="DBx-oc-Vos"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAr-4t-HEc">
+                                <rect key="frame" x="160" y="507" width="160" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Andras svar">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBP-Gr-ftR">
+                                <rect key="frame" x="0.0" y="507" width="160" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" title="50/50">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="G25-nf-yCO"/>
+                    <connections>
+                        <outlet property="alternativ1Button" destination="LUb-XG-UlV" id="epG-az-J3P"/>
+                        <outlet property="alternativ2Button" destination="aZc-pm-rCw" id="ItK-Jr-hK7"/>
+                        <outlet property="alternativ3Button" destination="3p9-GP-A9s" id="uFG-af-4aE"/>
+                        <outlet property="alternativ4Button" destination="rMK-8y-Qqj" id="sb3-JH-ojy"/>
+                        <outlet property="andrasSvarButton" destination="fAr-4t-HEc" id="KUq-2u-u4b"/>
+                        <outlet property="femtioFemtioButton" destination="gBP-Gr-ftR" id="oyg-Y6-I3O"/>
+                        <outlet property="headlineLabel" destination="mRQ-za-8Y5" id="V17-Uc-Il8"/>
+                        <outlet property="infotextTextview" destination="Ogi-V1-L79" id="O4o-yo-9ZB"/>
+                        <outlet property="questionTextview" destination="6JT-zi-U5B" id="rmu-ef-Ggj"/>
+                        <segue destination="ENR-qu-DeK" kind="push" identifier="segueVerification" id="q7L-ng-cbh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GF4-17-opd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368" y="-235"/>
         </scene>
         <!--Start Measure View Controller-->
         <scene sceneID="k6C-OC-8ED">
@@ -73,15 +376,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-hW-U0j">
-                                <rect key="frame" x="95" y="209" width="131" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5Z-Ep-hhv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-hW-U0j">
+                                <rect key="frame" x="50" y="174" width="221" height="113"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <state key="normal" title="Starta"/>
+                                <state key="normal" title="Tryck här för att börja...">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="StartMeasuring" destination="r4Q-zt-ZZw" eventType="touchUpInside" id="eCA-IB-M3A"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMZ-eP-IyH">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XH-MD-4zD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="64"/>
+            <point key="canvasLocation" x="1372" y="-260"/>
         </scene>
         <!--Find Question View Controller-->
         <scene sceneID="FGq-AW-0r9">
@@ -107,22 +428,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till fråga 1. För telefonen när skylten." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
-                                <rect key="frame" x="20" y="28" width="280" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frågor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEl-Gu-WGx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till frågan märkt med 1. För telefonen nära skylten." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
+                                <rect key="frame" x="20" y="83" width="287" height="85"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wd-HK-7gD">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="p48-Ib-44O"/>
+                    <connections>
+                        <segue destination="Bsr-I8-tJc" kind="push" identifier="segueAssignment" id="ekT-co-pHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdW-ny-w1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="-234"/>
+            <point key="canvasLocation" x="1894" y="-235"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h8Q-e1-8qE">
@@ -146,12 +487,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17N-yb-8PI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="289"/>
+            <point key="canvasLocation" x="375" y="-260"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4AL-gY-RWi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aba-hs-nBo" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="aba-hs-nBo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bcc-Vo-ulg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -165,10 +506,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6PO-yt-veS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="565"/>
+            <point key="canvasLocation" x="1465" y="416"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wL2-1J-FXJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehy-58-yF8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZiE-zV-Nle">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ENR-qu-DeK" kind="relationship" relationship="rootViewController" id="OOS-Xd-FSt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBU-rw-VCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2405" y="502"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="q7L-ng-cbh"/>
+        <segue reference="cGV-Ey-pOV"/>
         <segue reference="jV9-vF-yYc"/>
     </inferredMetricsTieBreakers>
 </document>

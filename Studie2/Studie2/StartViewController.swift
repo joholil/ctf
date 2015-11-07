@@ -21,6 +21,11 @@ class StartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     @IBAction func condition1Chosen()
     {
         globalCondition = 1

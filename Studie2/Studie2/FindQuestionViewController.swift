@@ -44,6 +44,10 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -159,9 +163,9 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
             if globalCurrentAssignment == globalAssignments.count - 1
             {
                 globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
-                performSegueWithIdentifier("segueAssignmentFinnish", sender: nil)
+                //performSegueWithIdentifier("segueAssignment", sender: nil)
             }
-            else if globalCondition == 1{ // Stay on this page
+            /*else if globalCondition == 1{ // Stay on this page
                 
                 globalCurrentAssignment = globalCurrentAssignment + 1
                 
@@ -171,18 +175,14 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
                 initializeAssignment()
                 
             }
-            else if globalCondition == 2{ // Use progress bar
+*/
+  //          else if globalCondition == 2{ // Use progress bar
                 globalCurrentAssignment = globalCurrentAssignment + 1;
                 
-                performSegueWithIdentifier("segueAssignmentProgress", sender: nil)
-            }
+                performSegueWithIdentifier("segueAssignment", sender: nil)
+    //        }
         }
     }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     
     
     /*

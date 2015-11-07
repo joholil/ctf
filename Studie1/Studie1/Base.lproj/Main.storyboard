@@ -501,9 +501,9 @@
         <image name="vitradar.png" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jvs-LN-ekz"/>
-        <segue reference="dll-AG-wWl"/>
+        <segue reference="alN-KT-EBT"/>
         <segue reference="Yyz-RE-U4O"/>
+        <segue reference="dll-AG-wWl"/>
         <segue reference="JQu-bQ-qXl"/>
     </inferredMetricsTieBreakers>
 </document>
