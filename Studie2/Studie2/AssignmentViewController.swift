@@ -8,6 +8,11 @@
 
 import UIKit
 
+// </Timer>      ------------------------------//
+import AudioToolbox
+import AVFoundation
+// </Timer slut>      ------------------------------//
+
 class AssignmentViewController: UIViewController {
     
     @IBOutlet var headlineLabel:UILabel!
@@ -20,14 +25,17 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var femtioFemtioButton:UIButton!
     @IBOutlet var andrasSvarButton:UIButton!
 
-//    @IBOutlet var logoImageView:UIImageView!
+    // </Timer>      ------------------------------//
+    var localStartTime:NSTimeInterval = NSTimeInterval()
+    var localTimer:NSTimer = NSTimer()
+    // </Timer slut>      ------------------------------//
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-        self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
+        
         self.alternativ1Button.setTitle(globalAssignments[globalCurrentAssignment].alternative1,forState: UIControlState.Normal)
         self.alternativ2Button.setTitle(globalAssignments[globalCurrentAssignment].alternative2,forState: UIControlState.Normal)
         self.alternativ3Button.setTitle(globalAssignments[globalCurrentAssignment].alternative3,forState: UIControlState.Normal)
@@ -41,13 +49,55 @@ class AssignmentViewController: UIViewController {
         
         self.questionTextview.editable = false
         self.questionTextview.selectable = false
+        
+        // <Timer>       ------------------------------//
+        if globalUseTimer{
+            startCounter()
+        }
+        else{
+            self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
+        }
+        // </Timer slut>      ------------------------------//
 
-        //self.femtioFemtioButton.layer.borderColor = UIColor.lightGrayColor().CGColor
-        //self.femtioFemtioButton.layer.borderWidth = 1
-        //self.andrasSvarButton.layer.borderColor =  UIColor.lightGrayColor().CGColor
-        //self.andrasSvarButton.layer.borderWidth = 1
     }
 
+    
+    // <Timer>       ------------------------------//
+    
+    func startCounter() {
+        let aSelector : Selector = "localTime"
+        localTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        localStartTime = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
+    func localTime(){
+        
+        if (Alerter.timeLeft(localStartTime) <= 0.0){
+            localTimer.invalidate()
+    
+            globalAssignments[globalCurrentAssignment].userAnswer = constantUserLateAnswer
+            goToNextView()
+            
+        }
+        else{
+
+            self.headlineLabel.text = "Tid kvar: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+
+            Alerter.Vibrate(Alerter.timeLeft(localStartTime))
+            
+            if Alerter.timeLeft(localStartTime) < globalUseAlertcolorTime{
+                if Alerter.AlertColor(Alerter.timeLeft(localStartTime)){
+                    self.headlineLabel.backgroundColor = UIColor.redColor()
+                }
+                else{
+                    self.headlineLabel.backgroundColor = UIColor.whiteColor()
+                }
+            }
+        }
+    }
+    
+    // </Timer slut>      ------------------------------//
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,29 +107,42 @@ class AssignmentViewController: UIViewController {
         return true
     }
     
+    func goToNextView(){
+    
+        if globalCurrentAssignment < globalAssignments.count - 1 {
+            performSegueWithIdentifier("segueResultFast", sender: nil)
+        }
+        else{
+            performSegueWithIdentifier("segueFinishFast", sender: nil)
+        }
+    }
     
     @IBAction func alternative1Chosen()
     {
+        localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 1
-        performSegueWithIdentifier("segueVerification", sender: nil)
+        goToNextView()
     }
     
     @IBAction func alternative2Chosen()
     {
+        localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 2
-        performSegueWithIdentifier("segueVerification", sender: nil)
+        goToNextView()
     }
 
     @IBAction func alternative3Chosen()
     {
+        localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 3
-        performSegueWithIdentifier("segueVerification", sender: nil)
+        goToNextView()
     }
 
     @IBAction func alternative4Chosen()
     {
+        localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 4
-        performSegueWithIdentifier("segueVerification", sender: nil)
+        goToNextView()
     }
 
 

@@ -27,11 +27,12 @@ class VerificationViewController: UIViewController {
     {
         saveMeasurement()
 
-        if globalAssignments.count == globalCurrentAssignment{
-            performSegueWithIdentifier("segueFinish", sender: nil)
+        
+        if globalCurrentAssignment < globalAssignments.count - 1 {
+            performSegueWithIdentifier("segueResult", sender: nil)
         }
         else{
-            performSegueWithIdentifier("segueResult", sender: nil)
+            performSegueWithIdentifier("segueFinish", sender: nil)
         }
     }
     

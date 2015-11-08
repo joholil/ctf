@@ -62,14 +62,11 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
-            //locationManager.requestWhenInUseAuthorization()
         }
         
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
-        //descriptionTestView.selectable = false
-        //descriptionTestView.editable = false
     }
     
     
@@ -82,7 +79,7 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
-        var inRange: Bool = false
+       // var inRange: Bool = false
         
         
         if (knownBeacons.count>0)
@@ -93,9 +90,9 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
             {
                 
                 if (knownBeacons[i].minor==target){
-                    inRange = true
-                    let temp: Double = round(knownBeacons[i].accuracy * 10)
-                    let temp2: Double = temp/10
+         //           inRange = true
+           //         let temp: Double = round(knownBeacons[i].accuracy * 10)
+           //         let temp2: Double = temp/10
                     
                     
                     if (knownBeacons[i].accuracy < accurazyZone){
@@ -140,10 +137,6 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
     func initializeAssignment()
     {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
-        
-        //self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
-        //self.descriptionTestView.text = globalAssignments[globalCurrentAssignment].descriptionTextShort
-        //self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
     }
     
     
@@ -154,34 +147,18 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
         
-        if globalCurrentAssignment > globalAssignments.count - 1 {
-            print("Varning: För många försök att spara har gjorts" )
-        }
-        else{
+        //if globalCurrentAssignment > globalAssignments.count - 1 {
+        //    print("Varning: För många försök att spara har gjorts" )
+        //}
+        //else{
             
-            saveMeasurement()
-            if globalCurrentAssignment == globalAssignments.count - 1
-            {
-                globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
-                //performSegueWithIdentifier("segueAssignment", sender: nil)
-            }
-            /*else if globalCondition == 1{ // Stay on this page
-                
-                globalCurrentAssignment = globalCurrentAssignment + 1
-                
-                let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
-                locationManager.startRangingBeaconsInRegion(beaconRegion)
-                
-                initializeAssignment()
-                
-            }
-*/
-  //          else if globalCondition == 2{ // Use progress bar
-                globalCurrentAssignment = globalCurrentAssignment + 1;
-                
-                performSegueWithIdentifier("segueAssignment", sender: nil)
-    //        }
-        }
+        saveMeasurement()
+            //if globalCurrentAssignment == globalAssignments.count - 1
+            //{
+            //    globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
+            //}
+        performSegueWithIdentifier("segueAssignment", sender: nil)
+        //}
     }
     
     
