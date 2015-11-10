@@ -15,8 +15,7 @@ import CoreBluetooth
 class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var headlineLabel:UILabel!
     @IBOutlet var descriptionTestView:UITextView!
-    @IBOutlet var logoImageView:UIImageView!
-    
+    @IBOutlet var loggaImageView:UIImageView!
     
     var measurmentStartTime:CFAbsoluteTime = 0
     
@@ -37,7 +36,7 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         
         initializeAssignment()
         
-        self.logoImageView.image = UIImage(named: "kauLogo")
+        self.loggaImageView.image = UIImage(named: "kauloggatrasnparentkant.png")
         
         
     }

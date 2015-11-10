@@ -143,14 +143,14 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
 
         
         if globalAssignments[globalCurrentAssignment].isRightAnswer{
-            self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt svar :)"
+            self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt :)"
         }
         else{
             if globalAssignments[globalCurrentAssignment].isLateAnswer{
                 self.resultAssignment.text = "Tiden är ute :("
             }
             else{
-                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel svar :("
+                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel :("
             }
         }
         /*
@@ -167,7 +167,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         }
 */
         globalCurrentAssignment = globalCurrentAssignment + 1
-        self.nextAssignment.text = "Nu är det dags för nästa fråga. Gå vidare till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        self.nextAssignment.text = "Gå nu till fråga " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
         
         self.nextAssignment.selectable = false
         self.nextAssignment.editable = false

@@ -20,7 +20,7 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var alternativ2Button:UIButton!
     @IBOutlet var alternativ3Button:UIButton!
     @IBOutlet var alternativ4Button:UIButton!
-    @IBOutlet var questionTextview:UITextView!
+    //@IBOutlet var questionTextview:UITextView!
     @IBOutlet var infotextTextview:UITextView!
     @IBOutlet var femtioFemtioButton:UIButton!
     @IBOutlet var answersFromOthersButton:UIButton!
@@ -30,7 +30,6 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var P3Label:UILabel!
     @IBOutlet var P4Label:UILabel!
     
-    @IBOutlet var logoImageView:UIImageView!
     
 
     // </Timer>      ------------------------------//
@@ -44,18 +43,23 @@ class AssignmentViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.alternativ1Button.setTitle(globalAssignments[globalCurrentAssignment].alternative1,forState: UIControlState.Normal)
-        self.alternativ2Button.setTitle(globalAssignments[globalCurrentAssignment].alternative2,forState: UIControlState.Normal)
-        self.alternativ3Button.setTitle(globalAssignments[globalCurrentAssignment].alternative3,forState: UIControlState.Normal)
-        self.alternativ4Button.setTitle(globalAssignments[globalCurrentAssignment].alternative4,forState: UIControlState.Normal)
+        self.alternativ1Button.setTitle("(A) " + globalAssignments[globalCurrentAssignment].alternative1,forState: UIControlState.Normal)
+        self.alternativ2Button.setTitle("(B) " + globalAssignments[globalCurrentAssignment].alternative2,forState: UIControlState.Normal)
+        self.alternativ3Button.setTitle("(C) " + globalAssignments[globalCurrentAssignment].alternative3,forState: UIControlState.Normal)
+        self.alternativ4Button.setTitle("(D) " + globalAssignments[globalCurrentAssignment].alternative4,forState: UIControlState.Normal)
+        
+        
+        
         self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
-        self.questionTextview.text = globalAssignments[globalCurrentAssignment].question
+        
+        
+        //self.questionTextview.text = globalAssignments[globalCurrentAssignment].question
  
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
         
-        self.questionTextview.editable = false
-        self.questionTextview.selectable = false
+        //self.questionTextview.editable = false
+        //self.questionTextview.selectable = false
         
         // <Timer>       ------------------------------//
         if globalUseTimer{
@@ -65,13 +69,25 @@ class AssignmentViewController: UIViewController {
             self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         }
         
-        self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
 
         
         // </Timer slut>      ------------------------------//
 
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+ 
+        // De här verkar behöva anropas i viewDidAppear annars blir det blå färg på fonten.
+        if globalFiftyFiftyUsed{
+            FiftyFiftyUsed()
+        }
+        
+        if globalanswersFromOthersUsed{
+            AnswersFromOthersUsed()
+        }
+        
+    }
     
     // <Timer>       ------------------------------//
     
@@ -168,12 +184,7 @@ class AssignmentViewController: UIViewController {
     
     func handleAnswersFromOthers(){
     
-        let attrStringF = NSAttributedString(string: self.answersFromOthersButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
-        self.answersFromOthersButton.setAttributedTitle(attrStringF, forState: .Normal)
-        
-        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
-        
-        self.answersFromOthersButton.enabled = false
+        AnswersFromOthersUsed()
         
         
         self.P1Label.text = String(globalAssignments[globalCurrentAssignment].percentAlternative1) + "%"
@@ -186,7 +197,8 @@ class AssignmentViewController: UIViewController {
         self.P3Label.hidden = false
         self.P4Label.hidden = false
         
-    
+        globalanswersFromOthersUsed = true
+        
     }
     
     func handleFiftyFifty(){
@@ -216,15 +228,33 @@ class AssignmentViewController: UIViewController {
             }
         }
         
+        globalFiftyFiftyUsed = true
+        
+        FiftyFiftyUsed()
 
+    }
+
+    func AnswersFromOthersUsed(){
+    
+        let attrStringF = NSAttributedString(string: self.answersFromOthersButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        self.answersFromOthersButton.setAttributedTitle(attrStringF, forState: .Normal)
+        
+        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
+        
+        self.answersFromOthersButton.enabled = false
+    
+    }
+
+    func FiftyFiftyUsed(){
+        
         let attrStringF = NSAttributedString(string: self.femtioFemtioButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
         self.femtioFemtioButton.setAttributedTitle(attrStringF, forState: .Normal)
         
         //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
         
         self.femtioFemtioButton.enabled = false
+        
     }
-
 
     /*
     // MARK: - Navigation
