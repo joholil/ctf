@@ -141,18 +141,31 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         if globalAssignments[globalCurrentAssignment].isRightAnswer{
-            self.resultAssignment.text = "Du svarade rätt :)"
+            self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt svar :)"
         }
         else{
             if globalAssignments[globalCurrentAssignment].isLateAnswer{
-                self.resultAssignment.text = "Du han inte lämna ditt svar i tid. " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
+                self.resultAssignment.text = "Tiden är ute :("
             }
             else{
-                self.resultAssignment.text = "Fel. " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
+                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel svar :("
             }
         }
-        
+        /*
+        if globalAssignments[globalCurrentAssignment].isRightAnswer{
+            self.resultAssignment.text = "Rätt svar :)"
+        }
+        else{
+            if globalAssignments[globalCurrentAssignment].isLateAnswer{
+                self.resultAssignment.text = "För sent :(. " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
+            }
+            else{
+                self.resultAssignment.text = "Fel svar :( " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
+            }
+        }
+*/
         globalCurrentAssignment = globalCurrentAssignment + 1
         self.nextAssignment.text = "Nu är det dags för nästa fråga. Gå vidare till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
         
@@ -174,27 +187,29 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! resultTableViewCell
         
-        cell.headlineLabel.text = globalAssignments[indexPath.row].headline
+        cell.headlineLabel.text = globalAssignments[indexPath.row].headline + ":"
         
         if globalAssignments[indexPath.row].isAnswered{
+            cell.resultLabel.text = globalAssignments[indexPath.row].rightAnswerText
             if globalAssignments[indexPath.row].isRightAnswer {
-                cell.resultLabel.text = "Rätt"
+                //cell.resultLabel.text = "Rätt"
                 cell.contentView.backgroundColor = UIColor (red: 96.0/255.0, green: 201.0/255.0, blue: 93.0/255.0, alpha: 1.0)
             
             }
             else{
-                if globalAssignments[indexPath.row].isLateAnswer{
-                    cell.resultLabel.text = "Sent svar"
-                }
-                else{
-                    cell.resultLabel.text = "Fel"
-                }
+                //if globalAssignments[indexPath.row].isLateAnswer{
+                    //cell.resultLabel.text = "Sent svar"
+                //}
+                //else{
+                    //cell.resultLabel.text = "Fel"
+                //}
                 cell.contentView.backgroundColor = UIColor (red: 242.0/255.0, green: 90.0/255.0, blue: 48.0/255.0, alpha: 1.0)
             }
         }
         else{
-            cell.resultLabel.text = ""
+            //cell.resultLabel.text = ""
             cell.contentView.backgroundColor = UIColor (red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
+            cell.resultLabel.hidden = true
         }
 
         return cell

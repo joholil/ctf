@@ -17,7 +17,6 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var descriptionTestView:UITextView!
     @IBOutlet var logoImageView:UIImageView!
     
-
     var measurmentStartTime:CFAbsoluteTime = 0
     
     

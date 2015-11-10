@@ -37,6 +37,9 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         
         initializeAssignment()
         
+        self.logoImageView.image = UIImage(named: "kauLogo")
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

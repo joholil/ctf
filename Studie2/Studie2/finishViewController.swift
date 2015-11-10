@@ -17,13 +17,39 @@ import CoreBluetooth
 class finishViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet var resultAssignment:UITextView!
+    @IBOutlet var finishedTextTextView:UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var message1:String = ""
         var message2:String = ""
-        var message3:String = ""
+        
+        if globalAssignments[globalCurrentAssignment].isRightAnswer{
+            self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt svar :)"
+        }
+        else{
+            if globalAssignments[globalCurrentAssignment].isLateAnswer{
+                self.resultAssignment.text = "Tiden är ute :("
+            }
+            else{
+                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel svar :("
+            }
+        }
+
+        message1 = "Du fick " + String(Assignment.numberOfRightAnswers(globalAssignments)) + " rätt av " + String(globalAssignments.count) + " möjliga. "
+        
+        if Assignment.numberOfRightAnswers(globalAssignments) >= globalRightAnswersForSuccess{
+            message2 = "Du fick tillräckligt många poäng för att få en rabattkupong."
+        }
+        else{
+            message2 = "Du fick inte tillräckligt många poäng för att få en rabattkupong."
+        }
+        
+        self.finishedTextTextView.text = message1 + message2
+        
+        
+        /*
         if globalAssignments[globalCurrentAssignment].isRightAnswer{
             message1 = "Du svarade rätt :) "
         }
@@ -44,7 +70,7 @@ class finishViewController: UIViewController, UITableViewDataSource, UITableView
         else{
             message2 = " Du lyckades inte med utmaningen. Du kan nu komma tillbaka till ingången."
         }
-
+*/
         
         /*
             if globalAssignments[globalCurrentAssignment].isLateAnswer{
@@ -55,9 +81,11 @@ class finishViewController: UIViewController, UITableViewDataSource, UITableView
             }
         */
         
-        self.resultAssignment.text = message1 + message3 + message2
+        //self.resultAssignment.text = message1 + message3 + message2
         self.resultAssignment.selectable = false
         self.resultAssignment.editable = false
+
+    
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

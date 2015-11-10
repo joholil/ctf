@@ -23,7 +23,15 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var questionTextview:UITextView!
     @IBOutlet var infotextTextview:UITextView!
     @IBOutlet var femtioFemtioButton:UIButton!
-    @IBOutlet var andrasSvarButton:UIButton!
+    @IBOutlet var answersFromOthersButton:UIButton!
+
+    @IBOutlet var P1Label:UILabel!
+    @IBOutlet var P2Label:UILabel!
+    @IBOutlet var P3Label:UILabel!
+    @IBOutlet var P4Label:UILabel!
+    
+    @IBOutlet var logoImageView:UIImageView!
+    
 
     // </Timer>      ------------------------------//
     var localStartTime:NSTimeInterval = NSTimeInterval()
@@ -43,7 +51,6 @@ class AssignmentViewController: UIViewController {
         self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
         self.questionTextview.text = globalAssignments[globalCurrentAssignment].question
  
-        
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
         
@@ -57,6 +64,10 @@ class AssignmentViewController: UIViewController {
         else{
             self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         }
+        
+        self.logoImageView.image = UIImage(named: "kauloggatrasnparentkant")
+
+        
         // </Timer slut>      ------------------------------//
 
     }
@@ -143,6 +154,75 @@ class AssignmentViewController: UIViewController {
         localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 4
         goToNextView()
+    }
+
+    @IBAction func fiftyFiftyChosen()
+    {
+        handleFiftyFifty()
+    }
+    
+    @IBAction func answersFromOthersChosen()
+    {
+        handleAnswersFromOthers()
+    }
+    
+    func handleAnswersFromOthers(){
+    
+        let attrStringF = NSAttributedString(string: self.answersFromOthersButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        self.answersFromOthersButton.setAttributedTitle(attrStringF, forState: .Normal)
+        
+        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
+        
+        self.answersFromOthersButton.enabled = false
+        
+        
+        self.P1Label.text = String(globalAssignments[globalCurrentAssignment].percentAlternative1) + "%"
+        self.P2Label.text = String(globalAssignments[globalCurrentAssignment].percentAlternative2) + "%"
+        self.P3Label.text = String(globalAssignments[globalCurrentAssignment].percentAlternative3) + "%"
+        self.P4Label.text = String(globalAssignments[globalCurrentAssignment].percentAlternative4) + "%"
+ 
+        self.P1Label.hidden = false
+        self.P2Label.hidden = false
+        self.P3Label.hidden = false
+        self.P4Label.hidden = false
+        
+    
+    }
+    
+    func handleFiftyFifty(){
+    
+        for remove in globalAssignments[globalCurrentAssignment].fiftyFiftyRemove{
+        
+            switch remove {
+            case 1:
+                let attrStringA = NSAttributedString(string: self.alternativ1Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternativ1Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternativ1Button.enabled = false
+            case 2:
+                let attrStringA = NSAttributedString(string: self.alternativ2Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternativ2Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternativ2Button.enabled = false
+            case 3:
+                let attrStringA = NSAttributedString(string: self.alternativ3Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternativ3Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternativ3Button.enabled = false
+            case 4:
+                let attrStringA = NSAttributedString(string: self.alternativ4Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternativ4Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternativ4Button.enabled = false
+            default:
+                let attrStringA = NSAttributedString(string: "Error", attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternativ4Button.setAttributedTitle(attrStringA, forState: .Normal)
+            }
+        }
+        
+
+        let attrStringF = NSAttributedString(string: self.femtioFemtioButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        self.femtioFemtioButton.setAttributedTitle(attrStringF, forState: .Normal)
+        
+        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
+        
+        self.femtioFemtioButton.enabled = false
     }
 
 
