@@ -393,17 +393,21 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     
     func updateMeasurement( measurement:Measurement)->Bool{
         let deltagarid:NSString = measurement.deltagarid
+        let headline:NSString = measurement.headline
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)"
+            let post:NSString = "deltagarid=\(deltagarid)&headline=\(headline)"
+            
+            //let post:NSString = "username=\(username)&password=\(password)"
+            
             
             NSLog("PostData: %@",post);
             
             let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/updatespelomgang.php")!
             
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-            
+            //NSASCIIStringEncoding
             let postLength:NSString = String( postData.length )
             
             let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
