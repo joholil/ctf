@@ -112,7 +112,7 @@ class assignmentViewController: UIViewController, CLLocationManagerDelegate {
         
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
             
-            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
+            let measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
             
             measurement.headline = globalAssignments[globalCurrentAssignment].headline
             measurement.endTime = CFAbsoluteTimeGetCurrent()

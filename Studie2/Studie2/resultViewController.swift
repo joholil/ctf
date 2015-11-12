@@ -62,14 +62,12 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
-        //var inRange: Bool = false
-        
         
         if (knownBeacons.count>0)
         {
             var i: Int = 0
             
-            for elemenet in knownBeacons
+            for element in knownBeacons
             {
                 if (knownBeacons[i].minor==target){
                     if (knownBeacons[i].accuracy < accurazyZone){
@@ -120,19 +118,11 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
-        
-        //if globalCurrentAssignment > globalAssignments.count - 1 {
-        //    print("Varning: För många försök att spara har gjorts" )
-        //}
-        //else{
             
         saveMeasurement()
-            //if globalCurrentAssignment == globalAssignments.count - 1
-            //{
-            //    globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
-            //}
+        
         performSegueWithIdentifier("segueNewAssignment", sender: nil)
-        //}
+        
     }
     
     ////////////
@@ -153,19 +143,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
                 self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel :("
             }
         }
-        /*
-        if globalAssignments[globalCurrentAssignment].isRightAnswer{
-            self.resultAssignment.text = "Rätt svar :)"
-        }
-        else{
-            if globalAssignments[globalCurrentAssignment].isLateAnswer{
-                self.resultAssignment.text = "För sent :(. " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
-            }
-            else{
-                self.resultAssignment.text = "Fel svar :( " + globalAssignments[globalCurrentAssignment].rightAnswerText + " är det rätta svaret."
-            }
-        }
-*/
+
         globalCurrentAssignment = globalCurrentAssignment + 1
         self.nextAssignment.text = "Gå nu till fråga " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
         
@@ -174,8 +152,6 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
 
         self.resultAssignment.selectable = false
         self.resultAssignment.editable = false
-        
-        //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         // Do any additional setup after loading the view.
     }

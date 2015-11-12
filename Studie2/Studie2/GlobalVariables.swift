@@ -24,7 +24,6 @@ let globaluuid:String = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
 let globalidentifier:String = "Estimotes"
 let globalaccurazyZone: Double = 0.2
 let globalmaxDist: Int = 20
-let globalParticipantNumber: String = ""
 let globalRightAnswersForSuccess:Int = 1
 
 /////////////////////////// Timer ///////////////////////////////
@@ -39,3 +38,5 @@ var globalCondition:Int = 0
 var globalCurrentAssignment:Int = 0
 var globalFiftyFiftyUsed = false
 var globalanswersFromOthersUsed = false
+var globalDeltagarid: String = ""
+

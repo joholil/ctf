@@ -12,6 +12,7 @@ import UIKit
 import AudioToolbox
 import AVFoundation
 // </Timer slut>      ------------------------------//
+import CoreData
 
 class AssignmentViewController: UIViewController {
     
@@ -20,7 +21,6 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var alternativ2Button:UIButton!
     @IBOutlet var alternativ3Button:UIButton!
     @IBOutlet var alternativ4Button:UIButton!
-    //@IBOutlet var questionTextview:UITextView!
     @IBOutlet var infotextTextview:UITextView!
     @IBOutlet var femtioFemtioButton:UIButton!
     @IBOutlet var answersFromOthersButton:UIButton!
@@ -52,27 +52,16 @@ class AssignmentViewController: UIViewController {
         
         self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
         
-        
-        //self.questionTextview.text = globalAssignments[globalCurrentAssignment].question
- 
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
         
-        //self.questionTextview.editable = false
-        //self.questionTextview.selectable = false
-        
-        // <Timer>       ------------------------------//
+        //Ska timer användas
         if globalUseTimer{
             startCounter()
         }
         else{
             self.headlineLabel.text = globalAssignments[globalCurrentAssignment].headline
         }
-        
-
-        
-        // </Timer slut>      ------------------------------//
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -88,8 +77,6 @@ class AssignmentViewController: UIViewController {
         }
         
     }
-    
-    // <Timer>       ------------------------------//
     
     func startCounter() {
         let aSelector : Selector = "localTime"
@@ -123,7 +110,6 @@ class AssignmentViewController: UIViewController {
         }
     }
     
-    // </Timer slut>      ------------------------------//
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -144,8 +130,73 @@ class AssignmentViewController: UIViewController {
         }
     }
     
+    
+    func UpdateMeasurement(){
+/*
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+        
+        var error: NSError?
+        let fetchRequest = NSFetchRequest(entityName: "Measurement")
+        //let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [Measurement]
+        
+        let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest)
+        
+        if let persons = fetchResults{
+            let person = persons[0]
+            
+            person.isMember = true
+            
+            if managedObjectContext!.save(&error){
+                //println("Person is updated")
+            }else{
+                //println("Could not save \(error), \(error!.userInfo)")
+            }
+            
+        }else{
+            //println("Could not fetch \(error), \(error!.userInfo)")
+        }
+
+        
+        let contents: NSString?
+        do {
+        contents = try NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
+        } catch _ {
+        contents = nil
+        }
+        */
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarid == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    var managedObject = fetchResults[0]
+                    managedObject.setValue(globalAssignments[globalCurrentAssignment].headline, forKey: "headline")
+                    //managedObject.setValue("param2", forKey: "attribute_two")
+                    //managedObject.setValue("param3", forKey: "attribute_three")
+                    
+                    try context.save()
+                }
+            }
+            
+        } catch _ {
+            contents = nil
+        }
+        
+    }
+    
+    
     @IBAction func alternative1Chosen()
     {
+        UpdateMeasurement()
+        
         localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 1
         goToNextView()
@@ -153,6 +204,7 @@ class AssignmentViewController: UIViewController {
     
     @IBAction func alternative2Chosen()
     {
+        UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 2
         goToNextView()
@@ -160,6 +212,7 @@ class AssignmentViewController: UIViewController {
 
     @IBAction func alternative3Chosen()
     {
+        UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 3
         goToNextView()
@@ -167,6 +220,7 @@ class AssignmentViewController: UIViewController {
 
     @IBAction func alternative4Chosen()
     {
+        UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[globalCurrentAssignment].userAnswer = 4
         goToNextView()
@@ -255,6 +309,7 @@ class AssignmentViewController: UIViewController {
         self.femtioFemtioButton.enabled = false
         
     }
+    
 
     /*
     // MARK: - Navigation
