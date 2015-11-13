@@ -27,14 +27,15 @@ class StartMeasureViewController: UIViewController {
     
     @IBAction func StartMeasuring()
     {
+        globalGameStartTime = CFAbsoluteTimeGetCurrent()
         
         if globalCondition == 1{
+            
             performSegueWithIdentifier("segueStartmeasureExperiment", sender: nil)
         }
         else if globalCondition == 2{
             performSegueWithIdentifier("segueStartmeasureControl", sender: nil)
         }
-        
     }
 
     /*

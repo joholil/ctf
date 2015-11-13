@@ -83,7 +83,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    func saveMeasurement(){
+ //   func saveMeasurement(){
         /*
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate) managedObjectContext {
         
@@ -103,7 +103,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         */
         }
         */
-    }
+ //   }
     
     
     func initializeAssignment()
@@ -119,7 +119,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
             
-        saveMeasurement()
+ //       saveMeasurement()
         
         performSegueWithIdentifier("segueNewAssignment", sender: nil)
         
@@ -157,6 +157,8 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        var hej:Int = globalAssignments.count
         return globalAssignments.count
     }
     
@@ -168,22 +170,14 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         if globalAssignments[indexPath.row].isAnswered{
             cell.resultLabel.text = globalAssignments[indexPath.row].rightAnswerText
             if globalAssignments[indexPath.row].isRightAnswer {
-                //cell.resultLabel.text = "Rätt"
                 cell.contentView.backgroundColor = UIColor (red: 96.0/255.0, green: 201.0/255.0, blue: 93.0/255.0, alpha: 1.0)
             
             }
             else{
-                //if globalAssignments[indexPath.row].isLateAnswer{
-                    //cell.resultLabel.text = "Sent svar"
-                //}
-                //else{
-                    //cell.resultLabel.text = "Fel"
-                //}
                 cell.contentView.backgroundColor = UIColor (red: 242.0/255.0, green: 90.0/255.0, blue: 48.0/255.0, alpha: 1.0)
             }
         }
         else{
-            //cell.resultLabel.text = ""
             cell.contentView.backgroundColor = UIColor (red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
             cell.resultLabel.hidden = true
         }

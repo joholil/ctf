@@ -32,6 +32,7 @@ class Alerter {
                 
             }
             else{
+                globalbuzzerUsed = true
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
         }
@@ -45,6 +46,7 @@ class Alerter {
         let x:Float = Float(timeLeft)%1
         
         if timeLeft < globalUseAlertcolorTime {
+            globalvisualWarningUsed = true
             if x <= 0.5 {
                 retur = true
             }

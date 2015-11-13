@@ -35,8 +35,12 @@ class AssignmentViewController: UIViewController {
     // </Timer>      ------------------------------//
     var localStartTime:NSTimeInterval = NSTimeInterval()
     var localTimer:NSTimer = NSTimer()
+    
+    
     // </Timer slut>      ------------------------------//
 
+    var startTime:CFAbsoluteTime = CFAbsoluteTime()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +51,6 @@ class AssignmentViewController: UIViewController {
         self.alternativ2Button.setTitle("(B) " + globalAssignments[globalCurrentAssignment].alternative2,forState: UIControlState.Normal)
         self.alternativ3Button.setTitle("(C) " + globalAssignments[globalCurrentAssignment].alternative3,forState: UIControlState.Normal)
         self.alternativ4Button.setTitle("(D) " + globalAssignments[globalCurrentAssignment].alternative4,forState: UIControlState.Normal)
-        
-        
         
         self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
         
@@ -75,6 +77,7 @@ class AssignmentViewController: UIViewController {
         if globalanswersFromOthersUsed{
             AnswersFromOthersUsed()
         }
+        startTime = CFAbsoluteTimeGetCurrent()
         
     }
     
@@ -126,44 +129,14 @@ class AssignmentViewController: UIViewController {
             performSegueWithIdentifier("segueResultFast", sender: nil)
         }
         else{
+            
+            FinishMeasurement()
             performSegueWithIdentifier("segueFinishFast", sender: nil)
         }
     }
     
     
     func UpdateMeasurement(){
-/*
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-        
-        var error: NSError?
-        let fetchRequest = NSFetchRequest(entityName: "Measurement")
-        //let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [Measurement]
-        
-        let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest)
-        
-        if let persons = fetchResults{
-            let person = persons[0]
-            
-            person.isMember = true
-            
-            if managedObjectContext!.save(&error){
-                //println("Person is updated")
-            }else{
-                //println("Could not save \(error), \(error!.userInfo)")
-            }
-            
-        }else{
-            //println("Could not fetch \(error), \(error!.userInfo)")
-        }
-
-        
-        let contents: NSString?
-        do {
-        contents = try NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
-        } catch _ {
-        contents = nil
-        }
-        */
         
         let contents: NSString?
         
@@ -178,9 +151,64 @@ class AssignmentViewController: UIViewController {
                 if fetchResults.count != 0{
                     
                     var managedObject = fetchResults[0]
-                    managedObject.setValue(globalAssignments[globalCurrentAssignment].headline, forKey: "headline")
-                    //managedObject.setValue("param2", forKey: "attribute_two")
-                    //managedObject.setValue("param3", forKey: "attribute_three")
+                    
+                    
+                    switch globalCurrentAssignment {
+                    case (0):
+                        managedObject.setValue(startTime, forKey: "assignment1StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1EndTime")
+                    case (1):
+                        managedObject.setValue(startTime, forKey: "assignment2StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment2EndTime")
+                    case (2):
+                        managedObject.setValue(startTime, forKey: "assignment3StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment3EndTime")
+                    case (3):
+                        managedObject.setValue(startTime, forKey: "assignment4StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4EndTime")
+                    case (4):
+                        managedObject.setValue(startTime, forKey: "assignment5StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5EndTime")
+                    case (5):
+                        managedObject.setValue(startTime, forKey: "assignment6StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment6EndTime")
+                    case (6):
+                        managedObject.setValue(startTime, forKey: "assignment7StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment7EndTime")
+                    case (7):
+                        managedObject.setValue(startTime, forKey: "assignment8StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment8EndTime")
+                    case (8):
+                        managedObject.setValue(startTime, forKey: "assignment9StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment9EndTime")
+                 default: break
+                        
+                    }
+                                        /*
+                    
+                    managedObject.setValue(globalGameStartTime, forKey: "gameStartTime")
+                    managedObject.setValue(globalGameEndTime, forKey: "gameEndTime")
+                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
+                    managedObject.setValue(globalvisualWarningUsed, forKey: "visualWarningUsed")
+                    
+                    
+                    managedObject.setValue(Assignment.numberOfRightAnswers(globalAssignments), forKey: "totalrightAnswers")
+                    managedObject.setValue(Assignment.numberOfAnswers(globalAssignments), forKey: "numberOfQuestionsAnswered")
+                    
+                    if (Assignment.numberOfRightAnswers(globalAssignments) >= globalRightAnswersForSuccess){
+                        managedObject.setValue(true, forKey: "successfulGame")
+                        
+                    }
+                    else {
+                        managedObject.setValue(false, forKey: "successfulGame")
+                        
+                    }
+                    */
+                    
+                    
+    
+                    
+
                     
                     try context.save()
                 }
@@ -192,6 +220,50 @@ class AssignmentViewController: UIViewController {
         
     }
     
+    
+    func FinishMeasurement(){
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarid == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    var managedObject = fetchResults[0]
+                    
+                    managedObject.setValue(globalGameStartTime, forKey: "gameStartTime")
+                    managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "gameEndTime")
+                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
+                    managedObject.setValue(globalvisualWarningUsed, forKey: "visualWarningUsed")
+                    
+                    managedObject.setValue(Assignment.numberOfRightAnswers(globalAssignments), forKey: "totalrightAnswers")
+                    managedObject.setValue(Assignment.numberOfAnswers(globalAssignments), forKey: "numberOfQuestionsAnswered")
+                    
+                    if (Assignment.numberOfRightAnswers(globalAssignments) >= globalRightAnswersForSuccess){
+                        managedObject.setValue(true, forKey: "successfulGame")
+                        
+                    }
+                    else {
+                        managedObject.setValue(false, forKey: "successfulGame")
+                        
+                    }
+                    
+                    try context.save()
+                }
+            }
+            
+        }
+        catch{
+            contents = nil
+        }
+        
+    }
     
     @IBAction func alternative1Chosen()
     {
