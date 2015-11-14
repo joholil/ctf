@@ -52,7 +52,7 @@ class AssignmentViewController: UIViewController {
         self.alternativ3Button.setTitle("(C) " + globalAssignments[globalCurrentAssignment].alternative3,forState: UIControlState.Normal)
         self.alternativ4Button.setTitle("(D) " + globalAssignments[globalCurrentAssignment].alternative4,forState: UIControlState.Normal)
         
-        self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
+        self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText + "\r \r" + globalAssignments[globalCurrentAssignment].question
         
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
@@ -113,7 +113,6 @@ class AssignmentViewController: UIViewController {
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -134,7 +133,6 @@ class AssignmentViewController: UIViewController {
             performSegueWithIdentifier("segueFinishFast", sender: nil)
         }
     }
-    
     
     func UpdateMeasurement(){
         
@@ -184,31 +182,6 @@ class AssignmentViewController: UIViewController {
                  default: break
                         
                     }
-                                        /*
-                    
-                    managedObject.setValue(globalGameStartTime, forKey: "gameStartTime")
-                    managedObject.setValue(globalGameEndTime, forKey: "gameEndTime")
-                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
-                    managedObject.setValue(globalvisualWarningUsed, forKey: "visualWarningUsed")
-                    
-                    
-                    managedObject.setValue(Assignment.numberOfRightAnswers(globalAssignments), forKey: "totalrightAnswers")
-                    managedObject.setValue(Assignment.numberOfAnswers(globalAssignments), forKey: "numberOfQuestionsAnswered")
-                    
-                    if (Assignment.numberOfRightAnswers(globalAssignments) >= globalRightAnswersForSuccess){
-                        managedObject.setValue(true, forKey: "successfulGame")
-                        
-                    }
-                    else {
-                        managedObject.setValue(false, forKey: "successfulGame")
-                        
-                    }
-                    */
-                    
-                    
-    
-                    
-
                     
                     try context.save()
                 }
@@ -241,6 +214,7 @@ class AssignmentViewController: UIViewController {
                     managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "gameEndTime")
                     managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
                     managedObject.setValue(globalvisualWarningUsed, forKey: "visualWarningUsed")
+                    managedObject.setValue(globalCondition, forKey: "condition")
                     
                     managedObject.setValue(Assignment.numberOfRightAnswers(globalAssignments), forKey: "totalrightAnswers")
                     managedObject.setValue(Assignment.numberOfAnswers(globalAssignments), forKey: "numberOfQuestionsAnswered")
@@ -365,8 +339,6 @@ class AssignmentViewController: UIViewController {
         let attrStringF = NSAttributedString(string: self.answersFromOthersButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
         self.answersFromOthersButton.setAttributedTitle(attrStringF, forState: .Normal)
         
-        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
-        
         self.answersFromOthersButton.enabled = false
     
     }
@@ -375,8 +347,6 @@ class AssignmentViewController: UIViewController {
         
         let attrStringF = NSAttributedString(string: self.femtioFemtioButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
         self.femtioFemtioButton.setAttributedTitle(attrStringF, forState: .Normal)
-        
-        //self.femtioFemtioButton.setTitleColor(UIColor (red: 222.0/255.0, green: 27.0/255.0, blue: 114.0/255.0, alpha: 1.0), forState: .Normal)
         
         self.femtioFemtioButton.enabled = false
         

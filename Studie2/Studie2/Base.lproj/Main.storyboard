@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yMT-rH-CFa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yMT-rH-CFa">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Start View Controller-->
@@ -76,7 +76,7 @@
                                     <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveResults" destination="BYZ-38-t0r" eventType="touchUpInside" id="VYU-n6-4fV"/>
+                                    <action selector="saveResults" destination="BYZ-38-t0r" eventType="touchUpInside" id="r75-tH-SZn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,89 +93,6 @@
             </objects>
             <point key="canvasLocation" x="872" y="-260"/>
         </scene>
-        <!--Verification View Controller-->
-        <scene sceneID="Pou-f0-nMm">
-            <objects>
-                <viewController id="ENR-qu-DeK" customClass="VerificationViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nuR-GB-sqV"/>
-                        <viewControllerLayoutGuide type="bottom" id="0ys-HY-Gdu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ceS-sv-EQU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Headline label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sf-nn-sqb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svf-ZG-tXO">
-                                <rect key="frame" x="160" y="507" width="160" height="61"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Nej">
-                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="noChosen" destination="ENR-qu-DeK" eventType="touchUpInside" id="j48-Qn-cu3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-XL-53X">
-                                <rect key="frame" x="0.0" y="507" width="160" height="61"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
-                                <state key="normal" title="Ja">
-                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="yesChosen" destination="ENR-qu-DeK" eventType="touchUpInside" id="Py1-y5-yhv"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du har svarat..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjw-ih-wEc">
-                                <rect key="frame" x="36" y="102" width="204" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Är det ditt slutgiltiga svar?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-dC-MS2">
-                                <rect key="frame" x="36" y="201" width="204" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="userAnswer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBC-4m-vxb">
-                                <rect key="frame" x="36" y="155" width="204" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="LEM-fw-ucl"/>
-                    <connections>
-                        <outlet property="headlineLabel" destination="0Sf-nn-sqb" id="aRC-lI-fJJ"/>
-                        <outlet property="userAnswerTextview" destination="dBC-4m-vxb" id="j27-ZM-2gh"/>
-                        <segue destination="Bsr-I8-tJc" kind="push" identifier="segueAssignmentBack" id="cGV-Ey-pOV"/>
-                        <segue destination="ee7-zM-UVY" kind="push" identifier="segueResult" id="Abu-jV-mz1"/>
-                        <segue destination="OEk-LO-G9A" kind="push" identifier="segueFinish" id="dvi-ga-oDg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PnF-2w-hmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2837" y="-209"/>
-        </scene>
         <!--Finish View Controller-->
         <scene sceneID="K0u-4U-wXS">
             <objects>
@@ -188,7 +105,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du är nu klar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I4-LP-1vB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Du är nu klar!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I4-LP-1vB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -217,14 +134,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="resultat" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qe7-Qh-s6p">
-                                                    <rect key="frame" x="96" y="11" width="216" height="21"/>
+                                                    <rect key="frame" x="104" y="11" width="208" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="headline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftw-jF-19P">
-                                                    <rect key="frame" x="18" y="11" width="65" height="21"/>
+                                                    <rect key="frame" x="10" y="11" width="86" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -339,7 +256,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="headline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eji-rW-bhk">
-                                                    <rect key="frame" x="18" y="11" width="65" height="21"/>
+                                                    <rect key="frame" x="18" y="11" width="84" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -410,7 +327,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-V1-L79">
-                                <rect key="frame" x="20" y="69" width="280" height="163"/>
+                                <rect key="frame" x="20" y="69" width="280" height="192"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -535,14 +452,13 @@
                         <outlet property="femtioFemtioButton" destination="gBP-Gr-ftR" id="oyg-Y6-I3O"/>
                         <outlet property="headlineLabel" destination="mRQ-za-8Y5" id="V17-Uc-Il8"/>
                         <outlet property="infotextTextview" destination="Ogi-V1-L79" id="O4o-yo-9ZB"/>
-                        <segue destination="ENR-qu-DeK" kind="push" identifier="segueVerification" id="q7L-ng-cbh"/>
                         <segue destination="OEk-LO-G9A" kind="push" identifier="segueFinishFast" id="ajn-v4-Ntv"/>
                         <segue destination="ee7-zM-UVY" kind="push" identifier="segueResultFast" id="aoZ-Hi-dTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GF4-17-opd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2368" y="-235"/>
+            <point key="canvasLocation" x="2389" y="114"/>
         </scene>
         <!--Start Measure View Controller-->
         <scene sceneID="k6C-OC-8ED">
@@ -597,56 +513,6 @@
             <point key="canvasLocation" x="1372" y="-260"/>
         </scene>
         <!--Find Question View Controller-->
-        <scene sceneID="8K2-k5-vjQ">
-            <objects>
-                <viewController id="tBz-N5-rGT" customClass="FindQuestionViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="itp-uA-Z7T"/>
-                        <viewControllerLayoutGuide type="bottom" id="x9W-c2-Fl9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X2C-Ty-ghE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frågor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISx-Di-Dcf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till skylten märkt fråga 1. För telefonen nära skylten. Skylten är märkt med Karlstads universitets logotyp" translatesAutoresizingMaskIntoConstraints="NO" id="ige-Kg-UC8">
-                                <rect key="frame" x="20" y="83" width="283" height="102"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zxa-4t-9iL">
-                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzH-fZ-gBs">
-                                <rect key="frame" x="40" y="247" width="240" height="128"/>
-                                <animations/>
-                            </imageView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="1AU-wc-VuI"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgd-65-J6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1894" y="-235"/>
-        </scene>
-        <!--Find Question View Controller-->
         <scene sceneID="FGq-AW-0r9">
             <objects>
                 <viewController id="YRH-ee-qdr" customClass="FindQuestionViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
@@ -658,7 +524,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frågor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEl-Gu-WGx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hitta första stationen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEl-Gu-WGx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -666,7 +532,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till skylten märkt fråga 1. För telefonen nära skylten. Skylten är märkt med Karlstads universitets logotyp" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till skylten märkt station 1. För telefonen nära skylten. Skylten är märkt med Karlstads universitets logotyp" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
                                 <rect key="frame" x="20" y="83" width="283" height="102"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -694,11 +560,74 @@
                     <connections>
                         <outlet property="loggaImageView" destination="rji-Qh-BPk" id="Aob-rk-x0Z"/>
                         <segue destination="Bsr-I8-tJc" kind="push" identifier="segueAssignment" id="ekT-co-pHO"/>
+                        <segue destination="jIc-w3-vU1" kind="push" identifier="segueControlAssignment" id="9kI-zN-qhp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdW-ny-w1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1894" y="-235"/>
+        </scene>
+        <!--Assignment Control View Controller-->
+        <scene sceneID="gqy-dg-7My">
+            <objects>
+                <viewController id="jIc-w3-vU1" customClass="AssignmentControlViewController" customModule="Studie2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jVW-D5-2Db"/>
+                        <viewControllerLayoutGuide type="bottom" id="QvK-u8-Rel"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z5l-wW-AxC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWG-6d-uyX">
+                                <rect key="frame" x="0.0" y="507" width="320" height="61"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="headline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfS-5m-Y8J">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gud-Yf-X3k">
+                                <rect key="frame" x="14" y="70" width="280" height="323"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="nextAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGc-rc-T0G">
+                                <rect key="frame" x="20" y="439" width="280" height="60"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZYt-7B-P31"/>
+                    <connections>
+                        <outlet property="headlineLabel" destination="hfS-5m-Y8J" id="ZQN-Ux-0EJ"/>
+                        <outlet property="infotextTextview" destination="gud-Yf-X3k" id="IP1-AO-77O"/>
+                        <outlet property="nextAssignment" destination="BGc-rc-T0G" id="Rsl-xA-Sm1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U00-GN-Y9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2427" y="-624"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h8Q-e1-8qE">
@@ -743,31 +672,9 @@
             </objects>
             <point key="canvasLocation" x="1465" y="416"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wL2-1J-FXJ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehy-58-yF8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZiE-zV-Nle">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ENR-qu-DeK" kind="relationship" relationship="rootViewController" id="OOS-Xd-FSt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aBU-rw-VCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2405" y="502"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ajn-v4-Ntv"/>
-        <segue reference="mni-l1-aqq"/>
-        <segue reference="aoZ-Hi-dTz"/>
-        <segue reference="q7L-ng-cbh"/>
         <segue reference="jV9-vF-yYc"/>
+        <segue reference="ekT-co-pHO"/>
     </inferredMetricsTieBreakers>
 </document>

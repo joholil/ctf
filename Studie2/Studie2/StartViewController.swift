@@ -397,6 +397,8 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         var dateFormatterT = NSDateFormatter()
         dateFormatterT.dateFormat = "HH:mm:ss"
         
+        //var hej:String = String(measurement.condition)
+        let condition:NSString = String(measurement.condition)
         let deltagarid:NSString = measurement.deltagarid
         let buzzerUsed:NSString = String(Int(measurement.buzzerUsed))
         let gameEndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.gameEndTime))
@@ -433,38 +435,99 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let assignment9EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9EndTime))
         let assignment9StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9StartTime))
+       
         
-        let assignment1PlayTime:NSString = String(measurement.assignment1EndTime - measurement.assignment1StartTime)
-        let assignment1SearchTime:NSString = String(measurement.assignment1StartTime - measurement.gameStartTime)
-
-        let assignment2PlayTime:NSString = String(measurement.assignment2EndTime - measurement.assignment2StartTime)
-        let assignment2SearchTime:NSString = String(measurement.assignment2StartTime - measurement.assignment1EndTime)
-
-        let assignment3PlayTime:NSString = String(measurement.assignment3EndTime - measurement.assignment3StartTime)
-        let assignment3SearchTime:NSString = String(measurement.assignment3StartTime - measurement.assignment2EndTime)
-
-        let assignment4PlayTime:NSString = String(measurement.assignment4EndTime - measurement.assignment4StartTime)
-        let assignment4SearchTime:NSString = String(measurement.assignment4StartTime - measurement.assignment3EndTime)
-
-        let assignment5PlayTime:NSString = String(measurement.assignment5EndTime - measurement.assignment5StartTime)
-        let assignment5SearchTime:NSString = String(measurement.assignment5StartTime - measurement.assignment4EndTime)
-
-        let assignment6PlayTime:NSString = String(measurement.assignment6EndTime - measurement.assignment6StartTime)
-        let assignment6SearchTime:NSString = String(measurement.assignment6StartTime - measurement.assignment5EndTime)
-  
-        let assignment7PlayTime:NSString = String(measurement.assignment7EndTime - measurement.assignment7StartTime)
-        let assignment7SearchTime:NSString = String(measurement.assignment7StartTime - measurement.assignment6EndTime)
-
-        let assignment8PlayTime:NSString = String(measurement.assignment8EndTime - measurement.assignment8StartTime)
-        let assignment8SearchTime:NSString = String(measurement.assignment8StartTime - measurement.assignment7EndTime)
-
-        let assignment9PlayTime:NSString = String(measurement.assignment9EndTime - measurement.assignment9StartTime)
-        let assignment9SearchTime:NSString = String(measurement.assignment9StartTime - measurement.assignment8EndTime)
-
+        let assignment1PlayTime:NSString
+        let assignment1SearchTime:NSString
+        
+        let assignment2PlayTime:NSString
+        let assignment2SearchTime:NSString
+        
+        let assignment3PlayTime:NSString
+        let assignment3SearchTime:NSString
+        
+        let assignment4PlayTime:NSString
+        let assignment4SearchTime:NSString
+        
+        let assignment5PlayTime:NSString
+        let assignment5SearchTime:NSString
+        
+        let assignment6PlayTime:NSString
+        let assignment6SearchTime:NSString
+        
+        let assignment7PlayTime:NSString
+        let assignment7SearchTime:NSString
+        
+        let assignment8PlayTime:NSString
+        let assignment8SearchTime:NSString
+        
+        let assignment9PlayTime:NSString
+        let assignment9SearchTime:NSString
+        
+        if globalCondition == 1{
+            
+            assignment1PlayTime = String(measurement.assignment1EndTime - measurement.assignment1StartTime)
+            assignment1SearchTime = String(measurement.assignment1StartTime - measurement.gameStartTime)
+            
+            assignment2PlayTime = String(measurement.assignment2EndTime - measurement.assignment2StartTime)
+            assignment2SearchTime = String(measurement.assignment2StartTime - measurement.assignment1EndTime)
+            
+            assignment3PlayTime = String(measurement.assignment3EndTime - measurement.assignment3StartTime)
+             assignment3SearchTime = String(measurement.assignment3StartTime - measurement.assignment2EndTime)
+            
+             assignment4PlayTime = String(measurement.assignment4EndTime - measurement.assignment4StartTime)
+             assignment4SearchTime = String(measurement.assignment4StartTime - measurement.assignment3EndTime)
+            
+             assignment5PlayTime = String(measurement.assignment5EndTime - measurement.assignment5StartTime)
+             assignment5SearchTime = String(measurement.assignment5StartTime - measurement.assignment4EndTime)
+            
+             assignment6PlayTime = String(measurement.assignment6EndTime - measurement.assignment6StartTime)
+             assignment6SearchTime = String(measurement.assignment6StartTime - measurement.assignment5EndTime)
+            
+             assignment7PlayTime = String(measurement.assignment7EndTime - measurement.assignment7StartTime)
+             assignment7SearchTime = String(measurement.assignment7StartTime - measurement.assignment6EndTime)
+            
+             assignment8PlayTime = String(measurement.assignment8EndTime - measurement.assignment8StartTime)
+             assignment8SearchTime = String(measurement.assignment8StartTime - measurement.assignment7EndTime)
+            
+             assignment9PlayTime = String(measurement.assignment9EndTime - measurement.assignment9StartTime)
+             assignment9SearchTime = String(measurement.assignment9StartTime - measurement.assignment8EndTime)
+        }
+        else{
+            
+             assignment1PlayTime = String(0)
+             assignment1SearchTime = String(measurement.assignment2StartTime - measurement.gameStartTime)
+            
+             assignment2PlayTime = String(0)
+             assignment2SearchTime = String(measurement.assignment2EndTime - measurement.assignment2StartTime)
+            
+             assignment3PlayTime = String(0)
+             assignment3SearchTime = String(measurement.assignment3EndTime - measurement.assignment3StartTime)
+            
+             assignment4PlayTime = String(0)
+             assignment4SearchTime = String(measurement.assignment4EndTime - measurement.assignment4StartTime)
+            
+             assignment5PlayTime = String(0)
+             assignment5SearchTime = String(measurement.assignment5EndTime - measurement.assignment5StartTime)
+            
+             assignment6PlayTime = String(0)
+             assignment6SearchTime = String(measurement.assignment6EndTime - measurement.assignment6StartTime)
+            
+             assignment7PlayTime = String(0)
+             assignment7SearchTime = String(measurement.assignment7EndTime - measurement.assignment7StartTime)
+            
+             assignment8PlayTime = String(0)
+             assignment8SearchTime = String(measurement.assignment8EndTime - measurement.assignment8StartTime)
+            
+             assignment9PlayTime = String(0)
+             assignment9SearchTime = String(measurement.assignment9EndTime - measurement.assignment9StartTime)
+            
+        }
+        
         do {
             //let post:NSString = "deltagarid=\(deltagarid)"
             
-            let post:NSString = "deltagarid=\(deltagarid)&buzzerUsed=\(buzzerUsed)&gameEndTime=\(gameEndTime)&gameStartTime=\(gameStartTime)&numberOfQuestionsAnswered=\(numberOfQuestionsAnswered)&successfulGame=\(successfulGame)&totalQuestions=\(totalQuestions)&totalrightAnswers=\(totalrightAnswers)&visualWarningUsed=\(visualWarningUsed)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&assignment6EndTime=\(assignment6EndTime)&assignment6StartTime=\(assignment6StartTime)&assignment7EndTime=\(assignment7EndTime)&assignment7StartTime=\(assignment7StartTime)&assignment8EndTime=\(assignment8EndTime)&assignment8StartTime=\(assignment8StartTime)&assignment9EndTime=\(assignment9EndTime)&assignment9StartTime=\(assignment9StartTime)&assignment1PlayTime=\(assignment1PlayTime)&assignment1SearchTime=\(assignment1SearchTime)&assignment2PlayTime=\(assignment2PlayTime)&assignment2SearchTime=\(assignment2SearchTime)&assignment3PlayTime=\(assignment3PlayTime)&assignment3SearchTime=\(assignment3SearchTime)&assignment4PlayTime=\(assignment4PlayTime)&assignment4SearchTime=\(assignment4SearchTime)&assignment5PlayTime=\(assignment5PlayTime)&assignment5SearchTime=\(assignment5SearchTime)&assignment6PlayTime=\(assignment6PlayTime)&assignment6SearchTime=\(assignment6SearchTime)&assignment7PlayTime=\(assignment7PlayTime)&assignment7SearchTime=\(assignment7SearchTime)&assignment8PlayTime=\(assignment8PlayTime)&assignment8SearchTime=\(assignment8SearchTime)&assignment9PlayTime=\(assignment9PlayTime)&assignment9SearchTime=\(assignment9SearchTime)"
+            let post:NSString = "deltagarid=\(deltagarid)&buzzerUsed=\(buzzerUsed)&gameEndTime=\(gameEndTime)&gameStartTime=\(gameStartTime)&numberOfQuestionsAnswered=\(numberOfQuestionsAnswered)&successfulGame=\(successfulGame)&totalQuestions=\(totalQuestions)&totalrightAnswers=\(totalrightAnswers)&visualWarningUsed=\(visualWarningUsed)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&assignment6EndTime=\(assignment6EndTime)&assignment6StartTime=\(assignment6StartTime)&assignment7EndTime=\(assignment7EndTime)&assignment7StartTime=\(assignment7StartTime)&assignment8EndTime=\(assignment8EndTime)&assignment8StartTime=\(assignment8StartTime)&assignment9EndTime=\(assignment9EndTime)&assignment9StartTime=\(assignment9StartTime)&assignment1PlayTime=\(assignment1PlayTime)&assignment1SearchTime=\(assignment1SearchTime)&assignment2PlayTime=\(assignment2PlayTime)&assignment2SearchTime=\(assignment2SearchTime)&assignment3PlayTime=\(assignment3PlayTime)&assignment3SearchTime=\(assignment3SearchTime)&assignment4PlayTime=\(assignment4PlayTime)&assignment4SearchTime=\(assignment4SearchTime)&assignment5PlayTime=\(assignment5PlayTime)&assignment5SearchTime=\(assignment5SearchTime)&assignment6PlayTime=\(assignment6PlayTime)&assignment6SearchTime=\(assignment6SearchTime)&assignment7PlayTime=\(assignment7PlayTime)&assignment7SearchTime=\(assignment7SearchTime)&assignment8PlayTime=\(assignment8PlayTime)&assignment8SearchTime=\(assignment8SearchTime)&assignment9PlayTime=\(assignment9PlayTime)&assignment9SearchTime=\(assignment9SearchTime)&experimentalcondition=\(condition)"
             
             //let post:NSString = "username=\(username)&password=\(password)"
             

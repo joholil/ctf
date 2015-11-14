@@ -12,6 +12,7 @@ import CoreData
 
 class Measurement:NSManagedObject {
     
+    @NSManaged var condition:Int
     @NSManaged var deltagarid:String
     @NSManaged var questionNumber:Int
     @NSManaged var gameStartTime:CFAbsoluteTime

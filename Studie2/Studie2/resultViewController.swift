@@ -21,8 +21,6 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     
     var measurmentStartTime:CFAbsoluteTime = 0
     
-    
-
     ///////////IBeacon
 
     var allBeacons: [CLBeacon]?
@@ -39,6 +37,9 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         locationManager.delegate = self
     }
 
+    ///////////////////
+    
+    
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
@@ -69,7 +70,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
             
             for element in knownBeacons
             {
-                if (knownBeacons[i].minor==target){
+                if (element.minor==target){
                     if (knownBeacons[i].accuracy < accurazyZone){
                         finished()
                         return true
@@ -82,30 +83,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    
- //   func saveMeasurement(){
-        /*
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate) managedObjectContext {
         
-        var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
-        
-        measurement.headline = globalAssignments[globalCurrentAssignment].headline
-        measurement.endTime = CFAbsoluteTimeGetCurrent()
-        measurement.startTime = measurmentStartTime
-        measurement.participantNumber = globalParticipantNumber
-        
-        /*
-        var e: NSError?
-        if managedObjectContext.save() != true {
-        print("insert error: \(e!.localizedDescription)" )
-        return
-        }
-        */
-        }
-        */
- //   }
-    
-    
     func initializeAssignment()
     {
         measurmentStartTime = CFAbsoluteTimeGetCurrent()
@@ -114,18 +92,14 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
     
     func finished()
     {
-        
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
-            
- //       saveMeasurement()
         
         performSegueWithIdentifier("segueNewAssignment", sender: nil)
         
     }
     
-    ////////////
     
     
     override func viewDidLoad() {
@@ -145,7 +119,7 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         }
 
         globalCurrentAssignment = globalCurrentAssignment + 1
-        self.nextAssignment.text = "Gå nu till fråga " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        self.nextAssignment.text = "Gå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
         
         self.nextAssignment.selectable = false
         self.nextAssignment.editable = false

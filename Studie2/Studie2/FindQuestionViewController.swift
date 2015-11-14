@@ -37,8 +37,6 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         initializeAssignment()
         
         self.loggaImageView.image = UIImage(named: "kauloggatrasnparentkant.png")
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,9 +79,6 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func beaconsInRange(target: Int, accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
-       // var inRange: Bool = false
-        
-        
         if (knownBeacons.count>0)
         {
             var i: Int = 0
@@ -91,50 +86,17 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
             for elemenet in knownBeacons
             {
                 
-                if (knownBeacons[i].minor==target){
-         //           inRange = true
-           //         let temp: Double = round(knownBeacons[i].accuracy * 10)
-           //         let temp2: Double = temp/10
-                    
-                    
-                    if (knownBeacons[i].accuracy < accurazyZone){
+                if (elemenet.minor==target){
+                    if (elemenet.accuracy < accurazyZone){
                         finished()
-                        
                         return true
-                        
-                        
                     }
                 }
                 i = i + 1
             }
         }
         return false
-        
     }
-    
-   
-    func saveMeasurement(){
-   /*
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate) managedObjectContext {
-            
-            var measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
-            
-            measurement.headline = globalAssignments[globalCurrentAssignment].headline
-            measurement.endTime = CFAbsoluteTimeGetCurrent()
-            measurement.startTime = measurmentStartTime
-            measurement.participantNumber = globalParticipantNumber
-            
-            /*
-            var e: NSError?
-            if managedObjectContext.save() != true {
-            print("insert error: \(e!.localizedDescription)" )
-            return
-            }
-            */
-        }
-        */
-    }
-
     
     func initializeAssignment()
     {
@@ -149,18 +111,16 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
         
-        //if globalCurrentAssignment > globalAssignments.count - 1 {
-        //    print("Varning: För många försök att spara har gjorts" )
-        //}
-        //else{
+        if globalCondition == 1{
             
-        saveMeasurement()
-            //if globalCurrentAssignment == globalAssignments.count - 1
-            //{
-            //    globalCurrentAssignment = globalCurrentAssignment + 1 //Denna läggs på för att hantera om inte locationManager stängs ned som den ska.
-            //}
-        performSegueWithIdentifier("segueAssignment", sender: nil)
-        //}
+           performSegueWithIdentifier("segueAssignment", sender: nil)
+            
+        }
+        else if globalCondition == 2{
+            performSegueWithIdentifier("segueControlAssignment", sender: nil)
+        }
+        
+        
     }
     
     
