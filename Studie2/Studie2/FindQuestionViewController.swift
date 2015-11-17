@@ -117,6 +117,7 @@ class FindQuestionViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         else if globalCondition == 2{
+            globalCurrentAssignment = globalCurrentAssignment + 1
             performSegueWithIdentifier("segueControlAssignment", sender: nil)
         }
         

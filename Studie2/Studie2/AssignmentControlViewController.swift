@@ -21,7 +21,7 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
     @IBOutlet var headlineLabel:UILabel!
   
     var startTime:CFAbsoluteTime = CFAbsoluteTime()
-
+    
     
     ///////////IBeacon
     
@@ -45,7 +45,7 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        initiateView()
+        
         
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
@@ -55,11 +55,13 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         
+        initiateView()
+        
     }
 
     func initiateView()
     {
-        self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
+        self.infotextTextview.text = globalAssignments[globalCurrentAssignment - 1].infoText
         
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
@@ -68,6 +70,8 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         self.headlineLabel.text = "Information"
         
         startTime = CFAbsoluteTimeGetCurrent()
+        
+        
 
     }
     
@@ -105,10 +109,12 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.stopRangingBeaconsInRegion(beaconRegion)
+     
+        self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
         
-        infotextTextview.text = ""
+        //infotextTextview.text = ""
         nextAssignment.text = "Du är klar och kan hämta din rabattkupong."
-        self.headlineLabel.text = "Du är nu klar!"
+        self.headlineLabel.text = "Information"
         
     }
     
@@ -117,6 +123,8 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         
         if globalCurrentAssignment < globalAssignments.count - 1
         {
+            //var inasdxt:Int = globalCurrentAssignment
+            
             globalCurrentAssignment = globalCurrentAssignment + 1
             
             UpdateMeasurement()
@@ -124,7 +132,12 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         }
         else{
             finishedAllAssignments()
+            
             FinishMeasurement()
+            
+            globalCurrentAssignment = globalCurrentAssignment + 1
+            
+            UpdateMeasurement()
         }
     }
     
@@ -145,7 +158,7 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
                     let managedObject = fetchResults[0]
                     
                     
-                    switch globalCurrentAssignment {
+                    switch globalCurrentAssignment - 1 {
                     case (0):
                         managedObject.setValue(startTime, forKey: "assignment1StartTime")
                         managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1EndTime")

@@ -464,68 +464,80 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         let assignment9PlayTime:NSString
         let assignment9SearchTime:NSString
         
-        if globalCondition == 1{
+        if measurement.condition == 1{
             
-            assignment1PlayTime = String(measurement.assignment1EndTime - measurement.assignment1StartTime)
-            assignment1SearchTime = String(measurement.assignment1StartTime - measurement.gameStartTime)
+            //Double(round(1000*x)/1000)
             
-            assignment2PlayTime = String(measurement.assignment2EndTime - measurement.assignment2StartTime)
-            assignment2SearchTime = String(measurement.assignment2StartTime - measurement.assignment1EndTime)
+            assignment1PlayTime = String(Double(round(10*(measurement.assignment1EndTime - measurement.assignment1StartTime))/10))
             
-            assignment3PlayTime = String(measurement.assignment3EndTime - measurement.assignment3StartTime)
-             assignment3SearchTime = String(measurement.assignment3StartTime - measurement.assignment2EndTime)
+            assignment1SearchTime = String(Double(round(10*(measurement.assignment1StartTime - measurement.gameStartTime))/10))
+
             
-             assignment4PlayTime = String(measurement.assignment4EndTime - measurement.assignment4StartTime)
-             assignment4SearchTime = String(measurement.assignment4StartTime - measurement.assignment3EndTime)
+            assignment2PlayTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
             
-             assignment5PlayTime = String(measurement.assignment5EndTime - measurement.assignment5StartTime)
-             assignment5SearchTime = String(measurement.assignment5StartTime - measurement.assignment4EndTime)
             
-             assignment6PlayTime = String(measurement.assignment6EndTime - measurement.assignment6StartTime)
-             assignment6SearchTime = String(measurement.assignment6StartTime - measurement.assignment5EndTime)
+            //var hsdfasdasdfsff:String = String(format: "%.2d", measurement.assignment2EndTime - measurement.assignment2StartTime)
             
-             assignment7PlayTime = String(measurement.assignment7EndTime - measurement.assignment7StartTime)
-             assignment7SearchTime = String(measurement.assignment7StartTime - measurement.assignment6EndTime)
             
-             assignment8PlayTime = String(measurement.assignment8EndTime - measurement.assignment8StartTime)
-             assignment8SearchTime = String(measurement.assignment8StartTime - measurement.assignment7EndTime)
+            assignment2SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.assignment1EndTime))/10))
             
-             assignment9PlayTime = String(measurement.assignment9EndTime - measurement.assignment9StartTime)
-             assignment9SearchTime = String(measurement.assignment9StartTime - measurement.assignment8EndTime)
+            
+            
+            assignment3PlayTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
+             assignment3SearchTime = String(Double(round(10*(measurement.assignment3StartTime - measurement.assignment2EndTime))/10))
+            
+             assignment4PlayTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
+             assignment4SearchTime = String(Double(round(10*(measurement.assignment4StartTime - measurement.assignment3EndTime))/10))
+            
+             assignment5PlayTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
+             assignment5SearchTime = String(Double(round(10*(measurement.assignment5StartTime - measurement.assignment4EndTime))/10))
+            
+             assignment6PlayTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
+             assignment6SearchTime = String(Double(round(10*(measurement.assignment6StartTime - measurement.assignment5EndTime))/10))
+            
+             assignment7PlayTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
+             assignment7SearchTime = String(Double(round(10*(measurement.assignment7StartTime - measurement.assignment6EndTime))/10))
+            
+             assignment8PlayTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
+             assignment8SearchTime = String(Double(round(10*(measurement.assignment8StartTime - measurement.assignment7EndTime))/10))
+            
+             assignment9PlayTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
+             assignment9SearchTime = String(Double(round(10*(measurement.assignment9StartTime - measurement.assignment8EndTime))/10))
         }
         else{
             
              assignment1PlayTime = String(0)
-             assignment1SearchTime = String(measurement.assignment2StartTime - measurement.gameStartTime)
+             assignment1SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.gameStartTime))/10))
             
              assignment2PlayTime = String(0)
-             assignment2SearchTime = String(measurement.assignment2EndTime - measurement.assignment2StartTime)
+             assignment2SearchTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
             
              assignment3PlayTime = String(0)
-             assignment3SearchTime = String(measurement.assignment3EndTime - measurement.assignment3StartTime)
+             assignment3SearchTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
             
              assignment4PlayTime = String(0)
-             assignment4SearchTime = String(measurement.assignment4EndTime - measurement.assignment4StartTime)
+             assignment4SearchTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
             
              assignment5PlayTime = String(0)
-             assignment5SearchTime = String(measurement.assignment5EndTime - measurement.assignment5StartTime)
+             assignment5SearchTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
             
              assignment6PlayTime = String(0)
-             assignment6SearchTime = String(measurement.assignment6EndTime - measurement.assignment6StartTime)
+             assignment6SearchTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
             
              assignment7PlayTime = String(0)
-             assignment7SearchTime = String(measurement.assignment7EndTime - measurement.assignment7StartTime)
+             assignment7SearchTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
             
              assignment8PlayTime = String(0)
-             assignment8SearchTime = String(measurement.assignment8EndTime - measurement.assignment8StartTime)
+             assignment8SearchTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
             
              assignment9PlayTime = String(0)
-             assignment9SearchTime = String(measurement.assignment9EndTime - measurement.assignment9StartTime)
+             assignment9SearchTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
             
         }
         
         do {
             //let post:NSString = "deltagarid=\(deltagarid)"
+            
             
             let post:NSString = "deltagarid=\(deltagarid)&buzzerUsed=\(buzzerUsed)&gameEndTime=\(gameEndTime)&gameStartTime=\(gameStartTime)&numberOfQuestionsAnswered=\(numberOfQuestionsAnswered)&successfulGame=\(successfulGame)&totalQuestions=\(totalQuestions)&totalrightAnswers=\(totalrightAnswers)&visualWarningUsed=\(visualWarningUsed)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&assignment6EndTime=\(assignment6EndTime)&assignment6StartTime=\(assignment6StartTime)&assignment7EndTime=\(assignment7EndTime)&assignment7StartTime=\(assignment7StartTime)&assignment8EndTime=\(assignment8EndTime)&assignment8StartTime=\(assignment8StartTime)&assignment9EndTime=\(assignment9EndTime)&assignment9StartTime=\(assignment9StartTime)&assignment1PlayTime=\(assignment1PlayTime)&assignment1SearchTime=\(assignment1SearchTime)&assignment2PlayTime=\(assignment2PlayTime)&assignment2SearchTime=\(assignment2SearchTime)&assignment3PlayTime=\(assignment3PlayTime)&assignment3SearchTime=\(assignment3SearchTime)&assignment4PlayTime=\(assignment4PlayTime)&assignment4SearchTime=\(assignment4SearchTime)&assignment5PlayTime=\(assignment5PlayTime)&assignment5SearchTime=\(assignment5SearchTime)&assignment6PlayTime=\(assignment6PlayTime)&assignment6SearchTime=\(assignment6SearchTime)&assignment7PlayTime=\(assignment7PlayTime)&assignment7SearchTime=\(assignment7SearchTime)&assignment8PlayTime=\(assignment8PlayTime)&assignment8SearchTime=\(assignment8SearchTime)&assignment9PlayTime=\(assignment9PlayTime)&assignment9SearchTime=\(assignment9SearchTime)&experimentalcondition=\(condition)"
             
