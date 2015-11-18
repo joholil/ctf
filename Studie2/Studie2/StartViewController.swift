@@ -466,8 +466,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         if measurement.condition == 1{
             
-            //Double(round(1000*x)/1000)
-            
+        
             assignment1PlayTime = String(Double(round(10*(measurement.assignment1EndTime - measurement.assignment1StartTime))/10))
             
             assignment1SearchTime = String(Double(round(10*(measurement.assignment1StartTime - measurement.gameStartTime))/10))
@@ -476,8 +475,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             assignment2PlayTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
             
             
-            //var hsdfasdasdfsff:String = String(format: "%.2d", measurement.assignment2EndTime - measurement.assignment2StartTime)
-            
+        
             
             assignment2SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.assignment1EndTime))/10))
             

@@ -223,6 +223,7 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
                     managedObject.setValue(globalvisualWarningUsed, forKey: "visualWarningUsed")
                     managedObject.setValue(globalCondition, forKey: "condition")
                     
+                    managedObject.setValue(globalAssignments.count, forKey: "totalQuestions")
                     managedObject.setValue(Assignment.numberOfRightAnswers(globalAssignments), forKey: "totalrightAnswers")
                     managedObject.setValue(Assignment.numberOfAnswers(globalAssignments), forKey: "numberOfQuestionsAnswered")
                     
