@@ -50,6 +50,10 @@ class finishViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.resultAssignment.selectable = false
         self.resultAssignment.editable = false
+        
+        self.finishedTextTextView.selectable = false
+        self.finishedTextTextView.editable = false
+
     
     }
     

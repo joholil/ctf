@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Lz-DV-JiH">
-                                <rect key="frame" x="36" y="329" width="249" height="30"/>
+                                <rect key="frame" x="31" y="269" width="249" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mst-Fz-RfB">
-                                <rect key="frame" x="41" y="133" width="239" height="36"/>
+                                <rect key="frame" x="41" y="92" width="239" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Undersökning 1">
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13R-1a-wzC">
-                                <rect key="frame" x="63" y="211" width="194" height="36"/>
+                                <rect key="frame" x="63" y="160" width="194" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Undersökning 2">
@@ -62,14 +62,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deltagarnummer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-Uz-kIs">
-                                <rect key="frame" x="93" y="300" width="134" height="21"/>
+                                <rect key="frame" x="93" y="239" width="134" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-vb-Lyu">
-                                <rect key="frame" x="49" y="412" width="223" height="30"/>
+                                <rect key="frame" x="49" y="317" width="223" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Spara undersökningar">
@@ -79,6 +79,13 @@
                                     <action selector="saveResults" destination="BYZ-38-t0r" eventType="touchUpInside" id="r75-tH-SZn"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-ya-EFk">
+                                <rect key="frame" x="20" y="362" width="280" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -86,6 +93,7 @@
                     <navigationItem key="navigationItem" id="hbq-SF-6W2"/>
                     <connections>
                         <outlet property="deltagaridTextview" destination="5Lz-DV-JiH" id="HXj-jl-cAi"/>
+                        <outlet property="ejSparadeTextview" destination="7S2-ya-EFk" id="o4j-x8-X76"/>
                         <segue destination="r4Q-zt-ZZw" kind="push" identifier="segueStartStartmeasure" id="gCe-5G-Kz4"/>
                     </connections>
                 </viewController>
@@ -162,7 +170,7 @@
                                     <outlet property="delegate" destination="OEk-LO-G9A" id="2jS-Kb-QCI"/>
                                 </connections>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="resultAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-M1-fIX">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="resultAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-M1-fIX">
                                 <rect key="frame" x="0.0" y="67" width="320" height="36"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +185,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="finishedText" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-Pw-NhF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="finishedText" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-Pw-NhF">
                                 <rect key="frame" x="12" y="429" width="298" height="77"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,7 +235,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="resultAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZw-yq-Lqh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="resultAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sZw-yq-Lqh">
                                 <rect key="frame" x="7" y="72" width="313" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -235,7 +243,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="nextAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9s7-rY-czR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="nextAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9s7-rY-czR">
                                 <rect key="frame" x="20" y="450" width="280" height="43"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -326,7 +334,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-V1-L79">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-V1-L79">
                                 <rect key="frame" x="20" y="69" width="280" height="192"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -532,7 +540,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Gå till skylten märkt station 1. För telefonen nära skylten. Skylten är märkt med Karlstads universitets logotyp" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="Gå till skylten märkt station 1. För telefonen nära skylten. Skylten är märkt med Karlstads universitets logotyp" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-eK-uwP">
                                 <rect key="frame" x="20" y="83" width="283" height="102"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -595,7 +603,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gud-Yf-X3k">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="Info Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gud-Yf-X3k">
                                 <rect key="frame" x="14" y="70" width="280" height="323"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -606,8 +614,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="nextAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGc-rc-T0G">
-                                <rect key="frame" x="20" y="439" width="280" height="60"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" text="nextAssignment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BGc-rc-T0G">
+                                <rect key="frame" x="20" y="434" width="280" height="65"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -674,7 +682,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="mni-l1-aqq"/>
         <segue reference="jV9-vF-yYc"/>
-        <segue reference="ekT-co-pHO"/>
     </inferredMetricsTieBreakers>
 </document>

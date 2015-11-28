@@ -46,7 +46,6 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
 
         // Do any additional setup after loading the view.
         
-        
         if(locationManager!.respondsToSelector("requestWhenInUseAuthorization")) {
             locationManager!.requestWhenInUseAuthorization()
         }
@@ -65,13 +64,13 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         
         self.infotextTextview.selectable = false
         self.infotextTextview.editable = false
+        self.nextAssignment.selectable = false
+        self.nextAssignment.editable = false
         
         self.nextAssignment.text = "\rGå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
         self.headlineLabel.text = "Information"
         
         startTime = CFAbsoluteTimeGetCurrent()
-        
-        
 
     }
     
@@ -112,7 +111,6 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
      
         self.infotextTextview.text = globalAssignments[globalCurrentAssignment].infoText
         
-        //infotextTextview.text = ""
         nextAssignment.text = "Du är klar och kan hämta din rabattkupong."
         self.headlineLabel.text = "Information"
         
@@ -123,7 +121,6 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         
         if globalCurrentAssignment < globalAssignments.count - 1
         {
-            //var inasdxt:Int = globalCurrentAssignment
             
             globalCurrentAssignment = globalCurrentAssignment + 1
             

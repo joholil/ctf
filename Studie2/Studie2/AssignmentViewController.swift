@@ -148,7 +148,7 @@ class AssignmentViewController: UIViewController {
             if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0]
                     
                     
                     switch globalCurrentAssignment {
@@ -208,7 +208,7 @@ class AssignmentViewController: UIViewController {
             if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
-                    var managedObject = fetchResults[0]
+                    let managedObject = fetchResults[0]
                     
                     managedObject.setValue(globalGameStartTime, forKey: "gameStartTime")
                     managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "gameEndTime")

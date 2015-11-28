@@ -51,6 +51,13 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
         let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: identifier)
         
         locationManager.startRangingBeaconsInRegion(beaconRegion)
+        
+        
+        self.resultAssignment.selectable = false
+        self.resultAssignment.editable = false
+        
+        self.nextAssignment.selectable = false
+        self.nextAssignment.editable = false
     }
     
     

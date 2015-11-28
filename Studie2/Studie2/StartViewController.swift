@@ -12,6 +12,7 @@ import CoreData
 class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet var deltagaridTextview:UITextField!
+    @IBOutlet var ejSparadeTextview:UITextView!
 
     
     override func viewDidLoad() {
@@ -21,6 +22,12 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
 
         // görs för att stänga keyboard efter retur
         self.deltagaridTextview.delegate = self
+        
+        self.ejSparadeTextview.selectable = false
+        //self.ejSparadeTextview.editable = false
+        
+        self.ejSparadeTextview.text = nonSavedMeasures()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +62,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         }
     
         return true
-    
     }
     
     @IBAction func condition1Chosen()
@@ -82,7 +88,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             // Kontrollera att deltagarid't inte existerar sedan tidigare
             if deltagaridExists() == 1 {
                 if saveDeltagarid(){
-                    //createDeltagaridCoredata()
                     globalCondition = 2
                     globalDeltagarid = deltagaridTextview.text!
                     createDeltagaridCoredata()
@@ -96,12 +101,48 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     {
         if saveMesurements(){
         
+            self.ejSparadeTextview.text = nonSavedMeasures()
+
             let alertControler = UIAlertController(title: "Spara!", message: "Spara lyckades", preferredStyle: UIAlertControllerStyle.Alert)
             alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertControler, animated: true, completion: nil)
             
         }
     }
+    
+    func nonSavedMeasures()->String{
+        
+        var measurements:[Measurement] = []
+        measurements = getMeasurements()
+        
+        let dateFormatterDT = NSDateFormatter()
+        dateFormatterDT.dateFormat = "dd-MMM-yy HH:mm:ss"
+        dateFormatterDT.locale = NSLocale(localeIdentifier: "en-US")
+        
+        
+        
+        
+        var retur:String = ""
+        
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            
+            if (measurements.count == 0 ){
+                
+                retur = "Inga mätningar att spara"
+            }
+            
+            for measurement in measurements
+            {
+                
+                
+                retur = retur + measurement.deltagarid + " " + dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.gameStartTime)) + " \r"
+            }
+            return retur
+        }
+        return "Funktionen nonSaveMeasures misslyckades"
+    }
+    
     
     func saveMesurements()->Bool{
     
@@ -154,8 +195,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
                 result = false
             }
             measurements = fetchResultController.fetchedObjects as! [Measurement]
-            
-            //var hej = measurements.count
             
             if result != true {
                 print(e?.localizedDescription)
@@ -391,13 +430,13 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     
     func updateMeasurement( measurement:Measurement)->Bool{
     
-        var dateFormatterDT = NSDateFormatter()
-        dateFormatterDT.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        var dateFormatterT = NSDateFormatter()
+        let dateFormatterDT = NSDateFormatter()
+        dateFormatterDT.dateFormat = "dd-MMM-yy HH:mm:ss"
+        dateFormatterDT.locale = NSLocale(localeIdentifier: "en-US")
+        
+        let dateFormatterT = NSDateFormatter()
         dateFormatterT.dateFormat = "HH:mm:ss"
         
-        //var hej:String = String(measurement.condition)
         let condition:NSString = String(measurement.condition)
         let deltagarid:NSString = measurement.deltagarid
         let buzzerUsed:NSString = String(Int(measurement.buzzerUsed))
@@ -470,16 +509,10 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             assignment1PlayTime = String(Double(round(10*(measurement.assignment1EndTime - measurement.assignment1StartTime))/10))
             
             assignment1SearchTime = String(Double(round(10*(measurement.assignment1StartTime - measurement.gameStartTime))/10))
-
             
             assignment2PlayTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
             
-            
-        
-            
             assignment2SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.assignment1EndTime))/10))
-            
-            
             
             assignment3PlayTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
              assignment3SearchTime = String(Double(round(10*(measurement.assignment3StartTime - measurement.assignment2EndTime))/10))
@@ -534,12 +567,8 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         }
         
         do {
-            //let post:NSString = "deltagarid=\(deltagarid)"
-            
             
             let post:NSString = "deltagarid=\(deltagarid)&buzzerUsed=\(buzzerUsed)&gameEndTime=\(gameEndTime)&gameStartTime=\(gameStartTime)&numberOfQuestionsAnswered=\(numberOfQuestionsAnswered)&successfulGame=\(successfulGame)&totalQuestions=\(totalQuestions)&totalrightAnswers=\(totalrightAnswers)&visualWarningUsed=\(visualWarningUsed)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&assignment6EndTime=\(assignment6EndTime)&assignment6StartTime=\(assignment6StartTime)&assignment7EndTime=\(assignment7EndTime)&assignment7StartTime=\(assignment7StartTime)&assignment8EndTime=\(assignment8EndTime)&assignment8StartTime=\(assignment8StartTime)&assignment9EndTime=\(assignment9EndTime)&assignment9StartTime=\(assignment9StartTime)&assignment1PlayTime=\(assignment1PlayTime)&assignment1SearchTime=\(assignment1SearchTime)&assignment2PlayTime=\(assignment2PlayTime)&assignment2SearchTime=\(assignment2SearchTime)&assignment3PlayTime=\(assignment3PlayTime)&assignment3SearchTime=\(assignment3SearchTime)&assignment4PlayTime=\(assignment4PlayTime)&assignment4SearchTime=\(assignment4SearchTime)&assignment5PlayTime=\(assignment5PlayTime)&assignment5SearchTime=\(assignment5SearchTime)&assignment6PlayTime=\(assignment6PlayTime)&assignment6SearchTime=\(assignment6SearchTime)&assignment7PlayTime=\(assignment7PlayTime)&assignment7SearchTime=\(assignment7SearchTime)&assignment8PlayTime=\(assignment8PlayTime)&assignment8SearchTime=\(assignment8SearchTime)&assignment9PlayTime=\(assignment9PlayTime)&assignment9SearchTime=\(assignment9SearchTime)&experimentalcondition=\(condition)"
-            
-            //let post:NSString = "username=\(username)&password=\(password)"
             
             
             NSLog("PostData: %@",post);
