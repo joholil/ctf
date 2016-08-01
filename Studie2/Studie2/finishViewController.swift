@@ -78,7 +78,6 @@ class finishViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         else{
-            //cell.resultLabel.text = ""
             cell.contentView.backgroundColor = UIColor (red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
             cell.resultLabel.hidden = true
         }

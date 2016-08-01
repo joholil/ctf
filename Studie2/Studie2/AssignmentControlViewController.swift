@@ -67,7 +67,13 @@ class AssignmentControlViewController: UIViewController, UITableViewDelegate, CL
         self.nextAssignment.selectable = false
         self.nextAssignment.editable = false
         
-        self.nextAssignment.text = "\rGå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        if (globalEnglish){
+            self.nextAssignment.text = "\rPlease continue to " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        }
+        else{
+            self.nextAssignment.text = "\rGå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        }
+ 
         self.headlineLabel.text = "Information"
         
         startTime = CFAbsoluteTimeGetCurrent()

@@ -98,7 +98,14 @@ class AssignmentViewController: UIViewController {
         }
         else{
 
-            self.headlineLabel.text = "Tid kvar: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+            if (globalEnglish){
+                self.headlineLabel.text = "Time left: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+
+            }
+            else
+            {
+                self.headlineLabel.text = "Tid kvar: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+            }
 
             Alerter.Vibrate(Alerter.timeLeft(localStartTime))
             

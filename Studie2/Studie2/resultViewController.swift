@@ -114,19 +114,41 @@ class resultViewController: UIViewController, UITableViewDataSource, UITableView
 
         
         if globalAssignments[globalCurrentAssignment].isRightAnswer{
-            self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt :)"
+            
+            if (globalEnglish){
+                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " is right :)"
+            }
+            else{
+                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är rätt :)"
+            }
+            
+            
         }
         else{
             if globalAssignments[globalCurrentAssignment].isLateAnswer{
+
+                
                 self.resultAssignment.text = "Tiden är ute :("
             }
             else{
-                self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel :("
-            }
+                
+                if (globalEnglish){
+                    self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " is wrong :("
+                }
+                else{
+                    self.resultAssignment.text = globalAssignments[globalCurrentAssignment].userAnswerText + " är fel :("
+                }
+      }
         }
 
         globalCurrentAssignment = globalCurrentAssignment + 1
-        self.nextAssignment.text = "Gå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+
+        if (globalEnglish){
+            self.nextAssignment.text = "Now go to " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        }
+        else{
+            self.nextAssignment.text = "Gå nu till " + globalAssignments[globalCurrentAssignment].headline.lowercaseString + "."
+        }
         
         self.nextAssignment.selectable = false
         self.nextAssignment.editable = false

@@ -13,13 +13,13 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     
     @IBOutlet var deltagaridTextview:UITextField!
     @IBOutlet var ejSparadeTextview:UITextView!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-
+        
         // görs för att stänga keyboard efter retur
         self.deltagaridTextview.delegate = self
         
@@ -27,9 +27,9 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         //self.ejSparadeTextview.editable = false
         
         self.ejSparadeTextview.text = nonSavedMeasures()
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,7 +51,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     }
     
     func controlDeltagarId()->Bool{
-
+        
         let deltagarid:NSString = deltagaridTextview.text!
         if ( deltagarid.isEqualToString("") ){
             
@@ -60,55 +60,55 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             self.presentViewController(alertControler, animated: true, completion: nil)
             return false
         }
-    
+        
         return true
     }
- 
- /*
-    @IBAction func condition1Chosen()
-    {
-        
-        //Kontrollera att deltagarid har matats in
-        if controlDeltagarId(){
-            // Kontrollera att deltagarid't inte existerar sedan tidigare
-            if deltagaridExists() == 1 {
-                if saveDeltagarid(){
-                    
-                    globalCondition = 1
-                    globalDeltagarid = deltagaridTextview.text!
-                    createDeltagaridCoredata()
-                    
-                    performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-                }
-            }
-        }
-        
-    }
     
-    @IBAction func condition2Chosen()
-    {
-        
-        //Kontrollera att deltagarid har matats in
-        if controlDeltagarId(){
-            // Kontrollera att deltagarid't inte existerar sedan tidigare
-            if deltagaridExists() == 1 {
-                if saveDeltagarid(){
-                    
-                    globalCondition = 2
-                    globalDeltagarid = deltagaridTextview.text!
-                    createDeltagaridCoredata()
-                    
-                    performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-                    
-                    
-                }
-            }
-        }
-        
-    }
-*/
-
-/* Demo*/
+    /*
+     @IBAction func condition1Chosen()
+     {
+     
+     //Kontrollera att deltagarid har matats in
+     if controlDeltagarId(){
+     // Kontrollera att deltagarid't inte existerar sedan tidigare
+     if deltagaridExists() == 1 {
+     if saveDeltagarid(){
+     
+     globalCondition = 1
+     globalDeltagarid = deltagaridTextview.text!
+     createDeltagaridCoredata()
+     
+     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+     }
+     }
+     }
+     
+     }
+     
+     @IBAction func condition2Chosen()
+     {
+     
+     //Kontrollera att deltagarid har matats in
+     if controlDeltagarId(){
+     // Kontrollera att deltagarid't inte existerar sedan tidigare
+     if deltagaridExists() == 1 {
+     if saveDeltagarid(){
+     
+     globalCondition = 2
+     globalDeltagarid = deltagaridTextview.text!
+     createDeltagaridCoredata()
+     
+     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+     
+     
+     }
+     }
+     }
+     
+     }
+     */
+    
+    /* Demo*/
     @IBAction func condition1Chosen()
     {
         
@@ -123,20 +123,20 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     @IBAction func condition2Chosen()
     {
         globalCondition = 2
-                    globalDeltagarid = deltagaridTextview.text!
-
-                    performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        globalDeltagarid = deltagaridTextview.text!
+        
+        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
         
     }
-
-/*Demo */
-
+    
+    /*Demo */
+    
     @IBAction func saveResults()
     {
         if saveMesurements(){
-        
+            
             self.ejSparadeTextview.text = nonSavedMeasures()
-
+            
             let alertControler = UIAlertController(title: "Spara!", message: "Spara lyckades", preferredStyle: UIAlertControllerStyle.Alert)
             alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertControler, animated: true, completion: nil)
@@ -179,14 +179,14 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     
     
     func saveMesurements()->Bool{
-    
+        
         var measurements:[Measurement] = []
         measurements = getMeasurements()
         
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             
             if (measurements.count == 0 ){
-            
+                
                 let alertControler = UIAlertController(title: "Spara", message: "Det finns inga poster att skapa", preferredStyle: UIAlertControllerStyle.Alert)
                 alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alertControler, animated: true, completion: nil)
@@ -241,120 +241,120 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         //returnerar 1 om deltagarid inte finns, 0 om någonting gått fel och 2 om deltagarid finns.
         let deltagarid:NSString = deltagaridTextview.text!
         
+        do {
+            let post:NSString = "deltagarid=\(deltagarid)"
+            
+            NSLog("PostData: %@",post);
+            
+            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/deltagaridexists.php")!
+            
+            let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            
+            let postLength:NSString = String( postData.length )
+            
+            let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            
+            var reponseError: NSError?
+            var response: NSURLResponse?
+            
+            var urlData: NSData?
             do {
-                let post:NSString = "deltagarid=\(deltagarid)"
+                urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+            } catch let error as NSError {
+                reponseError = error
+                urlData = nil
+            }
+            
+            if ( urlData != nil ) {
+                let res = response as! NSHTTPURLResponse!;
                 
-                NSLog("PostData: %@",post);
+                NSLog("Response code: %ld", res.statusCode);
                 
-                let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/deltagaridexists.php")!
-
-                let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                
-                let postLength:NSString = String( postData.length )
-                
-                let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-                request.HTTPMethod = "POST"
-                request.HTTPBody = postData
-                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                
-                
-                var reponseError: NSError?
-                var response: NSURLResponse?
-                
-                var urlData: NSData?
-                do {
-                    urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-                } catch let error as NSError {
-                    reponseError = error
-                    urlData = nil
-                }
-                
-                if ( urlData != nil ) {
-                    let res = response as! NSHTTPURLResponse!;
+                if (res.statusCode >= 200 && res.statusCode < 300)
+                {
+                    let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                     
-                    NSLog("Response code: %ld", res.statusCode);
+                    NSLog("Response ==> %@", responseData);
                     
-                    if (res.statusCode >= 200 && res.statusCode < 300)
+                    let jsonData:NSDictionary = try NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
+                    
+                    
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    
+                    NSLog("Success: %ld", success);
+                    
+                    if(success == 1) // Deltagarid finns inte
                     {
-                        let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                        NSLog("Found deltagarid");
                         
-                        NSLog("Response ==> %@", responseData);
+                        return 1
                         
-                        let jsonData:NSDictionary = try NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers ) as! NSDictionary
+                    }
+                    else if (success == 2){ //Deltagarid finns
+                        var error_msg:NSString
                         
-                        
-                        let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
-                        
-                        NSLog("Success: %ld", success);
-                        
-                        if(success == 1) // Deltagarid finns inte
-                        {
-                            NSLog("Found deltagarid");
-                            
-                            return 1
-                            
-                        }
-                        else if (success == 2){ //Deltagarid finns
-                            var error_msg:NSString
-                            
-                            if jsonData["error_message"] as? NSString != nil {
-                                error_msg = jsonData["error_message"] as! NSString
-                            } else {
-                                error_msg = "Unknown Error"
-                            }
-                            
-                            let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: String(error_msg), preferredStyle: UIAlertControllerStyle.Alert)
-                            alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                            self.presentViewController(alertControler, animated: true, completion: nil)
-
-                            return 2
-                            
-                        }
-                        else {
-                            var error_msg:NSString
-                            
-                            if jsonData["error_message"] as? NSString != nil {
-                                error_msg = jsonData["error_message"] as! NSString
-                            } else {
-                                error_msg = "Unknown Error"
-                            }
-                            
-                            let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: String(error_msg), preferredStyle: UIAlertControllerStyle.Alert)
-                            alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                            self.presentViewController(alertControler, animated: true, completion: nil)
-
-                            return 0
-                            
+                        if jsonData["error_message"] as? NSString != nil {
+                            error_msg = jsonData["error_message"] as! NSString
+                        } else {
+                            error_msg = "Unknown Error"
                         }
                         
-                    } else {
-                        let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                        let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: String(error_msg), preferredStyle: UIAlertControllerStyle.Alert)
                         alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alertControler, animated: true, completion: nil)
-
-                        return 0
+                        
+                        return 2
+                        
                     }
+                    else {
+                        var error_msg:NSString
+                        
+                        if jsonData["error_message"] as? NSString != nil {
+                            error_msg = jsonData["error_message"] as! NSString
+                        } else {
+                            error_msg = "Unknown Error"
+                        }
+                        
+                        let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: String(error_msg), preferredStyle: UIAlertControllerStyle.Alert)
+                        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alertControler, animated: true, completion: nil)
+                        
+                        return 0
+                        
+                    }
+                    
                 } else {
-                    let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Connection Failure", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
                     alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alertControler, animated: true, completion: nil)
-
-  
+                    
                     return 0
                 }
-            } catch {
-                let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+            } else {
+                let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Connection Failure", preferredStyle: UIAlertControllerStyle.Alert)
                 alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alertControler, animated: true, completion: nil)
-
+                
+                
                 return 0
             }
+        } catch {
+            let alertControler = UIAlertController(title: "Initiering av undersökningen misslyckades!", message: "Server Error", preferredStyle: UIAlertControllerStyle.Alert)
+            alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertControler, animated: true, completion: nil)
+            
+            return 0
+        }
         
         
     }
-
+    
     func saveDeltagarid()->Bool{
         let deltagarid:NSString = deltagaridTextview.text!
         
@@ -420,7 +420,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
                         let alertControler = UIAlertController(title: "Spara misslyckades!", message: String(error_msg), preferredStyle: UIAlertControllerStyle.Alert)
                         alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                         self.presentViewController(alertControler, animated: true, completion: nil)
-                       
+                        
                         return false
                         
                     }
@@ -430,40 +430,40 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
                     let alertControler = UIAlertController(title: "Spara misslyckades", message: "Connection Failed", preferredStyle: UIAlertControllerStyle.Alert)
                     alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alertControler, animated: true, completion: nil)
-
+                    
                     return false
                 }
             }  else {
                 let alertControler = UIAlertController(title: "Spara misslyckades!", message: "Connection Failure", preferredStyle: UIAlertControllerStyle.Alert)
                 alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alertControler, animated: true, completion: nil)
-  
-  
+                
+                
                 return false
             }
         } catch {
             let alertControler = UIAlertController(title: "Spara misslyckades!", message: "Server Error!", preferredStyle: UIAlertControllerStyle.Alert)
             alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertControler, animated: true, completion: nil)
-
-
+            
+            
             return false
         }
         return true
     }
     
     func createDeltagaridCoredata(){
-    
+        
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             
             let measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
-                measurement.deltagarid = globalDeltagarid
+            measurement.deltagarid = globalDeltagarid
         }
     }
     
     
     func updateMeasurement( measurement:Measurement)->Bool{
-    
+        
         let dateFormatterDT = NSDateFormatter()
         dateFormatterDT.dateFormat = "dd-MMM-yy HH:mm:ss"
         dateFormatterDT.locale = NSLocale(localeIdentifier: "en-US")
@@ -493,7 +493,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let assignment4EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4EndTime))
         let assignment4StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4StartTime))
-     
+        
         let assignment5EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5EndTime))
         let assignment5StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5StartTime))
         
@@ -508,7 +508,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let assignment9EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9EndTime))
         let assignment9StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9StartTime))
-       
+        
         
         let assignment1PlayTime:NSString
         let assignment1SearchTime:NSString
@@ -539,7 +539,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         if measurement.condition == 1{
             
-        
+            
             assignment1PlayTime = String(Double(round(10*(measurement.assignment1EndTime - measurement.assignment1StartTime))/10))
             
             assignment1SearchTime = String(Double(round(10*(measurement.assignment1StartTime - measurement.gameStartTime))/10))
@@ -549,54 +549,54 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             assignment2SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.assignment1EndTime))/10))
             
             assignment3PlayTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
-             assignment3SearchTime = String(Double(round(10*(measurement.assignment3StartTime - measurement.assignment2EndTime))/10))
+            assignment3SearchTime = String(Double(round(10*(measurement.assignment3StartTime - measurement.assignment2EndTime))/10))
             
-             assignment4PlayTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
-             assignment4SearchTime = String(Double(round(10*(measurement.assignment4StartTime - measurement.assignment3EndTime))/10))
+            assignment4PlayTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
+            assignment4SearchTime = String(Double(round(10*(measurement.assignment4StartTime - measurement.assignment3EndTime))/10))
             
-             assignment5PlayTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
-             assignment5SearchTime = String(Double(round(10*(measurement.assignment5StartTime - measurement.assignment4EndTime))/10))
+            assignment5PlayTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
+            assignment5SearchTime = String(Double(round(10*(measurement.assignment5StartTime - measurement.assignment4EndTime))/10))
             
-             assignment6PlayTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
-             assignment6SearchTime = String(Double(round(10*(measurement.assignment6StartTime - measurement.assignment5EndTime))/10))
+            assignment6PlayTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
+            assignment6SearchTime = String(Double(round(10*(measurement.assignment6StartTime - measurement.assignment5EndTime))/10))
             
-             assignment7PlayTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
-             assignment7SearchTime = String(Double(round(10*(measurement.assignment7StartTime - measurement.assignment6EndTime))/10))
+            assignment7PlayTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
+            assignment7SearchTime = String(Double(round(10*(measurement.assignment7StartTime - measurement.assignment6EndTime))/10))
             
-             assignment8PlayTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
-             assignment8SearchTime = String(Double(round(10*(measurement.assignment8StartTime - measurement.assignment7EndTime))/10))
+            assignment8PlayTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
+            assignment8SearchTime = String(Double(round(10*(measurement.assignment8StartTime - measurement.assignment7EndTime))/10))
             
-             assignment9PlayTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
-             assignment9SearchTime = String(Double(round(10*(measurement.assignment9StartTime - measurement.assignment8EndTime))/10))
+            assignment9PlayTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
+            assignment9SearchTime = String(Double(round(10*(measurement.assignment9StartTime - measurement.assignment8EndTime))/10))
         }
         else{
             
-             assignment1PlayTime = String(0)
-             assignment1SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.gameStartTime))/10))
+            assignment1PlayTime = String(0)
+            assignment1SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.gameStartTime))/10))
             
-             assignment2PlayTime = String(0)
-             assignment2SearchTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
+            assignment2PlayTime = String(0)
+            assignment2SearchTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
             
-             assignment3PlayTime = String(0)
-             assignment3SearchTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
+            assignment3PlayTime = String(0)
+            assignment3SearchTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
             
-             assignment4PlayTime = String(0)
-             assignment4SearchTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
+            assignment4PlayTime = String(0)
+            assignment4SearchTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
             
-             assignment5PlayTime = String(0)
-             assignment5SearchTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
+            assignment5PlayTime = String(0)
+            assignment5SearchTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
             
-             assignment6PlayTime = String(0)
-             assignment6SearchTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
+            assignment6PlayTime = String(0)
+            assignment6SearchTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
             
-             assignment7PlayTime = String(0)
-             assignment7SearchTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
+            assignment7PlayTime = String(0)
+            assignment7SearchTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
             
-             assignment8PlayTime = String(0)
-             assignment8SearchTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
+            assignment8PlayTime = String(0)
+            assignment8SearchTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
             
-             assignment9PlayTime = String(0)
-             assignment9SearchTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
+            assignment9PlayTime = String(0)
+            assignment9SearchTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
             
         }
         
@@ -695,5 +695,5 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         return true
     }
     
-
+    
 }
