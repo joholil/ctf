@@ -17,6 +17,11 @@
 		313766911D4F228F00BCA0C5 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766901D4F228F00BCA0C5 /* GlobalVariables.swift */; };
 		313766931D4F22DC00BCA0C5 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766921D4F22DC00BCA0C5 /* Assignment.swift */; };
 		313766951D4F237900BCA0C5 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766941D4F237900BCA0C5 /* Measurement.swift */; };
+		313766991D4F2ED800BCA0C5 /* StartMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766981D4F2ED800BCA0C5 /* StartMeasureViewController.swift */; };
+		317D4A901D4F5583004E903F /* BuylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D4A8F1D4F5583004E903F /* BuylistViewController.swift */; };
+		317D4A941D4F6B8C004E903F /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D4A931D4F6B8C004E903F /* OfferViewController.swift */; };
+		31A062681D50E70D00F63C73 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062671D50E70D00F63C73 /* Alerter.swift */; };
+		31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062691D50E7F600F63C73 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		313766901D4F228F00BCA0C5 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		313766921D4F22DC00BCA0C5 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		313766941D4F237900BCA0C5 /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
+		313766981D4F2ED800BCA0C5 /* StartMeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMeasureViewController.swift; sourceTree = "<group>"; };
+		317D4A8F1D4F5583004E903F /* BuylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuylistViewController.swift; sourceTree = "<group>"; };
+		317D4A931D4F6B8C004E903F /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
+		31A062671D50E70D00F63C73 /* Alerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
+		31A062691D50E7F600F63C73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +81,15 @@
 				313766811D4F1EF500BCA0C5 /* LaunchScreen.storyboard */,
 				313766841D4F1EF500BCA0C5 /* Info.plist */,
 				3137667C1D4F1EF500BCA0C5 /* Studie3.xcdatamodeld */,
+				317D4A8F1D4F5583004E903F /* BuylistViewController.swift */,
+				313766981D4F2ED800BCA0C5 /* StartMeasureViewController.swift */,
 				3137668C1D4F21F000BCA0C5 /* StartViewController.swift */,
-				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
+				317D4A931D4F6B8C004E903F /* OfferViewController.swift */,
+				31A062691D50E7F600F63C73 /* GameViewController.swift */,
 				313766921D4F22DC00BCA0C5 /* Assignment.swift */,
 				313766941D4F237900BCA0C5 /* Measurement.swift */,
+				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
+				31A062671D50E70D00F63C73 /* Alerter.swift */,
 			);
 			path = Studie3;
 			sourceTree = "<group>";
@@ -150,13 +165,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				317D4A941D4F6B8C004E903F /* OfferViewController.swift in Sources */,
+				317D4A901D4F5583004E903F /* BuylistViewController.swift in Sources */,
 				313766931D4F22DC00BCA0C5 /* Assignment.swift in Sources */,
 				313766781D4F1EF500BCA0C5 /* ViewController.swift in Sources */,
+				31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */,
 				3137668D1D4F21F000BCA0C5 /* StartViewController.swift in Sources */,
 				313766761D4F1EF500BCA0C5 /* AppDelegate.swift in Sources */,
+				313766991D4F2ED800BCA0C5 /* StartMeasureViewController.swift in Sources */,
 				3137667E1D4F1EF500BCA0C5 /* Studie3.xcdatamodeld in Sources */,
 				313766911D4F228F00BCA0C5 /* GlobalVariables.swift in Sources */,
 				313766951D4F237900BCA0C5 /* Measurement.swift in Sources */,
+				31A062681D50E70D00F63C73 /* Alerter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +326,7 @@
 				313766891D4F1EF500BCA0C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

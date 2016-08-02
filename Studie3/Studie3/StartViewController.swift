@@ -24,8 +24,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         self.deltagaridTextview.delegate = self
         
         self.ejSparadeTextview.selectable = false
-        //self.ejSparadeTextview.editable = false
-        
         self.ejSparadeTextview.text = nonSavedMeasures()
         
     }
@@ -64,72 +62,45 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         return true
     }
     
-    /*
-     @IBAction func condition1Chosen()
-     {
-     
-     //Kontrollera att deltagarid har matats in
-     if controlDeltagarId(){
-     // Kontrollera att deltagarid't inte existerar sedan tidigare
-     if deltagaridExists() == 1 {
-     if saveDeltagarid(){
-     
-     globalCondition = 1
-     globalDeltagarid = deltagaridTextview.text!
-     createDeltagaridCoredata()
-     
-     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-     }
-     }
-     }
-     
-     }
-     
-     @IBAction func condition2Chosen()
-     {
-     
-     //Kontrollera att deltagarid har matats in
-     if controlDeltagarId(){
-     // Kontrollera att deltagarid't inte existerar sedan tidigare
-     if deltagaridExists() == 1 {
-     if saveDeltagarid(){
-     
-     globalCondition = 2
-     globalDeltagarid = deltagaridTextview.text!
-     createDeltagaridCoredata()
-     
-     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-     
-     
-     }
-     }
-     }
-     
-     }
-     */
     
-    /* Demo*/
+    
     @IBAction func condition1Chosen()
     {
-        
-        //Kontrollera att deltagarid har matats in
-        
         globalCondition = 1
-        createDeltagaridCoredata()
-        
-        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        startExperiment()
     }
     
     @IBAction func condition2Chosen()
     {
         globalCondition = 2
-        globalDeltagarid = deltagaridTextview.text!
-        
-        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-        
+        startExperiment()
+    }
+
+    @IBAction func condition3Chosen()
+    {
+        globalCondition = 3
+        startExperiment()
     }
     
-    /*Demo */
+    func startExperiment()
+    {
+        //Kontrollera att deltagarid har matats in
+        //if controlDeltagarId(){
+            // Kontrollera att deltagarid't inte existerar sedan tidigare
+          //  if deltagaridExists() == 1 {
+            //    if saveDeltagarid(){
+        
+                    globalDeltagarid = deltagaridTextview.text!
+                    createDeltagaridCoredata()
+                    
+                    performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+                    
+                    
+                //}
+            //}
+        //}
+        
+    }
     
     @IBAction func saveResults()
     {
@@ -153,11 +124,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         dateFormatterDT.dateFormat = "dd-MMM-yy HH:mm:ss"
         dateFormatterDT.locale = NSLocale(localeIdentifier: "en-US")
         
-        
-        
-        
         var retur:String = ""
-        
         
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             
@@ -168,9 +135,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             
             for measurement in measurements
             {
-                
-                
-                retur = retur + measurement.deltagarid + " " + dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.gameStartTime)) + " \r"
+                retur = retur + measurement.deltagarId + " " + dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime)) + " \r"
             }
             return retur
         }
@@ -211,7 +176,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         var fetchResultController:NSFetchedResultsController
         let fetchRequest = NSFetchRequest(entityName: "Measurement")
-        let sortDescriptor = NSSortDescriptor(key: "deltagarid", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "deltagarId", ascending: true)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -239,10 +204,10 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     
     func deltagaridExists()->Int{
         //returnerar 1 om deltagarid inte finns, 0 om någonting gått fel och 2 om deltagarid finns.
-        let deltagarid:NSString = deltagaridTextview.text!
+        let deltagarId:NSString = deltagaridTextview.text!
         
         do {
-            let post:NSString = "deltagarid=\(deltagarid)"
+            let post:NSString = "deltagarId=\(deltagarId)"
             
             NSLog("PostData: %@",post);
             
@@ -356,11 +321,11 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     }
     
     func saveDeltagarid()->Bool{
-        let deltagarid:NSString = deltagaridTextview.text!
+        let deltagarId:NSString = deltagaridTextview.text!
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)"
+            let post:NSString = "deltagarId=\(deltagarId)"
             
             NSLog("PostData: %@",post);
             
@@ -457,7 +422,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
             
             let measurement = NSEntityDescription.insertNewObjectForEntityForName("Measurement",inManagedObjectContext: managedObjectContext) as! Measurement
-            measurement.deltagarid = globalDeltagarid
+            measurement.deltagarId = globalDeltagarid
         }
     }
     
@@ -472,15 +437,11 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         dateFormatterT.dateFormat = "HH:mm:ss"
         
         let condition:NSString = String(measurement.condition)
-        let deltagarid:NSString = measurement.deltagarid
-        let buzzerUsed:NSString = String(Int(measurement.buzzerUsed))
-        let gameEndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.gameEndTime))
-        let gameStartTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.gameStartTime))
-        let numberOfQuestionsAnswered:NSString = String(measurement.numberOfQuestionsAnswered)
-        let successfulGame:NSString = String(Int(measurement.successfulGame))
-        let totalQuestions:NSString = String(measurement.totalQuestions)
-        let totalrightAnswers:NSString = String(measurement.totalrightAnswers)
-        let visualWarningUsed:NSString = String(Int(measurement.visualWarningUsed))
+        let deltagarid:NSString = measurement.deltagarId
+        let EndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.endTime))
+        let StartTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime))
+        let totalAssignments:NSString = String(measurement.totalAssignments)
+        let totalFinished:NSString = String(measurement.totalAssignmentsFinished)
         
         let assignment1EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1EndTime))
         let assignment1StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1StartTime))
@@ -496,113 +457,11 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let assignment5EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5EndTime))
         let assignment5StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5StartTime))
-        
-        let assignment6EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment6EndTime))
-        let assignment6StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment6StartTime))
-        
-        let assignment7EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment7EndTime))
-        let assignment7StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment7StartTime))
-        
-        let assignment8EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment8EndTime))
-        let assignment8StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment8StartTime))
-        
-        let assignment9EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9EndTime))
-        let assignment9StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment9StartTime))
-        
-        
-        let assignment1PlayTime:NSString
-        let assignment1SearchTime:NSString
-        
-        let assignment2PlayTime:NSString
-        let assignment2SearchTime:NSString
-        
-        let assignment3PlayTime:NSString
-        let assignment3SearchTime:NSString
-        
-        let assignment4PlayTime:NSString
-        let assignment4SearchTime:NSString
-        
-        let assignment5PlayTime:NSString
-        let assignment5SearchTime:NSString
-        
-        let assignment6PlayTime:NSString
-        let assignment6SearchTime:NSString
-        
-        let assignment7PlayTime:NSString
-        let assignment7SearchTime:NSString
-        
-        let assignment8PlayTime:NSString
-        let assignment8SearchTime:NSString
-        
-        let assignment9PlayTime:NSString
-        let assignment9SearchTime:NSString
-        
-        if measurement.condition == 1{
-            
-            
-            assignment1PlayTime = String(Double(round(10*(measurement.assignment1EndTime - measurement.assignment1StartTime))/10))
-            
-            assignment1SearchTime = String(Double(round(10*(measurement.assignment1StartTime - measurement.gameStartTime))/10))
-            
-            assignment2PlayTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
-            
-            assignment2SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.assignment1EndTime))/10))
-            
-            assignment3PlayTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
-            assignment3SearchTime = String(Double(round(10*(measurement.assignment3StartTime - measurement.assignment2EndTime))/10))
-            
-            assignment4PlayTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
-            assignment4SearchTime = String(Double(round(10*(measurement.assignment4StartTime - measurement.assignment3EndTime))/10))
-            
-            assignment5PlayTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
-            assignment5SearchTime = String(Double(round(10*(measurement.assignment5StartTime - measurement.assignment4EndTime))/10))
-            
-            assignment6PlayTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
-            assignment6SearchTime = String(Double(round(10*(measurement.assignment6StartTime - measurement.assignment5EndTime))/10))
-            
-            assignment7PlayTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
-            assignment7SearchTime = String(Double(round(10*(measurement.assignment7StartTime - measurement.assignment6EndTime))/10))
-            
-            assignment8PlayTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
-            assignment8SearchTime = String(Double(round(10*(measurement.assignment8StartTime - measurement.assignment7EndTime))/10))
-            
-            assignment9PlayTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
-            assignment9SearchTime = String(Double(round(10*(measurement.assignment9StartTime - measurement.assignment8EndTime))/10))
-        }
-        else{
-            
-            assignment1PlayTime = String(0)
-            assignment1SearchTime = String(Double(round(10*(measurement.assignment2StartTime - measurement.gameStartTime))/10))
-            
-            assignment2PlayTime = String(0)
-            assignment2SearchTime = String(Double(round(10*(measurement.assignment2EndTime - measurement.assignment2StartTime))/10))
-            
-            assignment3PlayTime = String(0)
-            assignment3SearchTime = String(Double(round(10*(measurement.assignment3EndTime - measurement.assignment3StartTime))/10))
-            
-            assignment4PlayTime = String(0)
-            assignment4SearchTime = String(Double(round(10*(measurement.assignment4EndTime - measurement.assignment4StartTime))/10))
-            
-            assignment5PlayTime = String(0)
-            assignment5SearchTime = String(Double(round(10*(measurement.assignment5EndTime - measurement.assignment5StartTime))/10))
-            
-            assignment6PlayTime = String(0)
-            assignment6SearchTime = String(Double(round(10*(measurement.assignment6EndTime - measurement.assignment6StartTime))/10))
-            
-            assignment7PlayTime = String(0)
-            assignment7SearchTime = String(Double(round(10*(measurement.assignment7EndTime - measurement.assignment7StartTime))/10))
-            
-            assignment8PlayTime = String(0)
-            assignment8SearchTime = String(Double(round(10*(measurement.assignment8EndTime - measurement.assignment8StartTime))/10))
-            
-            assignment9PlayTime = String(0)
-            assignment9SearchTime = String(Double(round(10*(measurement.assignment9EndTime - measurement.assignment9StartTime))/10))
-            
-        }
+
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)&buzzerUsed=\(buzzerUsed)&gameEndTime=\(gameEndTime)&gameStartTime=\(gameStartTime)&numberOfQuestionsAnswered=\(numberOfQuestionsAnswered)&successfulGame=\(successfulGame)&totalQuestions=\(totalQuestions)&totalrightAnswers=\(totalrightAnswers)&visualWarningUsed=\(visualWarningUsed)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&assignment6EndTime=\(assignment6EndTime)&assignment6StartTime=\(assignment6StartTime)&assignment7EndTime=\(assignment7EndTime)&assignment7StartTime=\(assignment7StartTime)&assignment8EndTime=\(assignment8EndTime)&assignment8StartTime=\(assignment8StartTime)&assignment9EndTime=\(assignment9EndTime)&assignment9StartTime=\(assignment9StartTime)&assignment1PlayTime=\(assignment1PlayTime)&assignment1SearchTime=\(assignment1SearchTime)&assignment2PlayTime=\(assignment2PlayTime)&assignment2SearchTime=\(assignment2SearchTime)&assignment3PlayTime=\(assignment3PlayTime)&assignment3SearchTime=\(assignment3SearchTime)&assignment4PlayTime=\(assignment4PlayTime)&assignment4SearchTime=\(assignment4SearchTime)&assignment5PlayTime=\(assignment5PlayTime)&assignment5SearchTime=\(assignment5SearchTime)&assignment6PlayTime=\(assignment6PlayTime)&assignment6SearchTime=\(assignment6SearchTime)&assignment7PlayTime=\(assignment7PlayTime)&assignment7SearchTime=\(assignment7SearchTime)&assignment8PlayTime=\(assignment8PlayTime)&assignment8SearchTime=\(assignment8SearchTime)&assignment9PlayTime=\(assignment9PlayTime)&assignment9SearchTime=\(assignment9SearchTime)&experimentalcondition=\(condition)"
+            let post:NSString = "deltagarid=\(deltagarid)&EndTime=\(EndTime)&StartTime=\(StartTime)&totalAssignments=\(totalAssignments)&totalFinished=\(totalFinished)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&experimentalcondition=\(condition)"
             
             
             NSLog("PostData: %@",post);

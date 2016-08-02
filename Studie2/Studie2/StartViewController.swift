@@ -123,9 +123,9 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     @IBAction func condition2Chosen()
     {
         globalCondition = 2
-                    globalDeltagarid = deltagaridTextview.text!
+        globalDeltagarid = deltagaridTextview.text!
 
-                    performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
+        performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
         
     }
 

@@ -11,36 +11,43 @@ import CoreData
 
 class Assignment {
     
-    var headline:String
+    var product:String
+    var checked:Bool
+    var assignmentNumber:Int
     var targetBeacon:Int
-    var descriptionText:String
-    var infoText:String
-    var question:String
-    var alternative1:String
-    var alternative2:String
-    var alternative3:String
-    var alternative4:String
-    var rightAlternative:Int
-    var userAnswer:Int
-    var fiftyFiftyRemove:[Int]
-    var percentAlternative1:Int
-    var percentAlternative2:Int
-    var percentAlternative3:Int
-    var percentAlternative4:Int
+    var offer:String
+    var beacontriggered:Bool
+    var answered:Bool
     
+    var qheadline:String
+    var qquestion:String
+    var qalternative1:String
+    var qalternative2:String
+    var qalternative3:String
+    var qalternative4:String
+    var qrightAlternative:Int
+    var quserAnswer:Int
+    var qfiftyFiftyRemove:[Int]
+    var qpercentAlternative1:Int
+    var qpercentAlternative2:Int
+    var qpercentAlternative3:Int
+    var qpercentAlternative4:Int
+    
+    
+    /*
     var rightAnswerText:String {
         get {
             var returnText:String
             
-            switch rightAlternative {
+            switch qrightAlternative {
             case 1:
-                returnText = alternative1
+                returnText = qalternative1
             case 2:
-                returnText = alternative2
+                returnText = qalternative2
             case 3:
-                returnText = alternative3
+                returnText = qalternative3
             case 4:
-                returnText = alternative4
+                returnText = qalternative4
             default:
                 returnText = "Kontakta forskaren. Någonting har gått fel"
                 break
@@ -49,20 +56,21 @@ class Assignment {
             return returnText
         }
     }
-    
+    */
+    /*
     var userAnswerText:String {
         get {
             var returnText:String
             
-            switch userAnswer {
+            switch quserAnswer {
             case 1:
-                returnText = alternative1
+                returnText = qalternative1
             case 2:
-                returnText = alternative2
+                returnText = qalternative2
             case 3:
-                returnText = alternative3
+                returnText = qalternative3
             case 4:
-                returnText = alternative4
+                returnText = qalternative4
             default:
                 returnText = "Kontakta forskaren. Någonting har gått fel"
                 break
@@ -71,10 +79,11 @@ class Assignment {
             return returnText
         }
     }
-    
+    */
+    /*
     var isAnswered:Bool {
         get {
-            if userAnswer != constantAssignmentNotAnswered{
+            if quserAnswer != constantAssignmentNotAnswered{
                 return true
             }
             else{
@@ -82,10 +91,10 @@ class Assignment {
             }
         }
     }
-    
-    var isRightAnswer:Bool {
+    */
+    var isCorrectAnswer:Bool {
         get {
-            if rightAlternative == userAnswer{
+            if qrightAlternative == quserAnswer{
                 return true
             }
             else{
@@ -94,6 +103,7 @@ class Assignment {
         }
     }
     
+    /*
     var isLateAnswer:Bool {
         get {
             if userAnswer == constantUserLateAnswer{
@@ -104,22 +114,23 @@ class Assignment {
             }
         }
     }
-    
-    
+    */
+    /*
     static func numberOfRightAnswers( Assignments:[Assignment] ) ->Int
     {
         var rightAnsweres:Int = 0
         
         for assignment in Assignments{
             
-            if assignment.isRightAnswer{
-                rightAnsweres++
+            if assignment.isCorrectAnswer{
+                rightAnsweres += 1
             }
         }
         
         return rightAnsweres
     }
-    
+    */
+    /*
     static func numberOfAnswers( Assignments:[Assignment] ) ->Int
     {
         var Answeres:Int = 0
@@ -127,34 +138,52 @@ class Assignment {
         for assignment in Assignments{
             
             if assignment.isAnswered{
-                Answeres++
+                Answeres += 1
             }
         }
         
         return Answeres
     }
-    
-    
-    
-    
-    init( headline:String, targetBeacon:Int, descriptionText:String, infoText:String, question:String, alternative1:String, alternative2:String, alternative3:String, alternative4:String, rightAlternative:Int, userAnswer:Int, fiftyFiftyRemove:[Int], percentAlternative1:Int, percentAlternative2:Int, percentAlternative3:Int, percentAlternative4:Int )
+    */
+
+    func checkedChange() //Håller koll på om användaren checkad av en produkt i listan
     {
-        self.headline = headline
-        self.descriptionText = descriptionText
+        if checked
+        {
+            checked = false
+        }
+        else
+        {
+            checked = true
+        }
+    }
+    
+    
+    init( product:String, checked:Bool, assignmentNumber:Int, targetBeacon:Int, offer:String, beacontriggered:Bool, answered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
+    {
+        self.product = product
+        self.checked = checked
+        self.assignmentNumber = assignmentNumber
         self.targetBeacon = targetBeacon
-        self.infoText=infoText
-        self.question=question
-        self.alternative1=alternative1
-        self.alternative2=alternative2
-        self.alternative3=alternative3
-        self.alternative4=alternative4
-        self.rightAlternative=rightAlternative
-        self.userAnswer=userAnswer
-        self.fiftyFiftyRemove=fiftyFiftyRemove
-        self.percentAlternative1=percentAlternative1
-        self.percentAlternative2=percentAlternative2
-        self.percentAlternative3=percentAlternative3
-        self.percentAlternative4=percentAlternative4
+        self.offer = offer
+        self.beacontriggered = beacontriggered
+        self.answered = answered
+        self.qheadline = qheadline
+        self.qquestion = qquestion
+        self.qalternative1 = qalternative1
+        self.qalternative2 = qalternative2
+        self.qalternative3 = qalternative3
+        self.qalternative4 = qalternative4
+        self.qrightAlternative = qrightAlternative
+        self.quserAnswer = quserAnswer
+        self.qfiftyFiftyRemove = qfiftyFiftyRemove
+        self.qpercentAlternative1 = qpercentAlternative1
+        self.qpercentAlternative2 = qpercentAlternative2
+        self.qpercentAlternative3 = qpercentAlternative3
+        self.qpercentAlternative4 = qpercentAlternative4
         
     }
+    
+
+    
 }
