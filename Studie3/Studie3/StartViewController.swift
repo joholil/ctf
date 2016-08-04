@@ -85,20 +85,18 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     func startExperiment()
     {
         //Kontrollera att deltagarid har matats in
-        //if controlDeltagarId(){
+        if controlDeltagarId(){
             // Kontrollera att deltagarid't inte existerar sedan tidigare
-          //  if deltagaridExists() == 1 {
-            //    if saveDeltagarid(){
-        
+            if deltagaridExists() == 1 {
+                if saveDeltagarid(){
                     globalDeltagarid = deltagaridTextview.text!
                     createDeltagaridCoredata()
                     
                     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
                     
-                    
-                //}
-            //}
-        //}
+                }
+            }
+        }
         
     }
     
@@ -207,12 +205,12 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         let deltagarId:NSString = deltagaridTextview.text!
         
         do {
-            let post:NSString = "deltagarId=\(deltagarId)"
+            let post:NSString = "deltagarid=\(deltagarId)"
             
             NSLog("PostData: %@",post);
             
-            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/deltagaridexists.php")!
-            
+            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy3/deltagaridexists.php")!
+        
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             
             let postLength:NSString = String( postData.length )
@@ -325,11 +323,11 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         do {
             
-            let post:NSString = "deltagarId=\(deltagarId)"
+            let post:NSString = "deltagarid=\(deltagarId)"
             
             NSLog("PostData: %@",post);
             
-            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/insertspelomgang.php")!
+            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy3/insertomgang.php")!
             
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             
@@ -438,11 +436,12 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let condition:NSString = String(measurement.condition)
         let deltagarid:NSString = measurement.deltagarId
-        let EndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.endTime))
+        //let EndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.endTime))
         let StartTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime))
         let totalAssignments:NSString = String(measurement.totalAssignments)
-        let totalFinished:NSString = String(measurement.totalAssignmentsFinished)
+        //let totalFinished:NSString = String(measurement.totalAssignmentsFinished)
         
+        /*
         let assignment1EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1EndTime))
         let assignment1StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1StartTime))
         
@@ -457,16 +456,20 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let assignment5EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5EndTime))
         let assignment5StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5StartTime))
-
+*/
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)&EndTime=\(EndTime)&StartTime=\(StartTime)&totalAssignments=\(totalAssignments)&totalFinished=\(totalFinished)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&experimentalcondition=\(condition)"
+            let post:NSString = "deltagarid=\(deltagarid)&starttime=\(StartTime)&totalassignments=\(totalAssignments)&experimentalcondition=\(condition)"
             
+            
+            /*
+            let post:NSString = "deltagarid=\(deltagarid)&EndTime=\(EndTime)&StartTime=\(StartTime)&totalAssignments=\(totalAssignments)&totalFinished=\(totalFinished)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&experimentalcondition=\(condition)"
+            */
             
             NSLog("PostData: %@",post);
             
-            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy2/updatespelomgang.php")!
+            let url:NSURL = NSURL(string: "http://www.hip.kau.se/hip/GamificationStudy3/updateomgang.php")!
             
             let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             //NSASCIIStringEncoding

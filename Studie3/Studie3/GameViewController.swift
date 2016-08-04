@@ -7,24 +7,331 @@
 //
 
 import UIKit
+import CoreData
 
 class GameViewController: UIViewController {
 
     var assignmentToShow:Int!
+    
+    @IBOutlet var timeLabel:UILabel!
+    @IBOutlet var alternative1Button:UIButton!
+    @IBOutlet var alternative2Button:UIButton!
+    @IBOutlet var alternative3Button:UIButton!
+    @IBOutlet var alternative4Button:UIButton!
+    @IBOutlet var questionTextView:UITextView!
+    @IBOutlet var fiftyFiftyButton:UIButton!
+    @IBOutlet var answersFromOthersButton:UIButton!
+    
+    @IBOutlet var P1Label:UILabel!
+    @IBOutlet var P2Label:UILabel!
+    @IBOutlet var P3Label:UILabel!
+    @IBOutlet var P4Label:UILabel!
+    @IBOutlet var headlineLabel:UILabel!
+    
+    @IBOutlet var visadeltagaridButton:UIButton!
+    @IBOutlet var visadeltagaridButtonButton:UIButton!
+
+    
+    // </Timer>      ------------------------------//
+    var localStartTime:NSTimeInterval = NSTimeInterval()
+    var localTimer:NSTimer = NSTimer()
+    // </Timer slut>      ------------------------------//
+    
+    var startTime:CFAbsoluteTime = CFAbsoluteTime()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.alternative1Button.setTitle("(A) " + globalAssignments[assignmentToShow].qalternative1,forState: UIControlState.Normal)
+        self.alternative2Button.setTitle("(B) " + globalAssignments[assignmentToShow].qalternative2,forState: UIControlState.Normal)
+        self.alternative3Button.setTitle("(C) " + globalAssignments[assignmentToShow].qalternative3,forState: UIControlState.Normal)
+        self.alternative4Button.setTitle("(D) " + globalAssignments[assignmentToShow].qalternative4,forState: UIControlState.Normal)
+ 
+        self.questionTextView.text = globalAssignments[assignmentToShow].qquestion
+        
+        self.headlineLabel.text = globalAssignments[assignmentToShow].qheadline
+        
+        self.questionTextView.selectable = false
+        self.questionTextView.editable = false
+ 
+        //Ska timer användas
+        if globalUseTimer{
+            startCounter()
+        }
+        else{
+            self.timeLabel.text = "Time"
+        }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // De här verkar behöva anropas i viewDidAppear annars blir det blå färg på fonten.
+        if globalFiftyFiftyUsed{
+            FiftyFiftyUsed()
+        }
+        
+        if globalanswersFromOthersUsed{
+            AnswersFromOthersUsed()
+        }
+        startTime = CFAbsoluteTimeGetCurrent()
+        
+    }
+    
+    @IBAction func fiftyFiftyChosen()
+    {
+        handleFiftyFifty()
+    }
+    
+    
+    @IBAction func answersFromOthersChosen()
+    {
+        handleAnswersFromOthers()
+    }
+  
+    @IBAction func alternative1Chosen()
+    {
+        //UpdateMeasurement()
+        localTimer.invalidate()
+        globalAssignments[assignmentToShow].quserAnswer = 1
+        goToNextView()
+    }
+    
+    @IBAction func alternative2Chosen()
+    {
+        //UpdateMeasurement()
+        localTimer.invalidate()
+        globalAssignments[assignmentToShow].quserAnswer = 2
+        goToNextView()
+    }
+    
+    @IBAction func alternative3Chosen()
+    {
+        //UpdateMeasurement()
+        localTimer.invalidate()
+        globalAssignments[assignmentToShow].quserAnswer = 3
+        goToNextView()
+    }
+    
+    @IBAction func alternative4Chosen()
+    {
+        //UpdateMeasurement()
+        localTimer.invalidate()
+        globalAssignments[assignmentToShow].quserAnswer = 4
+        goToNextView()
+    }
+    
+    func goToNextView(){
+        
+        performSegueWithIdentifier("segueResult", sender: nil)
+        
+    }
+    
+    func UpdateMeasurement(){
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarid == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    let managedObject = fetchResults[0]
+                    
+                    
+                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
+
+                    switch globalCurrentAssignment {
+                    case (0):
+                        managedObject.setValue(startTime, forKey: "assignment1StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1EndTime")
+                    case (1):
+                        managedObject.setValue(startTime, forKey: "assignment2StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment2EndTime")
+                    case (2):
+                        managedObject.setValue(startTime, forKey: "assignment3StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment3EndTime")
+                    case (3):
+                        managedObject.setValue(startTime, forKey: "assignment4StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4EndTime")
+                    case (4):
+                        managedObject.setValue(startTime, forKey: "assignment5StartTime")
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5EndTime")
+                    default: break
+                        
+                    }
+ 
+                    try context.save()
+                }
+            }
+            
+        } catch _ {
+            contents = nil
+        }
+        
+    }
+    
+    func AnswersFromOthersUsed(){
+        
+        let attrStringF = NSAttributedString(string: self.answersFromOthersButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        self.answersFromOthersButton.setAttributedTitle(attrStringF, forState: .Normal)
+        
+        self.answersFromOthersButton.enabled = false
+        
+    }
+    
+    func handleAnswersFromOthers(){
+        
+        AnswersFromOthersUsed()
+        
+        
+        self.P1Label.text = String(globalAssignments[assignmentToShow].qpercentAlternative1) + "%"
+        self.P2Label.text = String(globalAssignments[assignmentToShow].qpercentAlternative2) + "%"
+        self.P3Label.text = String(globalAssignments[assignmentToShow].qpercentAlternative3) + "%"
+        self.P4Label.text = String(globalAssignments[assignmentToShow].qpercentAlternative4) + "%"
+        
+        self.P1Label.hidden = false
+        self.P2Label.hidden = false
+        self.P3Label.hidden = false
+        self.P4Label.hidden = false
+        
+        globalanswersFromOthersUsed = true
+        
+    }
+    
+    
+    func handleFiftyFifty(){
+        
+        for remove in globalAssignments[assignmentToShow].qfiftyFiftyRemove{
+            
+            switch remove {
+            case 1:
+                let attrStringA = NSAttributedString(string: self.alternative1Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternative1Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternative1Button.enabled = false
+            case 2:
+                let attrStringA = NSAttributedString(string: self.alternative2Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternative2Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternative2Button.enabled = false
+            case 3:
+                let attrStringA = NSAttributedString(string: self.alternative3Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternative3Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternative3Button.enabled = false
+            case 4:
+                let attrStringA = NSAttributedString(string: self.alternative4Button.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+                self.alternative4Button.setAttributedTitle(attrStringA, forState: .Normal)
+                self.alternative4Button.enabled = false
+            default:
+                break
+                
+            }
+        }
+        
+        globalFiftyFiftyUsed = true
+        
+        FiftyFiftyUsed()
+        
+    }
+    
+    func FiftyFiftyUsed(){
+        
+        let attrStringF = NSAttributedString(string: self.fiftyFiftyButton.titleForState(.Normal)!, attributes: [NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue])
+        self.fiftyFiftyButton.setAttributedTitle(attrStringF, forState: .Normal)
+        
+        self.fiftyFiftyButton.enabled = false
+        
+    }
+    
+    
+    func startCounter() {
+        let aSelector : Selector = "localTime"
+        localTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        localStartTime = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
+    
+    func localTime(){
+        
+        if (Alerter.timeLeft(localStartTime) <= 0.0){
+            localTimer.invalidate()
+            // User was to late
+            globalAssignments[assignmentToShow].quserAnswer = globalConstantUserLateAnswer
+            goToNextView()
+            
+        }
+        else{
+            
+            if (globalEnglish){
+                self.timeLabel.text = "Time left: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+                
+            }
+            else
+            {
+                self.timeLabel.text = "Tid kvar: " + String(round(Alerter.timeLeft(localStartTime)*100/100).description)
+            }
+            
+            Alerter.Vibrate(Alerter.timeLeft(localStartTime))
+            
+            if Alerter.timeLeft(localStartTime) < globalUseAlertcolorTime{
+                if Alerter.AlertColor(Alerter.timeLeft(localStartTime)){
+                    self.timeLabel.backgroundColor = UIColor.redColor()
+                }
+                else{
+                    self.timeLabel.backgroundColor = UIColor.whiteColor()
+                }
+            }
+        }
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "segueResult") {
+            
+            //Här sätts variabel i nästa visade dialog
+            let NextViewController = (segue.destinationViewController as! ResultViewController)
+            NextViewController.assignmentToShow = assignmentToShow
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
+    @IBAction func showparticipantIdButton()
+    {
+        
+        self.visadeltagaridButton.hidden = false
+    }
+    
+    
+    @IBAction func showparticipantId()
+    {
+        
+        self.visadeltagaridButton.hidden = true
+        
+        let alertControler = UIAlertController(title: "DeltagarId", message: globalDeltagarid, preferredStyle: UIAlertControllerStyle.Alert)
+        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertControler, animated: true, completion: nil)
+        
+    }
+
+    
     /*
     // MARK: - Navigation
 

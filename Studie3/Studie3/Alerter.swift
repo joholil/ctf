@@ -10,7 +10,7 @@ import Foundation
 import AudioToolbox
 
 class Alerter {
-    /*
+    
     static func timeLeft (localStartTime:NSTimeInterval) ->Double{
         var timeLeft:Double = 0.0
         var localRoundedElapsedTime:Double = 0.0
@@ -22,9 +22,7 @@ class Alerter {
         
         return timeLeft
     }
-    */
  
- /*
     static func Vibrate(timeLeft:Double){
         
         let x:Float = Float(timeLeft)%1
@@ -39,8 +37,8 @@ class Alerter {
             }
         }
     }
-   */
- /*
+ 
+ 
     static func AlertColor(timeLeft:Double) -> Bool{
         var retur:Bool
         
@@ -61,6 +59,6 @@ class Alerter {
         return retur
         
     }
-    */
+    
     
 }

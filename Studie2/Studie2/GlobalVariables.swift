@@ -58,8 +58,6 @@ let globalaccurazyZone: Double = 0.2
 let globalmaxDist: Int = 20
 let globalRightAnswersForSuccess:Int = 4
 
-
-
 /////////////////////////// Timer ///////////////////////////////
 
 let globalTimerTime:Double = 30 // Här sätts tiden som man har för att svara på frågan

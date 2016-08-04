@@ -22,6 +22,7 @@
 		317D4A941D4F6B8C004E903F /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D4A931D4F6B8C004E903F /* OfferViewController.swift */; };
 		31A062681D50E70D00F63C73 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062671D50E70D00F63C73 /* Alerter.swift */; };
 		31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062691D50E7F600F63C73 /* GameViewController.swift */; };
+		31A0626C1D51D0FB00F63C73 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		317D4A931D4F6B8C004E903F /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		31A062671D50E70D00F63C73 /* Alerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		31A062691D50E7F600F63C73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +88,11 @@
 				3137668C1D4F21F000BCA0C5 /* StartViewController.swift */,
 				317D4A931D4F6B8C004E903F /* OfferViewController.swift */,
 				31A062691D50E7F600F63C73 /* GameViewController.swift */,
+				31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */,
 				313766921D4F22DC00BCA0C5 /* Assignment.swift */,
 				313766941D4F237900BCA0C5 /* Measurement.swift */,
-				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
 				31A062671D50E70D00F63C73 /* Alerter.swift */,
+				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
 			);
 			path = Studie3;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A0626C1D51D0FB00F63C73 /* ResultViewController.swift in Sources */,
 				317D4A941D4F6B8C004E903F /* OfferViewController.swift in Sources */,
 				317D4A901D4F5583004E903F /* BuylistViewController.swift in Sources */,
 				313766931D4F22DC00BCA0C5 /* Assignment.swift in Sources */,

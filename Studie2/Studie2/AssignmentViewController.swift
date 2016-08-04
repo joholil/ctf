@@ -29,18 +29,13 @@ class AssignmentViewController: UIViewController {
     @IBOutlet var P2Label:UILabel!
     @IBOutlet var P3Label:UILabel!
     @IBOutlet var P4Label:UILabel!
-    
-    
 
     // </Timer>      ------------------------------//
     var localStartTime:NSTimeInterval = NSTimeInterval()
     var localTimer:NSTimer = NSTimer()
     
-    
     // </Timer slut>      ------------------------------//
-
     var startTime:CFAbsoluteTime = CFAbsoluteTime()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -228,22 +223,17 @@ class AssignmentViewController: UIViewController {
                     
                     if (Assignment.numberOfRightAnswers(globalAssignments) >= globalRightAnswersForSuccess){
                         managedObject.setValue(true, forKey: "successfulGame")
-                        
                     }
                     else {
                         managedObject.setValue(false, forKey: "successfulGame")
-                        
                     }
-                    
                     try context.save()
                 }
             }
-            
         }
         catch{
             contents = nil
         }
-        
     }
     
     @IBAction func alternative1Chosen()

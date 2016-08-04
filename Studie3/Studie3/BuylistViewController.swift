@@ -28,6 +28,9 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var erbjudandeButton4:UIButton!
     @IBOutlet var erbjudandeButton5:UIButton!
     
+    @IBOutlet var visadeltagaridButton:UIButton!
+    @IBOutlet var visadeltagaridButtonButton:UIButton!
+    
     var measurmentStartTime:CFAbsoluteTime = 0
     var assignmentToShow:Int = 1
     
@@ -93,7 +96,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         else if globalCondition == 3{
             for Assignment in globalAssignments
             {
-                if (Assignment.answered){
+                if (Assignment.beacontriggered){
                     switch Assignment.assignmentNumber{
                     case 1:
                         erbjudandeButton1.hidden = !Assignment.isCorrectAnswer
@@ -219,7 +222,6 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
     }
-
     
     @IBAction func erbjudande1ButtonChosen()
     {
@@ -324,6 +326,25 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    @IBAction func showparticipantIdButton()
+    {
+        
+        self.visadeltagaridButton.hidden = false
+    }
+    
+    
+    @IBAction func showparticipantId()
+    {
+        
+        self.visadeltagaridButton.hidden = true
+        
+        let alertControler = UIAlertController(title: "DeltagarId", message: globalDeltagarid, preferredStyle: UIAlertControllerStyle.Alert)
+        alertControler.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertControler, animated: true, completion: nil)
+        
+    }
+
     
     /*
      // MARK: - Navigation
