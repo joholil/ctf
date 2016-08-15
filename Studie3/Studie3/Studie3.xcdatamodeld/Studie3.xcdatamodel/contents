@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
     <entity name="Measurement" representedClassName="Studie3.Measurement" syncable="YES">
-        <attribute name="assignment1EndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment1StartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment2EndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment2StartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment3EndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment3StartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment4EndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment4StartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment5EndTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="assignment5StartTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment1activatedtime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment1checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="assignment2activatedtime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment2checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="assignment3activatedtime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment3checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="assignment4activatedtime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment4checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="assignment5activatedtime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="assignment5checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="buzzerused" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="condition" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <attribute name="deltagarId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="question1correct" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="question2correct" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="question3correct" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="question4correct" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="question5correct" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer1" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer1first" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer2" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer2first" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer3" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer3first" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer4" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer4first" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer5" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timelookingatoffer5first" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timesoffer1clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timesoffer2clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timesoffer3clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timesoffer4clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timesoffer5clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="totalAssignments" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="totalAssignmentsFinished" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="visualwarningused" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="615"/>
     </elements>
 </model>

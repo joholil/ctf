@@ -61,15 +61,6 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         
         initiateIbeacons()
         
-        /*
-         if (globalCondition == 2  ){
-            initiateIbeacons()
-        }
-        else if globalCondition == 3{
-            initiateIbeacons()
-        }
- */
-        
     }
     
     func initiateOfferButtons(){
@@ -153,18 +144,18 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     
     func beaconsInRange(accuracyZone: Double, beacons: [AnyObject]! )-> Bool{
         
+        //var beaconFoundInArray: Bool = false
         if (knownBeacons.count>0)
         {
             for element in knownBeacons
             {
                     if (element.accuracy < accurazyZone){
                         beaconFound(element.minor)
-                        return true
+                        //beaconFoundInArray = true
                     }
             }
         }
         return false
-        
     }
     
     
@@ -188,6 +179,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                 //meddelandet ska bara visas en gång.
                 if (Assignment.targetBeacon == beaconId)
                 {
+                    assignmentToShow = i
+                    saveMeasurementActivationTime()
                     Assignment.beacontriggered = true
                     
                     if globalCondition == 1
@@ -196,17 +189,95 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     else if globalCondition == 2
                     {
-                        assignmentToShow = i
+                        //assignmentToShow = i
                         performSegueWithIdentifier("segueOffer", sender: nil)
                     }
                     else if globalCondition == 3
                     {
-                        assignmentToShow = i
+                        //assignmentToShow = i
                         performSegueWithIdentifier("segueGame", sender: nil)
                     }
                 }
             }
             i = i + 1
+        }
+    }
+    
+    func saveMeasurementActivationTime(){
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarId == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    let managedObject = fetchResults[0]
+                    switch assignmentToShow {
+                    case 0:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1activatedtime")
+                    case 1:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment2activatedtime")
+                    case 2:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment3activatedtime")
+                    case 3:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4activatedtime")
+                    case 4:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5activatedtime")
+                    default:
+                        break
+                    }
+                    
+                    try context.save()
+                }
+            }
+        }
+        catch{
+            contents = nil
+        }
+    }
+    
+    func saveMeasurementChecked(assignmentChecked:Int){
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarId == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    let managedObject = fetchResults[0]
+                    switch assignmentChecked {
+                    case 1:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1checked")
+                    case 2:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment2checked")
+                    case 3:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment3checked")
+                    case 4:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4checked")
+                    case 5:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5checked")
+                    default:
+                        break
+                    }
+                    
+                    try context.save()
+                }
+            }
+        }
+        catch{
+            contents = nil
         }
     }
     
@@ -226,32 +297,84 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func erbjudande1ButtonChosen()
     {
         assignmentToShow = 0
+        globaltimesoffer1clicked = 1
+        saveMeasurementOffersClicked(1)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
     
     @IBAction func erbjudande2ButtonChosen()
     {
         assignmentToShow = 1
+        globaltimesoffer2clicked += 1
+        saveMeasurementOffersClicked(2)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
     
     @IBAction func erbjudande3ButtonChosen()
     {
         assignmentToShow = 2
+        globaltimesoffer3clicked += 1
+        saveMeasurementOffersClicked(3)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
     
     @IBAction func erbjudande4ButtonChosen()
     {
         assignmentToShow = 3
+        globaltimesoffer4clicked += 1
+        saveMeasurementOffersClicked(4)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
     
     @IBAction func erbjudande5ButtonChosen()
     {
         assignmentToShow = 4
+        globaltimesoffer5clicked += 1
+        saveMeasurementOffersClicked(5)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
+    
+    
+    
+    func saveMeasurementOffersClicked(assignmentChecked:Int){
+        
+        let contents: NSString?
+        
+        do {
+            let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = appDel.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Measurement")
+            request.predicate = NSPredicate(format: "deltagarId == %@", globalDeltagarid)
+            
+            if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if fetchResults.count != 0{
+                    
+                    let managedObject = fetchResults[0]
+                    switch assignmentChecked {
+                    case 1:
+                        managedObject.setValue(globaltimesoffer1clicked, forKey: "timesoffer1clicked")
+                    case 2:
+                        managedObject.setValue(globaltimesoffer2clicked, forKey: "timesoffer2clicked")
+                    case 3:
+                        managedObject.setValue(globaltimesoffer3clicked, forKey: "timesoffer3clicked")
+                    case 4:
+                        managedObject.setValue(globaltimesoffer4clicked, forKey: "timesoffer4clicked")
+                    case 5:
+                        managedObject.setValue(globaltimesoffer5clicked, forKey: "timesoffer5clicked")
+                    default:
+                        break
+                    }
+                    
+                    try context.save()
+                }
+            }
+        }
+        catch{
+            contents = nil
+        }
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "segueOffer") {
@@ -271,30 +394,35 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func product1ButtonChosen()
     {
         globalAssignments[0].checkedChange()
+        saveMeasurementChecked(1)
         product1Button.setAttributedTitle(getAttributeString(1), forState: UIControlState.Normal)
     }
 
     @IBAction func product2ButtonChosen()
     {
         globalAssignments[1].checkedChange()
+        saveMeasurementChecked(2)
         product2Button.setAttributedTitle(getAttributeString(2), forState: UIControlState.Normal)
     }
     
     @IBAction func product3ButtonChosen()
     {
         globalAssignments[2].checkedChange()
+        saveMeasurementChecked(3)
         product3Button.setAttributedTitle(getAttributeString(3), forState: UIControlState.Normal)
     }
     
     @IBAction func product4ButtonChosen()
     {
         globalAssignments[3].checkedChange()
+        saveMeasurementChecked(4)
         product4Button.setAttributedTitle(getAttributeString(4), forState: UIControlState.Normal)
     }
     
     @IBAction func product5ButtonChosen()
     {
         globalAssignments[4].checkedChange()
+        saveMeasurementChecked(5)
         product5Button.setAttributedTitle(getAttributeString(5), forState: UIControlState.Normal)
     }
     

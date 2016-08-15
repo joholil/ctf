@@ -62,8 +62,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         return true
     }
     
-    
-    
     @IBAction func condition1Chosen()
     {
         globalCondition = 1
@@ -93,7 +91,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
                     createDeltagaridCoredata()
                     
                     performSegueWithIdentifier("segueStartStartmeasure", sender: nil)
-                    
+
                 }
             }
         }
@@ -138,8 +136,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
             return retur
         }
         return "Funktionen nonSaveMeasures misslyckades"
-    }
-    
+    }    
     
     func saveMesurements()->Bool{
         
@@ -428,7 +425,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
     func updateMeasurement( measurement:Measurement)->Bool{
         
         let dateFormatterDT = NSDateFormatter()
-        dateFormatterDT.dateFormat = "dd-MMM-yy HH:mm:ss"
+        dateFormatterDT.dateFormat = "dd-MMM-yy"
         dateFormatterDT.locale = NSLocale(localeIdentifier: "en-US")
         
         let dateFormatterT = NSDateFormatter()
@@ -436,36 +433,55 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         
         let condition:NSString = String(measurement.condition)
         let deltagarid:NSString = measurement.deltagarId
-        //let EndTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.endTime))
-        let StartTime:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime))
+        let StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime))
+        let StartDate:NSString = dateFormatterDT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.startTime))
+        
         let totalAssignments:NSString = String(measurement.totalAssignments)
-        //let totalFinished:NSString = String(measurement.totalAssignmentsFinished)
         
-        /*
-        let assignment1EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1EndTime))
-        let assignment1StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1StartTime))
+        let assignment1activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment1activatedtime))
+        let assignment2activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment2activatedtime))
+        let assignment3activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment3activatedtime))
+        let assignment4activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4activatedtime))
+        let assignment5activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5activatedtime))
         
-        let assignment2EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment2EndTime))
-        let assignment2StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment2StartTime))
+        let assignment1checked:NSString = String(Int(measurement.assignment1checked))
+        let assignment2checked:NSString = String(Int(measurement.assignment2checked))
+        let assignment3checked:NSString = String(Int(measurement.assignment3checked))
+        let assignment4checked:NSString = String(Int(measurement.assignment4checked))
+        let assignment5checked:NSString = String(Int(measurement.assignment5checked))
+    
+        let timesoffer1clicked:NSString = String(Int(measurement.timesoffer1clicked))
+        let timesoffer2clicked:NSString = String(Int(measurement.timesoffer2clicked))
+        let timesoffer3clicked:NSString = String(Int(measurement.timesoffer3clicked))
+        let timesoffer4clicked:NSString = String(Int(measurement.timesoffer4clicked))
+        let timesoffer5clicked:NSString = String(Int(measurement.timesoffer5clicked))
+
+        let question1correct:NSString = String(Int(measurement.question1correct))
+        let question2correct:NSString = String(Int(measurement.question2correct))
+        let question3correct:NSString = String(Int(measurement.question3correct))
+        let question4correct:NSString = String(Int(measurement.question4correct))
+        let question5correct:NSString = String(Int(measurement.question5correct))
         
-        let assignment3EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment3EndTime))
-        let assignment3StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment3StartTime))
-        
-        let assignment4EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4EndTime))
-        let assignment4StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4StartTime))
-        
-        let assignment5EndTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5EndTime))
-        let assignment5StartTime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5StartTime))
-*/
+        let buzzerused:NSString = String(Int(measurement.buzzerused))
+        let visualwarningused:NSString = String(Int(measurement.visualwarningused))
+
+        let timelookingatoffer1:NSString = String(measurement.timelookingatoffer1)
+        let timelookingatoffer2:NSString = String(measurement.timelookingatoffer2)
+        let timelookingatoffer3:NSString = String(measurement.timelookingatoffer3)
+        let timelookingatoffer4:NSString = String(measurement.timelookingatoffer4)
+        let timelookingatoffer5:NSString = String(measurement.timelookingatoffer5)
+
+        let timelookingatoffer1first:NSString = String(measurement.timelookingatoffer1first)
+        let timelookingatoffer2first:NSString = String(measurement.timelookingatoffer2first)
+        let timelookingatoffer3first:NSString = String(measurement.timelookingatoffer3first)
+        let timelookingatoffer4first:NSString = String(measurement.timelookingatoffer4first)
+        let timelookingatoffer5first:NSString = String(measurement.timelookingatoffer5first)
+
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)&starttime=\(StartTime)&totalassignments=\(totalAssignments)&experimentalcondition=\(condition)"
+            let post:NSString = "deltagarid=\(deltagarid)&starttime=\(StartTime)&startdate=\(StartDate)&totalassignments=\(totalAssignments)&experimentalcondition=\(condition)&assignment1activatedtime=\(assignment1activatedtime)&assignment2activatedtime=\(assignment2activatedtime)&assignment3activatedtime=\(assignment3activatedtime)&assignment4activatedtime=\(assignment4activatedtime)&assignment5activatedtime=\(assignment5activatedtime)&assignment1checked=\(assignment1checked)&assignment2checked=\(assignment2checked)&assignment3checked=\(assignment3checked)&assignment4checked=\(assignment4checked)&assignment5checked=\(assignment5checked)&timesoffer1clicked=\(timesoffer1clicked)&timesoffer2clicked=\(timesoffer2clicked)&timesoffer3clicked=\(timesoffer3clicked)&timesoffer4clicked=\(timesoffer4clicked)&timesoffer5clicked=\(timesoffer5clicked)&question1correct=\(question1correct)&question2correct=\(question2correct)&question3correct=\(question3correct)&question4correct=\(question4correct)&question5correct=\(question5correct)&buzzerused=\(buzzerused)&visualwarningused=\(visualwarningused)&timelookingatoffer1=\(timelookingatoffer1)&timelookingatoffer2=\(timelookingatoffer2)&timelookingatoffer3=\(timelookingatoffer3)&timelookingatoffer4=\(timelookingatoffer4)&timelookingatoffer5=\(timelookingatoffer5)&timelookingatoffer1first=\(timelookingatoffer1first)&timelookingatoffer2first=\(timelookingatoffer2first)&timelookingatoffer3first=\(timelookingatoffer3first)&timelookingatoffer4first=\(timelookingatoffer4first)&timelookingatoffer5first=\(timelookingatoffer5first)"
             
-            
-            /*
-            let post:NSString = "deltagarid=\(deltagarid)&EndTime=\(EndTime)&StartTime=\(StartTime)&totalAssignments=\(totalAssignments)&totalFinished=\(totalFinished)&assignment1EndTime=\(assignment1EndTime)&assignment1StartTime=\(assignment1StartTime)&assignment2EndTime=\(assignment2EndTime)&assignment2StartTime=\(assignment2StartTime)&assignment3StartTime=\(assignment3StartTime)&assignment3EndTime=\(assignment3EndTime)&assignment4EndTime=\(assignment4EndTime)&assignment4StartTime=\(assignment4StartTime)&assignment5EndTime=\(assignment5EndTime)&assignment5StartTime=\(assignment5StartTime)&experimentalcondition=\(condition)"
-            */
             
             NSLog("PostData: %@",post);
             

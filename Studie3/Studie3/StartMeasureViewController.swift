@@ -34,12 +34,12 @@ class StartMeasureViewController: UIViewController {
     {
         globalStartTime = CFAbsoluteTimeGetCurrent()
         
-        FinishMeasurement()
+        saveMeasurement()
         performSegueWithIdentifier("segueBuylist", sender: nil)
 
     }
     
-    func FinishMeasurement(){
+    func saveMeasurement(){
         
         let contents: NSString?
         

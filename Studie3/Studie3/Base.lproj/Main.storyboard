@@ -364,7 +364,7 @@
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Cg6-aq-rv2" kind="push" id="0hT-MZ-1XD"/>
+                                    <segue destination="Cg6-aq-rv2" kind="push" id="RgO-x5-60G"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="Nd1-G0-HjI">
@@ -422,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbz-Cu-AWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2013" y="1014"/>
+            <point key="canvasLocation" x="2058" y="1035"/>
         </scene>
         <!--Buylist View Controller-->
         <scene sceneID="xIn-Zk-Hxn">
@@ -623,7 +623,7 @@
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Cg6-aq-rv2" kind="push" id="uhP-L7-AqZ"/>
+                                    <action selector="BackToBuylist" destination="CE8-f2-4KZ" eventType="touchUpInside" id="X1F-Rl-7ib"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="dES-w8-gRx">
@@ -677,11 +677,12 @@
                         <outlet property="offerTextView" destination="dES-w8-gRx" id="I99-cQ-bVu"/>
                         <outlet property="visadeltagaridButton" destination="LZN-6x-1vf" id="7TN-J5-pMV"/>
                         <outlet property="visadeltagaridButtonButton" destination="kG3-FH-4BX" id="46v-7m-TkE"/>
+                        <segue destination="Cg6-aq-rv2" kind="push" identifier="segueBackToBuylist" id="dL0-cR-7g6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHO-sq-yyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="277"/>
+            <point key="canvasLocation" x="1980" y="289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0cr-gG-nYb">
@@ -726,6 +727,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0hT-MZ-1XD"/>
+        <segue reference="dL0-cR-7g6"/>
     </inferredMetricsTieBreakers>
 </document>

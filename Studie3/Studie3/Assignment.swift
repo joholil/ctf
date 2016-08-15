@@ -32,7 +32,12 @@ class Assignment {
     var qpercentAlternative2:Int
     var qpercentAlternative3:Int
     var qpercentAlternative4:Int
-    
+
+    var qtimelookingatoffer1:Double = 0
+    var qtimelookingatoffer2:Double = 0
+    var qtimelookingatoffer3:Double = 0
+    var qtimelookingatoffer4:Double = 0
+    var qtimelookingatoffer5:Double = 0
     
     
     var rightAnswerText:String {

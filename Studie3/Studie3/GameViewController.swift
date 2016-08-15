@@ -94,33 +94,33 @@ class GameViewController: UIViewController {
   
     @IBAction func alternative1Chosen()
     {
-        //UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 1
+        saveResult()
         goToNextView()
     }
     
     @IBAction func alternative2Chosen()
     {
-        //UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 2
+        saveResult()
         goToNextView()
     }
     
     @IBAction func alternative3Chosen()
     {
-        //UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 3
+        saveResult()
         goToNextView()
     }
     
     @IBAction func alternative4Chosen()
     {
-        //UpdateMeasurement()
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 4
+        saveResult()
         goToNextView()
     }
     
@@ -130,55 +130,48 @@ class GameViewController: UIViewController {
         
     }
     
-    func UpdateMeasurement(){
+    func saveResult(){
         
         let contents: NSString?
         
         do {
             let appDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-            
             let context: NSManagedObjectContext = appDel.managedObjectContext
             
             let request = NSFetchRequest(entityName: "Measurement")
-            request.predicate = NSPredicate(format: "deltagarid == %@", globalDeltagarid)
+            request.predicate = NSPredicate(format: "deltagarId == %@", globalDeltagarid)
             
             if let fetchResults = try appDel.managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
                 if fetchResults.count != 0{
                     
                     let managedObject = fetchResults[0]
-                    
-                    
-                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerUsed")
-
-                    switch globalCurrentAssignment {
-                    case (0):
-                        managedObject.setValue(startTime, forKey: "assignment1StartTime")
-                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment1EndTime")
-                    case (1):
-                        managedObject.setValue(startTime, forKey: "assignment2StartTime")
-                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment2EndTime")
-                    case (2):
-                        managedObject.setValue(startTime, forKey: "assignment3StartTime")
-                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment3EndTime")
-                    case (3):
-                        managedObject.setValue(startTime, forKey: "assignment4StartTime")
-                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4EndTime")
-                    case (4):
-                        managedObject.setValue(startTime, forKey: "assignment5StartTime")
-                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5EndTime")
-                    default: break
-                        
+                    switch assignmentToShow {
+                    case 0:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question1correct")
+                    case 1:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question2correct")
+                    case 2:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question3correct")
+                    case 3:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question4correct")
+                    case 4:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question5correct")
+                    default:
+                        break
                     }
- 
+                    
+                    managedObject.setValue(globalbuzzerUsed, forKey: "buzzerused")
+                    managedObject.setValue(globalvisualWarningUsed, forKey: "visualwarningused")
+                    
                     try context.save()
                 }
             }
-            
-        } catch _ {
+        }
+        catch{
             contents = nil
         }
-        
     }
+    
     
     func AnswersFromOthersUsed(){
         
@@ -264,7 +257,10 @@ class GameViewController: UIViewController {
         if (Alerter.timeLeft(localStartTime) <= 0.0){
             localTimer.invalidate()
             // User was to late
+            
             globalAssignments[assignmentToShow].quserAnswer = globalConstantUserLateAnswer
+            saveResult()
+            
             goToNextView()
             
         }
