@@ -100,6 +100,7 @@ class GameViewController: UIViewController {
         goToNextView()
     }
     
+    
     @IBAction func alternative2Chosen()
     {
         localTimer.invalidate()
@@ -113,6 +114,7 @@ class GameViewController: UIViewController {
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 3
         saveResult()
+
         goToNextView()
     }
     
@@ -121,6 +123,8 @@ class GameViewController: UIViewController {
         localTimer.invalidate()
         globalAssignments[assignmentToShow].quserAnswer = 4
         saveResult()
+
+
         goToNextView()
     }
     
@@ -148,14 +152,29 @@ class GameViewController: UIViewController {
                     switch assignmentToShow {
                     case 0:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question1correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer1clicked += 1
+                        }
                     case 1:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question2correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer2clicked += 1
+                        }
                     case 2:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question3correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer3clicked += 1
+                        }
                     case 3:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question4correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer4clicked += 1
+                        }
                     case 4:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question5correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer5clicked += 1
+                        }
                     default:
                         break
                     }

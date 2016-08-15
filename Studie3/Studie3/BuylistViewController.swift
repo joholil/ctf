@@ -51,6 +51,10 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    var test: Bool = false
+    
+    
+    
     ///////////////////
     
     
@@ -61,6 +65,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         
         initiateIbeacons()
         
+        test = animated
     }
     
     func initiateOfferButtons(){
@@ -71,16 +76,20 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                 switch Assignment.assignmentNumber{
                 case 1:
                     erbjudandeButton1.hidden = !Assignment.beacontriggered
+                    //erbjudandeButton1.setNeedsDisplay()
                 case 2:
                     erbjudandeButton2.hidden = !Assignment.beacontriggered
+                    //erbjudandeButton2.setNeedsDisplay()
                 case 3:
                     erbjudandeButton3.hidden = !Assignment.beacontriggered
+                    //erbjudandeButton3.setNeedsDisplay()
                 case 4:
                     erbjudandeButton4.hidden = !Assignment.beacontriggered
+                    //erbjudandeButton4.setNeedsDisplay()
                 case 5:
                     erbjudandeButton5.hidden = !Assignment.beacontriggered
+                    //erbjudandeButton5.setNeedsDisplay()
                 default: break
-                    
                 }
             }
         }
@@ -167,7 +176,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     */
     
     
-    func beaconFound(beaconId:NSNumber)
+    func beaconFound(beaconId:NSNumber)->Bool
     {
         var i:Int = 0
         
@@ -185,22 +194,61 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                     
                     if globalCondition == 1
                     {
+                        
                         initiateOfferButtons()
+                        return true
+                        
                     }
                     else if globalCondition == 2
                     {
                         //assignmentToShow = i
+                        
+                        switch assignmentToShow {
+                        case 0:
+                            globaltimesoffer1clicked += 1
+                        case 1:
+                            globaltimesoffer2clicked += 1
+                        case 2:
+                            globaltimesoffer3clicked += 1
+                        case 3:
+                            globaltimesoffer4clicked += 1
+                        case 4:
+                            globaltimesoffer5clicked += 1
+                        default:
+                            break
+                        }
+                    
                         performSegueWithIdentifier("segueOffer", sender: nil)
+                        return true
+                        
                     }
                     else if globalCondition == 3
                     {
                         //assignmentToShow = i
+                        switch assignmentToShow {
+                        case 0:
+                            globaltimesoffer1clicked += 1
+                        case 1:
+                            globaltimesoffer2clicked += 1
+                        case 2:
+                            globaltimesoffer3clicked += 1
+                        case 3:
+                            globaltimesoffer4clicked += 1
+                        case 4:
+                            globaltimesoffer5clicked += 1
+                        default:
+                            break
+                        }
+
                         performSegueWithIdentifier("segueGame", sender: nil)
+                        return true
+                        
                     }
                 }
             }
             i = i + 1
         }
+        return false
     }
     
     func saveMeasurementActivationTime(){
@@ -297,7 +345,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func erbjudande1ButtonChosen()
     {
         assignmentToShow = 0
-        globaltimesoffer1clicked = 1
+        globaltimesoffer1clicked += 1
         saveMeasurementOffersClicked(1)
         performSegueWithIdentifier("segueOffer", sender: nil)
     }

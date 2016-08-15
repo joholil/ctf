@@ -22,7 +22,7 @@ let globalAssignments:[Assignment] = [
 // Ibeacon //
 let globaluuid:String = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"
 let globalidentifier:String = "Estimotes"
-let globalaccurazyZone: Double = 0.2
+let globalaccurazyZone: Double = 1
 let globalmaxDist: Int = 20
 
 // Globala variabler //

@@ -364,7 +364,7 @@
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Cg6-aq-rv2" kind="push" id="RgO-x5-60G"/>
+                                    <action selector="BackToBuylist" destination="GGN-jB-6bN" eventType="touchUpInside" id="omU-VN-Zpd"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="Nd1-G0-HjI">
@@ -418,11 +418,12 @@
                         <outlet property="resultTextView" destination="Nd1-G0-HjI" id="73B-pg-t7a"/>
                         <outlet property="visadeltagaridButton" destination="xzy-Pw-XRV" id="Qum-56-5QK"/>
                         <outlet property="visadeltagaridButtonButton" destination="dGK-q4-roc" id="Vft-lC-fuh"/>
+                        <segue destination="Cg6-aq-rv2" kind="push" identifier="segueBackToBuylistFromResult" id="vpy-14-pad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbz-Cu-AWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2058" y="1035"/>
+            <point key="canvasLocation" x="2006" y="1039"/>
         </scene>
         <!--Buylist View Controller-->
         <scene sceneID="xIn-Zk-Hxn">
@@ -727,6 +728,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dL0-cR-7g6"/>
+        <segue reference="vpy-14-pad"/>
     </inferredMetricsTieBreakers>
 </document>

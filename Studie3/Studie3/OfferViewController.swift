@@ -25,7 +25,7 @@ class OfferViewController: UIViewController {
     var localTimer:NSTimer = NSTimer()
     // </Timer slut>      ------------------------------//
     
-    var startTime:CFAbsoluteTime = CFAbsoluteTime()
+    //var startTime:CFAbsoluteTime = CFAbsoluteTime()
     
     
     override func viewDidLoad() {
