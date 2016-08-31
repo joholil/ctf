@@ -50,45 +50,76 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
-    
     var test: Bool = false
     
-    
-    
     ///////////////////
-    
     
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
+        
         initiateOfferButtons()
+        initiateListButtons()
         
         initiateIbeacons()
         
         test = animated
     }
     
-    func initiateOfferButtons(){
+    func initiateListButtons(){
         
-        if (globalCondition == 1 || globalCondition == 2){
+        product1Button.setAttributedTitle(getAttributeString(1), forState: UIControlState.Normal)
+        product2Button.setAttributedTitle(getAttributeString(2), forState: UIControlState.Normal)
+        product3Button.setAttributedTitle(getAttributeString(3), forState: UIControlState.Normal)
+        product4Button.setAttributedTitle(getAttributeString(4), forState: UIControlState.Normal)
+        product5Button.setAttributedTitle(getAttributeString(5), forState: UIControlState.Normal)
+        
+    }
+    
+    func initiateOfferButtons(){
+
+        if (globalCondition == 1){
+            if globalUseDynamicOfferbuttonsCondition1{
+                
+                for Assignment in globalAssignments
+                {
+                    switch Assignment.assignmentNumber{
+                    case 1:
+                        erbjudandeButton1.hidden = !Assignment.beacontriggered
+                    case 2:
+                        erbjudandeButton2.hidden = !Assignment.beacontriggered
+                    case 3:
+                        erbjudandeButton3.hidden = !Assignment.beacontriggered
+                    case 4:
+                        erbjudandeButton4.hidden = !Assignment.beacontriggered
+                    case 5:
+                        erbjudandeButton5.hidden = !Assignment.beacontriggered
+                    default: break
+                    }
+                }
+            }
+            else{
+                erbjudandeButton1.hidden = false
+                erbjudandeButton2.hidden = false
+                erbjudandeButton3.hidden = false
+                erbjudandeButton4.hidden = false
+                erbjudandeButton5.hidden = false
+            }
+        }
+        if (globalCondition == 2){
             for Assignment in globalAssignments
             {
                 switch Assignment.assignmentNumber{
                 case 1:
                     erbjudandeButton1.hidden = !Assignment.beacontriggered
-                    //erbjudandeButton1.setNeedsDisplay()
                 case 2:
                     erbjudandeButton2.hidden = !Assignment.beacontriggered
-                    //erbjudandeButton2.setNeedsDisplay()
                 case 3:
                     erbjudandeButton3.hidden = !Assignment.beacontriggered
-                    //erbjudandeButton3.setNeedsDisplay()
                 case 4:
                     erbjudandeButton4.hidden = !Assignment.beacontriggered
-                    //erbjudandeButton4.setNeedsDisplay()
                 case 5:
                     erbjudandeButton5.hidden = !Assignment.beacontriggered
-                    //erbjudandeButton5.setNeedsDisplay()
                 default: break
                 }
             }
@@ -160,20 +191,12 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
             {
                     if (element.accuracy < accurazyZone){
                         beaconFound(element.minor)
-                        //beaconFoundInArray = true
                     }
             }
         }
         return false
     }
     
-    
-    /*
-    func initializeAssignment()
-    {
-        measurmentStartTime = CFAbsoluteTimeGetCurrent()
-    }
-    */
     
     
     func beaconFound(beaconId:NSNumber)->Bool
@@ -194,8 +217,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                     
                     if globalCondition == 1
                     {
-                        
                         initiateOfferButtons()
+                 
                         return true
                         
                     }
@@ -218,6 +241,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                             break
                         }
                     
+                        Alerter.VibrateAndSound()
+
                         performSegueWithIdentifier("segueOffer", sender: nil)
                         return true
                         
@@ -239,6 +264,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         default:
                             break
                         }
+
+                        Alerter.VibrateAndSound()
 
                         performSegueWithIdentifier("segueGame", sender: nil)
                         return true
@@ -337,6 +364,9 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         product3Button.setTitle(globalAssignments[2].product, forState: UIControlState.Normal)
         product4Button.setTitle(globalAssignments[3].product, forState: UIControlState.Normal)
         product5Button.setTitle(globalAssignments[4].product, forState: UIControlState.Normal)
+        
+    
+        
         
         // Do any additional setup after loading the view.
         

@@ -38,6 +38,12 @@ class Alerter {
         }
     }
  
+    static func VibrateAndSound(){
+
+        
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AudioServicesPlayAlertSound(SystemSoundID(1106))
+    }
  
     static func AlertColor(timeLeft:Double) -> Bool{
         var retur:Bool

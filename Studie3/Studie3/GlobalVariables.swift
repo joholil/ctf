@@ -37,6 +37,8 @@ var globalvisualWarningUsed: Bool = false
 var globalEnglish: Bool = false
 
 
+var globalUseDynamicOfferbuttonsCondition1: Bool = false
+
 // Timer //
 let globalTimerTime:Double = 30 // Här sätts tiden som man har för att svara på frågan
 let globalUseTimer:Bool = true
