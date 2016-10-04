@@ -14,7 +14,8 @@ class Assignment {
     var product:String
     var checked:Bool
     var assignmentNumber:Int
-    var targetBeacon:Int
+    var majorVersion:Int
+    var minorVersion:Int
     var offer:String
     var beacontriggered:Bool
     //var answered:Bool
@@ -166,12 +167,13 @@ class Assignment {
     /*
     init( product:String, checked:Bool, assignmentNumber:Int, targetBeacon:Int, offer:String, beacontriggered:Bool, answered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
     */
-    init( product:String, checked:Bool, assignmentNumber:Int, targetBeacon:Int, offer:String, beacontriggered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
+    init( product:String, checked:Bool, assignmentNumber:Int, majorVersion:Int, minorVersion:Int, offer:String, beacontriggered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
     {
         self.product = product
         self.checked = checked
         self.assignmentNumber = assignmentNumber
-        self.targetBeacon = targetBeacon
+        self.majorVersion = majorVersion
+        self.minorVersion = minorVersion
         self.offer = offer
         self.beacontriggered = beacontriggered
         //self.answered = answered

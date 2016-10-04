@@ -190,7 +190,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
             for element in knownBeacons
             {
                     if (element.accuracy < accurazyZone){
-                        beaconFound(element.minor)
+                        beaconFound(element.major)
                     }
             }
         }
@@ -209,7 +209,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
             if (Assignment.beacontriggered != true)
             {
                 //meddelandet ska bara visas en gång.
-                if (Assignment.targetBeacon == beaconId)
+                if (Assignment.majorVersion == beaconId)
                 {
                     assignmentToShow = i
                     saveMeasurementActivationTime()
