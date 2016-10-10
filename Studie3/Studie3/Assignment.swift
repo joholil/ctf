@@ -39,6 +39,7 @@ class Assignment {
     var qtimelookingatoffer3:Double = 0
     var qtimelookingatoffer4:Double = 0
     var qtimelookingatoffer5:Double = 0
+    var picture:String
     
     
     var rightAnswerText:String {
@@ -167,7 +168,7 @@ class Assignment {
     /*
     init( product:String, checked:Bool, assignmentNumber:Int, targetBeacon:Int, offer:String, beacontriggered:Bool, answered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
     */
-    init( product:String, checked:Bool, assignmentNumber:Int, majorVersion:Int, minorVersion:Int, offer:String, beacontriggered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int)
+    init( product:String, checked:Bool, assignmentNumber:Int, majorVersion:Int, minorVersion:Int, offer:String, beacontriggered:Bool, qheadline:String, qquestion:String, qalternative1:String, qalternative2:String, qalternative3:String, qalternative4:String, qrightAlternative:Int, quserAnswer:Int, qfiftyFiftyRemove:[Int], qpercentAlternative1:Int, qpercentAlternative2:Int, qpercentAlternative3:Int, qpercentAlternative4:Int, picture:String)
     {
         self.product = product
         self.checked = checked
@@ -190,6 +191,7 @@ class Assignment {
         self.qpercentAlternative2 = qpercentAlternative2
         self.qpercentAlternative3 = qpercentAlternative3
         self.qpercentAlternative4 = qpercentAlternative4
+        self.picture = picture
         
     }
     

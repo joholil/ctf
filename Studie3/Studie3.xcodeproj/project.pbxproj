@@ -23,6 +23,8 @@
 		31A062681D50E70D00F63C73 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062671D50E70D00F63C73 /* Alerter.swift */; };
 		31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062691D50E7F600F63C73 /* GameViewController.swift */; };
 		31A0626C1D51D0FB00F63C73 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */; };
+		31E981791DABA8AF00DA6579 /* ErbjudandeChoklad.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */; };
+		31E9817B1DABA8B900DA6579 /* ErbjudandeKorv.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		31A062671D50E70D00F63C73 /* Alerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		31A062691D50E7F600F63C73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErbjudandeChoklad.PNG; sourceTree = "<group>"; };
+		31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErbjudandeKorv.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				313766941D4F237900BCA0C5 /* Measurement.swift */,
 				31A062671D50E70D00F63C73 /* Alerter.swift */,
 				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
+				31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */,
+				31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */,
 			);
 			path = Studie3;
 			sourceTree = "<group>";
@@ -157,6 +163,8 @@
 			files = (
 				313766831D4F1EF500BCA0C5 /* LaunchScreen.storyboard in Resources */,
 				313766801D4F1EF500BCA0C5 /* Assets.xcassets in Resources */,
+				31E9817B1DABA8B900DA6579 /* ErbjudandeKorv.PNG in Resources */,
+				31E981791DABA8AF00DA6579 /* ErbjudandeChoklad.PNG in Resources */,
 				3137667B1D4F1EF500BCA0C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

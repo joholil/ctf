@@ -621,7 +621,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mni-l1-aqq"/>
         <segue reference="jV9-vF-yYc"/>
+        <segue reference="ekT-co-pHO"/>
     </inferredMetricsTieBreakers>
 </document>

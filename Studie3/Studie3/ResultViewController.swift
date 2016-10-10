@@ -16,6 +16,9 @@ class ResultViewController: UIViewController {
     
     @IBOutlet var visadeltagaridButton:UIButton!
     @IBOutlet var visadeltagaridButtonButton:UIButton!
+    
+    @IBOutlet var offerImageView:UIImageView!
+
 
     var assignmentToShow:Int!
     
@@ -34,7 +37,10 @@ class ResultViewController: UIViewController {
         
         if globalAssignments[assignmentToShow].isCorrectAnswer{
             resultLabel.text = "Grattis, du svarade rätt :)"
-            resultTextView.text = "Du har låst upp erbjudandet \""  + globalAssignments[assignmentToShow].offer + "\""
+            resultTextView.text = "Du har låst upp erbjudandet!"
+            //"  + globalAssignments[assignmentToShow].offer + "\""
+            
+            self.offerImageView.image = UIImage(named: globalAssignments[assignmentToShow].picture)
             
         }
         else if globalAssignments[assignmentToShow].isLateAnswer{

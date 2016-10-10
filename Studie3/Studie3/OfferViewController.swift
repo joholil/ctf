@@ -19,6 +19,8 @@ class OfferViewController: UIViewController {
     @IBOutlet var visadeltagaridButton:UIButton!
     @IBOutlet var visadeltagaridButtonButton:UIButton!
 
+    @IBOutlet var offerImageView:UIImageView!
+
     
     // </Timer>      ------------------------------//
     var localStartTime:NSTimeInterval = NSTimeInterval()
@@ -32,10 +34,12 @@ class OfferViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        offerLabel.text = globalAssignments[assignmentToShow].product
-        offerTextView.text = globalAssignments[assignmentToShow].offer
+        //offerLabel.text = globalAssignments[assignmentToShow].product
+        //offerTextView.text = globalAssignments[assignmentToShow].offer
         
         localStartTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        self.offerImageView.image = UIImage(named: globalAssignments[assignmentToShow].picture)
         
         
     }
