@@ -23,6 +23,13 @@
 		31A062681D50E70D00F63C73 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062671D50E70D00F63C73 /* Alerter.swift */; };
 		31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062691D50E7F600F63C73 /* GameViewController.swift */; };
 		31A0626C1D51D0FB00F63C73 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */; };
+		31AA82C01DB65BEF00E61496 /* Kupong Gevalia Text.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82BF1DB65BEF00E61496 /* Kupong Gevalia Text.jpg */; };
+		31AA82C21DB66B9400E61496 /* Gevalia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82C11DB66B9400E61496 /* Gevalia.jpg */; };
+		31AA82C41DB66BA100E61496 /* Herrgard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82C31DB66BA100E61496 /* Herrgard.jpg */; };
+		31AA82C61DB66BAB00E61496 /* Kuponger_Sida_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82C51DB66BAB00E61496 /* Kuponger_Sida_6.jpg */; };
+		31AA82C81DB66BB200E61496 /* Polarbrod.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82C71DB66BB200E61496 /* Polarbrod.jpg */; };
+		31AA82CA1DB66BB900E61496 /* smor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82C91DB66BB900E61496 /* smor.jpg */; };
+		31AA82CC1DB66BC000E61496 /* Tomat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82CB1DB66BC000E61496 /* Tomat.jpg */; };
 		31E981791DABA8AF00DA6579 /* ErbjudandeChoklad.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */; };
 		31E9817B1DABA8B900DA6579 /* ErbjudandeKorv.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */; };
 /* End PBXBuildFile section */
@@ -46,6 +53,13 @@
 		31A062671D50E70D00F63C73 /* Alerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		31A062691D50E7F600F63C73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		31AA82BF1DB65BEF00E61496 /* Kupong Gevalia Text.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Kupong Gevalia Text.jpg"; sourceTree = "<group>"; };
+		31AA82C11DB66B9400E61496 /* Gevalia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Gevalia.jpg; sourceTree = "<group>"; };
+		31AA82C31DB66BA100E61496 /* Herrgard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Herrgard.jpg; sourceTree = "<group>"; };
+		31AA82C51DB66BAB00E61496 /* Kuponger_Sida_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kuponger_Sida_6.jpg; sourceTree = "<group>"; };
+		31AA82C71DB66BB200E61496 /* Polarbrod.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Polarbrod.jpg; sourceTree = "<group>"; };
+		31AA82C91DB66BB900E61496 /* smor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smor.jpg; sourceTree = "<group>"; };
+		31AA82CB1DB66BC000E61496 /* Tomat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tomat.jpg; sourceTree = "<group>"; };
 		31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErbjudandeChoklad.PNG; sourceTree = "<group>"; };
 		31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ErbjudandeKorv.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +113,13 @@
 				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
 				31E981781DABA8AF00DA6579 /* ErbjudandeChoklad.PNG */,
 				31E9817A1DABA8B900DA6579 /* ErbjudandeKorv.PNG */,
+				31AA82BF1DB65BEF00E61496 /* Kupong Gevalia Text.jpg */,
+				31AA82C11DB66B9400E61496 /* Gevalia.jpg */,
+				31AA82C31DB66BA100E61496 /* Herrgard.jpg */,
+				31AA82C51DB66BAB00E61496 /* Kuponger_Sida_6.jpg */,
+				31AA82C71DB66BB200E61496 /* Polarbrod.jpg */,
+				31AA82C91DB66BB900E61496 /* smor.jpg */,
+				31AA82CB1DB66BC000E61496 /* Tomat.jpg */,
 			);
 			path = Studie3;
 			sourceTree = "<group>";
@@ -161,11 +182,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AA82C01DB65BEF00E61496 /* Kupong Gevalia Text.jpg in Resources */,
 				313766831D4F1EF500BCA0C5 /* LaunchScreen.storyboard in Resources */,
+				31AA82CA1DB66BB900E61496 /* smor.jpg in Resources */,
+				31AA82C41DB66BA100E61496 /* Herrgard.jpg in Resources */,
+				31AA82C81DB66BB200E61496 /* Polarbrod.jpg in Resources */,
 				313766801D4F1EF500BCA0C5 /* Assets.xcassets in Resources */,
 				31E9817B1DABA8B900DA6579 /* ErbjudandeKorv.PNG in Resources */,
+				31AA82C61DB66BAB00E61496 /* Kuponger_Sida_6.jpg in Resources */,
 				31E981791DABA8AF00DA6579 /* ErbjudandeChoklad.PNG in Resources */,
+				31AA82CC1DB66BC000E61496 /* Tomat.jpg in Resources */,
 				3137667B1D4F1EF500BCA0C5 /* Main.storyboard in Resources */,
+				31AA82C21DB66B9400E61496 /* Gevalia.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

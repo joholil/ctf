@@ -175,6 +175,11 @@ class GameViewController: UIViewController {
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer5clicked += 1
                         }
+                    case 5:
+                        managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question6correct")
+                        if globalAssignments[assignmentToShow].isCorrectAnswer{
+                            globaltimesoffer5clicked += 1
+                        }
                     default:
                         break
                     }

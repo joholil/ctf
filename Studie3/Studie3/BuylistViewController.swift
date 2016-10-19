@@ -22,11 +22,15 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var product4Button:UIButton!
     @IBOutlet var product5Button:UIButton!
     
+    @IBOutlet var product6Button:UIButton!
+    
     @IBOutlet var erbjudandeButton1:UIButton!
     @IBOutlet var erbjudandeButton2:UIButton!
     @IBOutlet var erbjudandeButton3:UIButton!
     @IBOutlet var erbjudandeButton4:UIButton!
     @IBOutlet var erbjudandeButton5:UIButton!
+    
+    @IBOutlet var erbjudandeButton6:UIButton!
     
     @IBOutlet var visadeltagaridButton:UIButton!
     @IBOutlet var visadeltagaridButtonButton:UIButton!
@@ -73,6 +77,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         product3Button.setAttributedTitle(getAttributeString(3), forState: UIControlState.Normal)
         product4Button.setAttributedTitle(getAttributeString(4), forState: UIControlState.Normal)
         product5Button.setAttributedTitle(getAttributeString(5), forState: UIControlState.Normal)
+        product6Button.setAttributedTitle(getAttributeString(6), forState: UIControlState.Normal)
         
     }
     
@@ -94,6 +99,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         erbjudandeButton4.hidden = !Assignment.beacontriggered
                     case 5:
                         erbjudandeButton5.hidden = !Assignment.beacontriggered
+                    case 6:
+                        erbjudandeButton6.hidden = !Assignment.beacontriggered
                     default: break
                     }
                 }
@@ -104,6 +111,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                 erbjudandeButton3.hidden = false
                 erbjudandeButton4.hidden = false
                 erbjudandeButton5.hidden = false
+                erbjudandeButton6.hidden = false
             }
         }
         if (globalCondition == 2){
@@ -120,6 +128,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                     erbjudandeButton4.hidden = !Assignment.beacontriggered
                 case 5:
                     erbjudandeButton5.hidden = !Assignment.beacontriggered
+                case 6:
+                    erbjudandeButton6.hidden = !Assignment.beacontriggered
                 default: break
                 }
             }
@@ -139,6 +149,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         erbjudandeButton4.hidden = !Assignment.isCorrectAnswer
                     case 5:
                         erbjudandeButton5.hidden = !Assignment.isCorrectAnswer
+                    case 6:
+                        erbjudandeButton6.hidden = !Assignment.isCorrectAnswer
                     default: break
                     }
                 }
@@ -155,6 +167,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         erbjudandeButton4.hidden = true
                     case 5:
                         erbjudandeButton5.hidden = true
+                    case 6:
+                        erbjudandeButton6.hidden = true
                     default: break
                     }
                 }
@@ -237,6 +251,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                             globaltimesoffer4clicked += 1
                         case 4:
                             globaltimesoffer5clicked += 1
+                        case 5:
+                            globaltimesoffer6clicked += 1
                         default:
                             break
                         }
@@ -261,6 +277,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                             globaltimesoffer4clicked += 1
                         case 4:
                             globaltimesoffer5clicked += 1
+                        case 5:
+                            globaltimesoffer6clicked += 1
                         default:
                             break
                         }
@@ -304,6 +322,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4activatedtime")
                     case 4:
                         managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5activatedtime")
+                    case 5:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment6activatedtime")
                     default:
                         break
                     }
@@ -343,6 +363,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment4checked")
                     case 5:
                         managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment5checked")
+                    case 6:
+                        managedObject.setValue(CFAbsoluteTimeGetCurrent(), forKey: "assignment6checked")
                     default:
                         break
                     }
@@ -364,6 +386,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         product3Button.setTitle(globalAssignments[2].product, forState: UIControlState.Normal)
         product4Button.setTitle(globalAssignments[3].product, forState: UIControlState.Normal)
         product5Button.setTitle(globalAssignments[4].product, forState: UIControlState.Normal)
+        product6Button.setTitle(globalAssignments[5].product, forState: UIControlState.Normal)
         
     
         
@@ -412,6 +435,14 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         performSegueWithIdentifier("segueOffer", sender: nil)
     }
     
+    @IBAction func erbjudande6ButtonChosen()
+    {
+        assignmentToShow = 5
+        globaltimesoffer6clicked += 1
+        saveMeasurementOffersClicked(6)
+        performSegueWithIdentifier("segueOffer", sender: nil)
+    }
+    
     
     
     func saveMeasurementOffersClicked(assignmentChecked:Int){
@@ -440,6 +471,8 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         managedObject.setValue(globaltimesoffer4clicked, forKey: "timesoffer4clicked")
                     case 5:
                         managedObject.setValue(globaltimesoffer5clicked, forKey: "timesoffer5clicked")
+                    case 6:
+                        managedObject.setValue(globaltimesoffer6clicked, forKey: "timesoffer6clicked")
                     default:
                         break
                     }
@@ -502,6 +535,12 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
         globalAssignments[4].checkedChange()
         saveMeasurementChecked(5)
         product5Button.setAttributedTitle(getAttributeString(5), forState: UIControlState.Normal)
+    }
+    @IBAction func product6ButtonChosen()
+    {
+        globalAssignments[5].checkedChange()
+        saveMeasurementChecked(6)
+        product6Button.setAttributedTitle(getAttributeString(6), forState: UIControlState.Normal)
     }
     
     func getAttributeString(buttonNumber:Int) -> NSMutableAttributedString
