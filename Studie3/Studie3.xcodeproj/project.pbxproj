@@ -18,17 +18,17 @@
 		313766931D4F22DC00BCA0C5 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766921D4F22DC00BCA0C5 /* Assignment.swift */; };
 		313766951D4F237900BCA0C5 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766941D4F237900BCA0C5 /* Measurement.swift */; };
 		313766991D4F2ED800BCA0C5 /* StartMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313766981D4F2ED800BCA0C5 /* StartMeasureViewController.swift */; };
+		316B39901DBA432C0049B4DD /* tomatrom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 316B398F1DBA432C0049B4DD /* tomatrom.jpg */; };
+		316B39921DBA43380049B4DD /* choklad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 316B39911DBA43380049B4DD /* choklad.jpg */; };
 		317D4A901D4F5583004E903F /* BuylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D4A8F1D4F5583004E903F /* BuylistViewController.swift */; };
 		317D4A941D4F6B8C004E903F /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D4A931D4F6B8C004E903F /* OfferViewController.swift */; };
 		31A062681D50E70D00F63C73 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062671D50E70D00F63C73 /* Alerter.swift */; };
 		31A0626A1D50E7F600F63C73 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A062691D50E7F600F63C73 /* GameViewController.swift */; };
 		31A0626C1D51D0FB00F63C73 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */; };
 		31AA82CE1DB7570400E61496 /* brod.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82CD1DB7570400E61496 /* brod.jpg */; };
-		31AA82D01DB7570E00E61496 /* choklad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82CF1DB7570E00E61496 /* choklad.jpg */; };
 		31AA82D21DB7571800E61496 /* kaffe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82D11DB7571800E61496 /* kaffe.jpg */; };
 		31AA82D41DB7572100E61496 /* ost.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82D31DB7572100E61496 /* ost.jpg */; };
 		31AA82D61DB7572B00E61496 /* smor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82D51DB7572B00E61496 /* smor.jpg */; };
-		31AA82D81DB7575300E61496 /* tomateco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31AA82D71DB7575300E61496 /* tomateco.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,17 +45,17 @@
 		313766921D4F22DC00BCA0C5 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		313766941D4F237900BCA0C5 /* Measurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		313766981D4F2ED800BCA0C5 /* StartMeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMeasureViewController.swift; sourceTree = "<group>"; };
+		316B398F1DBA432C0049B4DD /* tomatrom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tomatrom.jpg; sourceTree = "<group>"; };
+		316B39911DBA43380049B4DD /* choklad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = choklad.jpg; sourceTree = "<group>"; };
 		317D4A8F1D4F5583004E903F /* BuylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuylistViewController.swift; sourceTree = "<group>"; };
 		317D4A931D4F6B8C004E903F /* OfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		31A062671D50E70D00F63C73 /* Alerter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		31A062691D50E7F600F63C73 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		31A0626B1D51D0FB00F63C73 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		31AA82CD1DB7570400E61496 /* brod.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brod.jpg; sourceTree = "<group>"; };
-		31AA82CF1DB7570E00E61496 /* choklad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = choklad.jpg; sourceTree = "<group>"; };
 		31AA82D11DB7571800E61496 /* kaffe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kaffe.jpg; sourceTree = "<group>"; };
 		31AA82D31DB7572100E61496 /* ost.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ost.jpg; sourceTree = "<group>"; };
 		31AA82D51DB7572B00E61496 /* smor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smor.jpg; sourceTree = "<group>"; };
-		31AA82D71DB7575300E61496 /* tomateco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tomateco.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +106,11 @@
 				31A062671D50E70D00F63C73 /* Alerter.swift */,
 				313766901D4F228F00BCA0C5 /* GlobalVariables.swift */,
 				31AA82CD1DB7570400E61496 /* brod.jpg */,
-				31AA82CF1DB7570E00E61496 /* choklad.jpg */,
 				31AA82D11DB7571800E61496 /* kaffe.jpg */,
 				31AA82D31DB7572100E61496 /* ost.jpg */,
 				31AA82D51DB7572B00E61496 /* smor.jpg */,
-				31AA82D71DB7575300E61496 /* tomateco.jpg */,
+				316B398F1DBA432C0049B4DD /* tomatrom.jpg */,
+				316B39911DBA43380049B4DD /* choklad.jpg */,
 			);
 			path = Studie3;
 			sourceTree = "<group>";
@@ -175,12 +175,12 @@
 			files = (
 				31AA82D61DB7572B00E61496 /* smor.jpg in Resources */,
 				31AA82D41DB7572100E61496 /* ost.jpg in Resources */,
-				31AA82D01DB7570E00E61496 /* choklad.jpg in Resources */,
 				31AA82D21DB7571800E61496 /* kaffe.jpg in Resources */,
-				31AA82D81DB7575300E61496 /* tomateco.jpg in Resources */,
 				313766831D4F1EF500BCA0C5 /* LaunchScreen.storyboard in Resources */,
 				313766801D4F1EF500BCA0C5 /* Assets.xcassets in Resources */,
 				31AA82CE1DB7570400E61496 /* brod.jpg in Resources */,
+				316B39901DBA432C0049B4DD /* tomatrom.jpg in Resources */,
+				316B39921DBA43380049B4DD /* choklad.jpg in Resources */,
 				3137667B1D4F1EF500BCA0C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

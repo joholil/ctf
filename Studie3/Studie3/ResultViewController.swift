@@ -47,11 +47,13 @@ class ResultViewController: UIViewController {
             resultLabel.text = "Tyvärr, tiden är ute :("
             
             resultTextView.text = "Rätt svar var \"" + globalAssignments[assignmentToShow].rightAnswerText + "\"."
+            
         }
         else{
             resultLabel.text = "Tyvärr, ditt svar var fel :("
             
             resultTextView.text = "Du svarade \"" + globalAssignments[assignmentToShow].userAnswerText + "\". " + "Rätt svar var \"" + globalAssignments[assignmentToShow].rightAnswerText + "\"."
+            
          }
         
         localStartTime = NSDate.timeIntervalSinceReferenceDate()
@@ -148,6 +150,13 @@ class ResultViewController: UIViewController {
                             managedObject.setValue(globalAssignments[assignmentToShow].qtimelookingatoffer5, forKey: "timelookingatoffer5")
                             if globaltimesoffer5clicked == 1{
                                 managedObject.setValue(elapsedTime, forKey: "timelookingatoffer5first")
+                                
+                            }
+                        case 5:
+                            globalAssignments[assignmentToShow].qtimelookingatoffer6 = globalAssignments[assignmentToShow].qtimelookingatoffer6 + elapsedTime
+                            managedObject.setValue(globalAssignments[assignmentToShow].qtimelookingatoffer6, forKey: "timelookingatoffer6")
+                            if globaltimesoffer6clicked == 1{
+                                managedObject.setValue(elapsedTime, forKey: "timelookingatoffer6first")
                                 
                             }
                         default:

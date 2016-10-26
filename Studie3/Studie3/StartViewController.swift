@@ -443,24 +443,36 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         let assignment3activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment3activatedtime))
         let assignment4activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment4activatedtime))
         let assignment5activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment5activatedtime))
+        let assignment6activatedtime:NSString = dateFormatterT.stringFromDate(NSDate(timeIntervalSinceReferenceDate: measurement.assignment6activatedtime))
         
         let assignment1checked:NSString = String(Int(measurement.assignment1checked))
         let assignment2checked:NSString = String(Int(measurement.assignment2checked))
         let assignment3checked:NSString = String(Int(measurement.assignment3checked))
         let assignment4checked:NSString = String(Int(measurement.assignment4checked))
         let assignment5checked:NSString = String(Int(measurement.assignment5checked))
+        let assignment6checked:NSString = String(Int(measurement.assignment6checked))
     
         let timesoffer1clicked:NSString = String(Int(measurement.timesoffer1clicked))
         let timesoffer2clicked:NSString = String(Int(measurement.timesoffer2clicked))
         let timesoffer3clicked:NSString = String(Int(measurement.timesoffer3clicked))
         let timesoffer4clicked:NSString = String(Int(measurement.timesoffer4clicked))
         let timesoffer5clicked:NSString = String(Int(measurement.timesoffer5clicked))
+        let timesoffer6clicked:NSString = String(Int(measurement.timesoffer6clicked))
 
         let question1correct:NSString = String(Int(measurement.question1correct))
         let question2correct:NSString = String(Int(measurement.question2correct))
         let question3correct:NSString = String(Int(measurement.question3correct))
         let question4correct:NSString = String(Int(measurement.question4correct))
         let question5correct:NSString = String(Int(measurement.question5correct))
+        let question6correct:NSString = String(Int(measurement.question6correct))
+
+        let userAnswer1:NSString = String(Int(measurement.userAnswer1))
+        let userAnswer2:NSString = String(Int(measurement.userAnswer2))
+        let userAnswer3:NSString = String(Int(measurement.userAnswer3))
+        let userAnswer4:NSString = String(Int(measurement.userAnswer4))
+        let userAnswer5:NSString = String(Int(measurement.userAnswer5))
+        let userAnswer6:NSString = String(Int(measurement.userAnswer6))
+
         
         let buzzerused:NSString = String(Int(measurement.buzzerused))
         let visualwarningused:NSString = String(Int(measurement.visualwarningused))
@@ -470,17 +482,21 @@ class StartViewController: UIViewController, UITextFieldDelegate, NSFetchedResul
         let timelookingatoffer3:NSString = String(measurement.timelookingatoffer3)
         let timelookingatoffer4:NSString = String(measurement.timelookingatoffer4)
         let timelookingatoffer5:NSString = String(measurement.timelookingatoffer5)
+        let timelookingatoffer6:NSString = String(measurement.timelookingatoffer6)
 
         let timelookingatoffer1first:NSString = String(measurement.timelookingatoffer1first)
         let timelookingatoffer2first:NSString = String(measurement.timelookingatoffer2first)
         let timelookingatoffer3first:NSString = String(measurement.timelookingatoffer3first)
         let timelookingatoffer4first:NSString = String(measurement.timelookingatoffer4first)
         let timelookingatoffer5first:NSString = String(measurement.timelookingatoffer5first)
+        let timelookingatoffer6first:NSString = String(measurement.timelookingatoffer6first)
 
         
         do {
             
-            let post:NSString = "deltagarid=\(deltagarid)&starttime=\(StartTime)&startdate=\(StartDate)&totalassignments=\(totalAssignments)&experimentalcondition=\(condition)&assignment1activatedtime=\(assignment1activatedtime)&assignment2activatedtime=\(assignment2activatedtime)&assignment3activatedtime=\(assignment3activatedtime)&assignment4activatedtime=\(assignment4activatedtime)&assignment5activatedtime=\(assignment5activatedtime)&assignment1checked=\(assignment1checked)&assignment2checked=\(assignment2checked)&assignment3checked=\(assignment3checked)&assignment4checked=\(assignment4checked)&assignment5checked=\(assignment5checked)&timesoffer1clicked=\(timesoffer1clicked)&timesoffer2clicked=\(timesoffer2clicked)&timesoffer3clicked=\(timesoffer3clicked)&timesoffer4clicked=\(timesoffer4clicked)&timesoffer5clicked=\(timesoffer5clicked)&question1correct=\(question1correct)&question2correct=\(question2correct)&question3correct=\(question3correct)&question4correct=\(question4correct)&question5correct=\(question5correct)&buzzerused=\(buzzerused)&visualwarningused=\(visualwarningused)&timelookingatoffer1=\(timelookingatoffer1)&timelookingatoffer2=\(timelookingatoffer2)&timelookingatoffer3=\(timelookingatoffer3)&timelookingatoffer4=\(timelookingatoffer4)&timelookingatoffer5=\(timelookingatoffer5)&timelookingatoffer1first=\(timelookingatoffer1first)&timelookingatoffer2first=\(timelookingatoffer2first)&timelookingatoffer3first=\(timelookingatoffer3first)&timelookingatoffer4first=\(timelookingatoffer4first)&timelookingatoffer5first=\(timelookingatoffer5first)"
+            let post:NSString = "deltagarid=\(deltagarid)&starttime=\(StartTime)&startdate=\(StartDate)&totalassignments=\(totalAssignments)&experimentalcondition=\(condition)&assignment1activatedtime=\(assignment1activatedtime)&assignment2activatedtime=\(assignment2activatedtime)&assignment3activatedtime=\(assignment3activatedtime)&assignment4activatedtime=\(assignment4activatedtime)&assignment5activatedtime=\(assignment5activatedtime)&assignment6activatedtime=\(assignment6activatedtime)&assignment1checked=\(assignment1checked)&assignment2checked=\(assignment2checked)&assignment3checked=\(assignment3checked)&assignment4checked=\(assignment4checked)&assignment5checked=\(assignment5checked)&assignment6checked=\(assignment6checked)&timesoffer1clicked=\(timesoffer1clicked)&timesoffer2clicked=\(timesoffer2clicked)&timesoffer3clicked=\(timesoffer3clicked)&timesoffer4clicked=\(timesoffer4clicked)&timesoffer5clicked=\(timesoffer5clicked)&timesoffer6clicked=\(timesoffer6clicked)&question1correct=\(question1correct)&question2correct=\(question2correct)&question3correct=\(question3correct)&question4correct=\(question4correct)&question5correct=\(question5correct)&question6correct=\(question6correct)&buzzerused=\(buzzerused)&visualwarningused=\(visualwarningused)&timelookingatoffer1=\(timelookingatoffer1)&timelookingatoffer2=\(timelookingatoffer2)&timelookingatoffer3=\(timelookingatoffer3)&timelookingatoffer4=\(timelookingatoffer4)&timelookingatoffer5=\(timelookingatoffer5)&timelookingatoffer6=\(timelookingatoffer6)&timelookingatoffer1first=\(timelookingatoffer1first)&timelookingatoffer2first=\(timelookingatoffer2first)&timelookingatoffer3first=\(timelookingatoffer3first)&timelookingatoffer4first=\(timelookingatoffer4first)&timelookingatoffer5first=\(timelookingatoffer5first)&timelookingatoffer6first=\(timelookingatoffer6first)&userAnswer1=\(userAnswer1)&userAnswer2=\(userAnswer2)&userAnswer3=\(userAnswer3)&userAnswer4=\(userAnswer4)&userAnswer5=\(userAnswer5)&userAnswer6=\(userAnswer6)"
+            
+            
             
             
             NSLog("PostData: %@",post);

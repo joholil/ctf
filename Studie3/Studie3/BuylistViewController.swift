@@ -266,7 +266,10 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                     else if globalCondition == 3
                     {
                         //assignmentToShow = i
-                        switch assignmentToShow {
+                        
+                        /* Detta görs i speldialogen när användaren svarat rätt på frågan
+                         
+                         switch assignmentToShow {
                         case 0:
                             globaltimesoffer1clicked += 1
                         case 1:
@@ -282,6 +285,7 @@ class BuylistViewController: UIViewController, CLLocationManagerDelegate {
                         default:
                             break
                         }
+                        */
 
                         Alerter.VibrateAndSound()
 

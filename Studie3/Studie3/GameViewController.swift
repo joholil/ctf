@@ -26,7 +26,7 @@ class GameViewController: UIViewController {
     @IBOutlet var P2Label:UILabel!
     @IBOutlet var P3Label:UILabel!
     @IBOutlet var P4Label:UILabel!
-    @IBOutlet var headlineLabel:UILabel!
+    //@IBOutlet var headlineLabel:UILabel!
     
     @IBOutlet var visadeltagaridButton:UIButton!
     @IBOutlet var visadeltagaridButtonButton:UIButton!
@@ -52,7 +52,7 @@ class GameViewController: UIViewController {
  
         self.questionTextView.text = globalAssignments[assignmentToShow].qquestion
         
-        self.headlineLabel.text = globalAssignments[assignmentToShow].qheadline
+        //self.headlineLabel.text = globalAssignments[assignmentToShow].qheadline
         
         self.questionTextView.selectable = false
         self.questionTextView.editable = false
@@ -154,39 +154,63 @@ class GameViewController: UIViewController {
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question1correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer1clicked += 1
+                            
+                            managedObject.setValue(globaltimesoffer1clicked, forKey: "timesoffer1clicked")
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer1")
+                    
                     case 1:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question2correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer2clicked += 1
+                            managedObject.setValue(globaltimesoffer2clicked, forKey: "timesoffer2clicked")
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer2")
+                    
                     case 2:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question3correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer3clicked += 1
+                            managedObject.setValue(globaltimesoffer3clicked, forKey: "timesoffer3clicked")
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer3")
+                    
                     case 3:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question4correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer4clicked += 1
+                            
+                            managedObject.setValue(globaltimesoffer4clicked, forKey: "timesoffer4clicked")
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer4")
+                    
                     case 4:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question5correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
                             globaltimesoffer5clicked += 1
+                            
+                            managedObject.setValue(globaltimesoffer5clicked, forKey: "timesoffer5clicked")
+                            
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer5")
+                    
                     case 5:
                         managedObject.setValue(globalAssignments[assignmentToShow].isCorrectAnswer, forKey: "question6correct")
                         if globalAssignments[assignmentToShow].isCorrectAnswer{
-                            globaltimesoffer5clicked += 1
+                            globaltimesoffer6clicked += 1
+                            
+                            managedObject.setValue(globaltimesoffer6clicked, forKey: "timesoffer6clicked")
                         }
+                        managedObject.setValue(globalAssignments[assignmentToShow].quserAnswer, forKey: "userAnswer6")
                     default:
                         break
                     }
                     
                     managedObject.setValue(globalbuzzerUsed, forKey: "buzzerused")
                     managedObject.setValue(globalvisualWarningUsed, forKey: "visualwarningused")
+
                     
+
                     try context.save()
                 }
             }

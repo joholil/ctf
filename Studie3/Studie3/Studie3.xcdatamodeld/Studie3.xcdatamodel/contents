@@ -44,9 +44,15 @@
         <attribute name="timesoffer6clicked" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="totalAssignments" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="totalAssignmentsFinished" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userAnswer1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="userAnswer2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userAnswer3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userAnswer4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userAnswer5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userAnswer6" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="visualwarningused" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="705"/>
+        <element name="Measurement" positionX="-63" positionY="-18" width="128" height="795"/>
     </elements>
 </model>

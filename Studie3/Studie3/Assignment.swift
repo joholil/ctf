@@ -27,7 +27,7 @@ class Assignment {
     var qalternative3:String
     var qalternative4:String
     var qrightAlternative:Int
-    var quserAnswer:Int
+    var quserAnswer:Int //99 = tiden ute
     var qfiftyFiftyRemove:[Int]
     var qpercentAlternative1:Int
     var qpercentAlternative2:Int
@@ -39,6 +39,7 @@ class Assignment {
     var qtimelookingatoffer3:Double = 0
     var qtimelookingatoffer4:Double = 0
     var qtimelookingatoffer5:Double = 0
+    var qtimelookingatoffer6:Double = 0
     var picture:String
     
     
@@ -109,7 +110,8 @@ class Assignment {
             }
         }
     }
-    
+
+
     
     var isLateAnswer:Bool {
         get {

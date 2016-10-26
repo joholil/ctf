@@ -32,6 +32,15 @@ class Measurement:NSManagedObject {
     @NSManaged var assignment4checked:Bool
     @NSManaged var assignment5checked:Bool
     @NSManaged var assignment6checked:Bool
+
+    @NSManaged var userAnswer1:Int
+    @NSManaged var userAnswer2:Int
+    @NSManaged var userAnswer3:Int
+    @NSManaged var userAnswer4:Int
+    @NSManaged var userAnswer5:Int
+    @NSManaged var userAnswer6:Int
+
+
     
     @NSManaged var timesoffer1clicked:Int
     @NSManaged var timesoffer2clicked:Int
